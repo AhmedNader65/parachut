@@ -42,7 +42,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="141dp"
                 android:layout_marginRight="141dp"
-                android:text="براشوط"
+                android:text="@string/name_app"
                 android:textColor="#ffffff"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -92,88 +92,73 @@
                     android:layout_marginTop="20dp"
                     android:layout_gravity="center_horizontal"
                     />
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/phone_text_input"
-                    style="@style/TextInputLayout"
-                    android:layout_marginTop="35dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginRight="32dp"
+                <LinearLayout
+                    android:layout_margin="16dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/etcolor"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
+                    android:layout_height="45dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_phone_log"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:drawableRight="@drawable/ic_phone_1"
-                        android:drawablePadding="15dp"
-                        android:ems="1"
-                        style="@style/AppTheme"
-                        android:gravity="right"
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:src="@drawable/ic_phone_1"
+                        android:layout_margin="12dp"
+                        android:layout_height="32dp" />
+
+                    <EditText
+                        android:id="@+id/phoneId"
+                        android:background="@color/graywhite"
+                        android:layout_marginStart="16dp"
+                        android:layout_gravity="center"
+
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center_vertical"
                         android:hint="@string/phone_number"
-                        android:inputType="phone"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/grayblack"
-                        android:textDirection="rtl"
-                        android:textSize="18sp"
-                        android:drawableEnd="@drawable/ic_phone_1" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <RelativeLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
-
-                    <Button
-                        android:id="@+id/show_pass"
-                        android:layout_centerVertical="true"
-                        android:layout_width="60dp"
-                        android:layout_height="40dp"
-                        android:textSize="12sp"
-                        android:textColor="@color/grayblack"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="40dp"
-                        style="@style/AppTheme"
-                        android:text="@string/show_pass_btn"
-                        />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/pass_text_input"
-                        style="@style/TextInputLayout"
                         android:layout_width="match_parent"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginRight="32dp"
-                        android:layout_height="wrap_content"
-                        >
+                        android:textSize="16dp"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_margin="16dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/etcolor"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_pass_log"
-                            style="@style/TextInputLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="65dp"
-                            android:layout_marginTop="8dp"
-                            android:drawableRight="@drawable/ic_privacy_1"
-                            android:drawablePadding="15dp"
-                            android:gravity="right"
-                            android:hint="@string/pass_name"
-                            android:inputType="textPassword"
-                            android:textColor="@color/black"
-                            android:textColorHighlight="@color/colorPrimaryDark"
-                            android:textColorHint="@color/grayblack"
-                            android:textDirection="rtl"
-                            android:textSize="18sp"
-                            android:drawableEnd="@drawable/ic_privacy_1" />
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:src="@drawable/ic_privacy_1"
+                        android:layout_margin="12dp"
+                        android:layout_height="32dp" />
 
+                    <EditText
+                        android:background="@color/graywhite"
+                        android:layout_marginStart="16dp"
+                        android:layout_gravity="center"
+                        android:gravity="center_vertical"
+                        android:hint="@string/pass_name"
+                        android:id="@+id/passId"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:textSize="16dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
-                </RelativeLayout>
+                    <TextView
+                        android:padding="4dp"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/etcolorgray"
+                        android:layout_width="50dp"
+                        android:textColor="@color/black"
+                        android:text="@string/show_pass_btn"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -202,7 +187,7 @@
                     android:text="@string/sign"
                     android:textColor="@android:color/white"
                     android:textSize="16sp"
-                    tools:ignore="UnusedAttribute" />
+                     />
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal"
