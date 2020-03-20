@@ -10,4 +10,15 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_user">UserActivity</string>
+
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="pass_name">كلمة السر</string>
+    <string name="forget_pass">نسيت كلمة السر ؟</string>
+    <string name="no_account">ليس لدي حساب ؟</string>
+    <string name="fast_order">اطلب حاجتك بسرعه</string>
+    <string name="show_pass_btn">اظهار</string>
+    <string name="sign">التسجيل</string>
+    <string name="new_acc">  حساب جديد</string>
+    <string name="phone_number">رقم الهاتف</string>
+
 </resources>
