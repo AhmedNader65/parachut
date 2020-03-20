@@ -1,6 +1,7 @@
 package com.mrerror.parachut.NetWork;
 
 
+import com.mrerror.parachut.Models.Login.UserLoginModel;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
 
 import retrofit2.Call;
@@ -33,6 +34,13 @@ public interface ServiceApi {
             @Field("lang") String city_id,
             @Field("password") String password,
             @Field("password_confirmation") String repassword);
+
+    @FormUrlEncoded
+    @POST("auth/login")
+    Call<UserLoginModel> onLogin(
+            @Field("mobile") String mobile,
+            @Field("password") String password
+    );
 
 //    @FormUrlEncoded
 //    @POST("restaurant/profile/update")

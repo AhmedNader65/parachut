@@ -36,7 +36,7 @@ public class UserActivity extends AppCompatActivity {
         activityUserBinding.setLifecycleOwner(this);
         activityUserBinding.setUserVmodel(userActivityViewModel);
         Utils.setLocale(this);
-        showFragment(new RegisterFragment());
+        showFragment(new LoginFragment());
 
     }
     private void showFragment(Fragment fragment) {
