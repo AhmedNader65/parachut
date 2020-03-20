@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
 import com.mrerror.parachut.NetWork.RetroWeb;
 import com.mrerror.parachut.NetWork.ServiceApi;
+import com.mrerror.parachut.ui.home.MainActivity;
 import com.mrerror.parachut.utils.GlobalPrefrencies;
 
 import retrofit2.Call;
@@ -39,7 +40,7 @@ public class RegisterViewModel extends ViewModel {
                     int id = model.getUser().getId();
                     String name = model.getUser().getName();
                     String phone = model.getUser().getMobile();
-                    String api_token = model.getUser().getToken();
+                    String api_token = model.getUser().getRemember_token();
 
 
                     Toast.makeText(context, "مرحبا بك " + name, Toast.LENGTH_LONG).show();
@@ -51,7 +52,7 @@ public class RegisterViewModel extends ViewModel {
                     globalPrefrencies.storeApi_token(api_token);
                     globalPrefrencies.storeLoginStatus(true);
 
-                    Intent intent = new Intent(context, HomeActivity.class);
+                    Intent intent = new Intent(context, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
                     context.startActivity(intent);

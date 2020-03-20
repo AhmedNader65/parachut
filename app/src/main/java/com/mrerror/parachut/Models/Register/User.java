@@ -20,6 +20,19 @@ public class User implements Serializable
     @SerializedName("lat")
     @Expose
     private String lat;
+
+
+    public String getRemember_token() {
+        return remember_token;
+    }
+
+    public void setRemember_token(String remember_token) {
+        this.remember_token = remember_token;
+    }
+
+    @SerializedName("remember_token")
+    @Expose
+    private String remember_token;
     @SerializedName("lang")
     @Expose
     private String lang;

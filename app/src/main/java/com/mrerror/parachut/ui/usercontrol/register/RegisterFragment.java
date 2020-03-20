@@ -48,16 +48,18 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (onCheackValidation()) {
-                    if(id_City!=0&&id_Country!=0) {
+
                         UserRegisterModel userRegisterModel = mViewModel.onClickRegister(
                                 registerFragmentBinding.nameId.getText().toString().trim(),
-                                registerFragmentBinding.emailId.getText().toString().trim(),
+                                registerFragmentBinding.phoneId.getText().toString(),
+                                registerFragmentBinding.addressId.getText().toString().trim(),
                                 registerFragmentBinding.passId.getText().toString().trim(),
-                                registerFragmentBinding.conpassid.getText().toString().trim(),
-                                registerFragmentBinding.phoneId.getText().toString().trim());
-                    }else {
-                        Toast.makeText(getContext(), "قم باختيار العنوان اولا", Toast.LENGTH_SHORT).show();
-                    }
+                                "30.000","33.000",
+                                registerFragmentBinding.conpassid.getText().toString().trim()
+                                );
+//                    }else {
+//                        Toast.makeText(getContext(), "قم باختيار العنوان اولا", Toast.LENGTH_SHORT).show();
+//                    }
                 }
             }
         });
