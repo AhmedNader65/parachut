@@ -1,12 +1,20 @@
 package com.mrerror.parachut.NetWork;
 
 
+import com.mrerror.parachut.Models.Register.UserRegisterModel;
+
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
+
 public interface ServiceApi {
 
 //
 //    @FormUrlEncoded
 //    @POST("auth/register")
-//    Call<RegisterModel> onRegester(
+//    Call<Register> onRegester(
 //            @Field("name") String name,
 //            @Field("mobile") String mobile,
 //            @Field("password") String password,
@@ -14,6 +22,17 @@ public interface ServiceApi {
 //    );
 //
 //
+
+    @FormUrlEncoded
+    @POST("auth/register/user")
+    Call<UserRegisterModel> onRegester(
+            @Field("name") String name,
+            @Field("mobile") String mobile,
+            @Field("address") String address,
+            @Field("lat") String country_id,
+            @Field("lang") String city_id,
+            @Field("password") String password,
+            @Field("password_confirmation") String repassword);
 
 //    @FormUrlEncoded
 //    @POST("restaurant/profile/update")

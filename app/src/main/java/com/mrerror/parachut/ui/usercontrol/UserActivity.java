@@ -18,6 +18,8 @@ import android.view.View;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.ActivityUserBinding;
 import com.mrerror.parachut.ui.usercontrol.login.LoginFragment;
+import com.mrerror.parachut.ui.usercontrol.register.RegisterFragment;
+import com.mrerror.parachut.utils.Utils;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -33,7 +35,8 @@ public class UserActivity extends AppCompatActivity {
         userActivityViewModel= ViewModelProviders.of(this).get(UserActivityViewModel.class);
         activityUserBinding.setLifecycleOwner(this);
         activityUserBinding.setUserVmodel(userActivityViewModel);
-        showFragment(new LoginFragment());
+        Utils.setLocale(this);
+        showFragment(new RegisterFragment());
 
     }
     private void showFragment(Fragment fragment) {
