@@ -23,9 +23,6 @@ import com.mrerror.parachut.utils.Utils;
 public class RegisterFragment extends Fragment {
 
     private RegisterViewModel mViewModel;
-    public static RegisterFragment newInstance() {
-        return new RegisterFragment();
-    }
 
     RegisterFragmentBinding registerFragmentBinding;
     @Override
@@ -56,7 +53,7 @@ public class RegisterFragment extends Fragment {
                                 registerFragmentBinding.passId.getText().toString().trim(),
                                 "30.000","33.000",
                                 registerFragmentBinding.conpassid.getText().toString().trim()
-                                );
+                                ,getContext());
 //                    }else {
 //                        Toast.makeText(getContext(), "قم باختيار العنوان اولا", Toast.LENGTH_SHORT).show();
 //                    }

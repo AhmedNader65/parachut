@@ -144,7 +144,7 @@
                         android:layout_margin="12dp"
                         android:layout_height="32dp" />
 
-                    <TextView
+                    <EditText
                         android:background="@color/graywhite"
                         android:layout_marginStart="16dp"
                         android:layout_gravity="center"

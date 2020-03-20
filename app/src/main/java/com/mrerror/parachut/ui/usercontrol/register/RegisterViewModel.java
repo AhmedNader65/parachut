@@ -20,17 +20,15 @@ import retrofit2.Response;
 
 public class RegisterViewModel extends ViewModel {
     // TODO: Implement the ViewModel
-    MutableLiveData<UserRegisterModel> userRegisterModelMutableLiveData;
-    Context context;
+    MutableLiveData<UserRegisterModel> userRegisterModelMutableLiveData=new MutableLiveData<>();
+
     GlobalPrefrencies globalPrefrencies;
-    public RegisterViewModel(Context context){
-        this.context=context;
-        globalPrefrencies=new GlobalPrefrencies(context);
-    }
+
     UserRegisterModel  model;
-    public UserRegisterModel onClickRegister(String name,String phone, String address, String password,String lat, String lang, String confirmPassword){
+    public UserRegisterModel onClickRegister(String name, String phone, String address, String password, String lat, String lang, String confirmPassword, final Context context){
+        globalPrefrencies=new GlobalPrefrencies(context);
         model = null;
-        userRegisterModelMutableLiveData=new MutableLiveData<>();
+
         RetroWeb.getClient().create(ServiceApi.class).onRegester(name,phone,address,lat,lang,password,confirmPassword).enqueue(new Callback<UserRegisterModel>() {
             @Override
             public void onResponse(Call<UserRegisterModel> call, Response<UserRegisterModel> response) {
