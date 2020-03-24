@@ -28,6 +28,9 @@
             android:orientation="vertical"
             android:background="@drawable/toolbarradiuscolor">
 
+
+
+
             <ImageView
                 android:id="@+id/iv_parachot"
                 android:layout_width="70dp"
@@ -123,6 +126,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_gravity="center"
 
+                        android:text="1111111"
                         android:layout_marginEnd="16dp"
                         android:gravity="center_vertical"
                         android:hint="@string/phone_number"
@@ -152,6 +156,8 @@
                         android:gravity="center_vertical"
                         android:hint="@string/pass_name"
                         android:id="@+id/passId"
+                        android:text="111111111"
+                        android:inputType="textPassword"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:textSize="16dp"
@@ -183,43 +189,34 @@
                     android:layout_gravity="center_horizontal"
                      />
 
+
+
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/login_btn"
-                    android:layout_width="350dp"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginRight="32dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/btnclickcolor"
                     android:ems="1"
-                    style="@style/AppTheme"
                     android:gravity="center"
-                    android:text="@string/sign"
-                    android:textColor="@android:color/white"
-                    android:textSize="16sp"
-                     />
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/btnclickcolor"
+                    android:layout_gravity="center"
+                    android:minWidth="200dp"
+                    android:textColor="@color/white"
+                    android:text="تسجيل"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="64dp"
+                    android:layout_marginEnd="64dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp" />
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
+              android:layout_margin="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     >
 
-                    <TextView
 
-                        android:layout_marginTop="30dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/new_acc"
-                        style="@style/AppTheme"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16sp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="20dp" />
 
                     <TextView
 
@@ -229,10 +226,23 @@
                         style="@style/AppTheme"
                         android:text="@string/no_account"
                         android:textColor="@color/grayblack"
+                    android:padding="8dp"
                         android:textSize="16sp"
                         android:layout_gravity="center_horizontal"
                          />
 
+                    <TextView
+
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/new_acc"
+                        android:id="@+id/newAcc"
+android:padding="8dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16sp"
+                        android:layout_gravity="center_horizontal"
+                        />
                 </LinearLayout>
 
                 <ImageView

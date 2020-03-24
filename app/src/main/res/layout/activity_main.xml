@@ -1,30 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello!000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+
+        <variable
+            name="mainVmodel"
+            type="com.mrerror.parachut.ui.home.MainViewModel" />
+    </data>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawer_layout"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            tools:openDrawer="start">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:gravity="center_horizontal"
+
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="?actionBarSize">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+
+                        android:text="براشوط"
+                        android:layout_marginStart="16dp"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="match_parent" />
+
+                    <ImageView
+
+                        android:layout_gravity="center"
+
+                        android:layout_margin="8dp"
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/ic_magnifying_glass"
+                        android:layout_height="wrap_content" />
+
+                    <ImageView
+
+                        android:layout_gravity="center"
+
+                        android:layout_margin="8dp"
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/ic_parachute"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_marginTop="?actionBarSize"
+                    android:layout_marginBottom="60dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottomReact"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    app:labelVisibilityMode="labeled"
+
+                    app:menu="@menu/bottom_navigation_menu" />
+
+                <LinearLayout
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="56dp"
+                        android:src="@drawable/ic_send"
+
+                        android:layout_height="56dp" />
+
+                    <TextView
+                        android:textSize="9dp"
+                        android:layout_width="wrap_content"
+                        android:padding="4dp"
+                        android:textColor="@color/colorGreen"
+                        android:text="طلب سريع"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </RelativeLayout>
+            <com.google.android.material.navigation.NavigationView
+
+                android:id="@+id/nav_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:elevation="9dp"
+                android:fitsSystemWindows="true">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+
+                    android:layout_marginTop="50dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/closebtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:tint="@color/colorAccent"
+                            android:src="@color/colorPrimary"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:id="@+id/rv_catMenu"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </com.google.android.material.navigation.NavigationView>
+
+        </androidx.drawerlayout.widget.DrawerLayout>
+
+</layout>

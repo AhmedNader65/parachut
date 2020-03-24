@@ -1,6 +1,7 @@
 package com.mrerror.parachut.ui.usercontrol.register;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Build;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.RegisterFragmentBinding;
+import com.mrerror.parachut.ui.usercontrol.login.LoginFragment;
 import com.mrerror.parachut.utils.Utils;
 
 public class RegisterFragment extends Fragment {
@@ -39,6 +41,7 @@ public class RegisterFragment extends Fragment {
         // TODO: Use the ViewModel
         registerFragmentBinding.setRegisterVmodel(mViewModel);
         registerFragmentBinding.setLifecycleOwner(this);
+        Utils.setLocale(getContext());
 
 
         registerFragmentBinding.RegisterId.setOnClickListener(new View.OnClickListener() {
@@ -61,8 +64,24 @@ public class RegisterFragment extends Fragment {
             }
         });
 
+        registerFragmentBinding.newAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (getFragmentManager().getBackStackEntryCount() > 1) {
+                    getFragmentManager().popBackStack();
+                }
+                showFragment(new LoginFragment());
+            }
+        });
     }
 
+    private void showFragment(Fragment fragment) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.container, fragment);
+        ft.addToBackStack(null);
+        ft.commit();
+    }
     public boolean onCheackValidation() {
 
         if (!ValidateName()) {

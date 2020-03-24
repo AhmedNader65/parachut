@@ -21,5 +21,6 @@
     <string name="new_acc">  حساب جديد</string>
     <string name="phone_number">رقم الهاتف</string>
     <string name="name_app">براشوط</string>
+    <string name="title_activity_fast_order">FastOrderActivity</string>
 
 </resources>

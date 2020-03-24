@@ -1,7 +1,7 @@
 package com.mrerror.parachut.NetWork;
 
 
-import com.mrerror.parachut.Models.Login.UserLoginModel;
+import com.mrerror.parachut.Models.LogIn.UserLoginModel;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
 
 import retrofit2.Call;
@@ -25,7 +25,19 @@ public interface ServiceApi {
 //
 
     @FormUrlEncoded
-    @POST("auth/register/user")
+    @POST("fast")
+    Call<UserRegisterModel> postFastOrder(
+            @Field("name") String name,
+            @Field("mobile") String mobile,
+            @Field("address") String address,
+            @Field("lat") String country_id,
+            @Field("lang") String city_id,
+            @Field("password") String password,
+            @Field("password_confirmation") String repassword);
+
+
+    @FormUrlEncoded
+    @POST("auth/register")
     Call<UserRegisterModel> onRegester(
             @Field("name") String name,
             @Field("mobile") String mobile,

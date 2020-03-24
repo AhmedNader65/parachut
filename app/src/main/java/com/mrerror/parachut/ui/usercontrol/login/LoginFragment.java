@@ -1,8 +1,11 @@
 package com.mrerror.parachut.ui.usercontrol.login;
 
+import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,11 +16,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mrerror.parachut.Models.Login.UserLoginModel;
+import com.mrerror.parachut.Models.LogIn.UserLoginModel;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.LoginFragmentBinding;
+import com.mrerror.parachut.ui.usercontrol.register.RegisterFragment;
 import com.mrerror.parachut.utils.Utils;
+
+import java.util.Objects;
 
 public class LoginFragment extends Fragment {
 
@@ -35,6 +41,7 @@ public class LoginFragment extends Fragment {
         return loginFragmentBinding.getRoot();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -43,6 +50,7 @@ public class LoginFragment extends Fragment {
         loginFragmentBinding.setLoginVmodel(mViewModel);
         loginFragmentBinding.setLifecycleOwner(this);
         // TODO: Use the ViewModel
+        Utils.setLocale(Objects.requireNonNull(getContext()));
 
         loginFragmentBinding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +66,22 @@ public class LoginFragment extends Fragment {
 
             }
         });
+        loginFragmentBinding.newAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getFragmentManager().getBackStackEntryCount() > 1) {
+                    getFragmentManager().popBackStack();
+                }
+                showFragment(new RegisterFragment());
+            }
+        });
+    }
+
+    private void showFragment(Fragment fragment) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.container, fragment);
+        ft.addToBackStack(null);
+        ft.commit();
     }
 
     public boolean onCheackValidation() {

@@ -32,7 +32,7 @@ public class RegisterViewModel extends ViewModel {
         RetroWeb.getClient().create(ServiceApi.class).onRegester(name,phone,address,lat,lang,password,confirmPassword).enqueue(new Callback<UserRegisterModel>() {
             @Override
             public void onResponse(Call<UserRegisterModel> call, Response<UserRegisterModel> response) {
-                if(response.body().getStatus().equals("success")){
+                if(response.body().getStatus()){
                     model=response.body();
                     userRegisterModelMutableLiveData.setValue(response.body());
                     int id = model.getUser().getId();

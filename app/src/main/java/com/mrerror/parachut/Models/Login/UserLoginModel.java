@@ -1,37 +1,35 @@
-package com.mrerror.parachut.Models.Login;
 
+package com.mrerror.parachut.Models.LogIn;
+
+import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
-public class UserLoginModel implements Serializable {
+public class UserLoginModel implements Serializable
+{
 
     @SerializedName("status")
     @Expose
-    private String status;
-    @SerializedName("messages")
+    private Boolean status;
+    @SerializedName("user")
     @Expose
-    private String messages;
+    private User user;
+    private final static long serialVersionUID = 8385058111618489464L;
 
-    public UserLoginModel(String status, String messages) {
-        this.status = status;
-        this.messages = messages;
-    }
-
-    public String getMessages() {
-        return messages;
-    }
-
-    public void setMessages(String messages) {
-        this.messages = messages;
-    }
-
-    public String getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }

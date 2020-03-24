@@ -59,6 +59,9 @@
 
             </com.google.android.material.appbar.AppBarLayout>
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
             <LinearLayout
 
                 android:orientation="vertical"
@@ -267,6 +270,7 @@
                         android:text="لدي حساب بالفعل ؟" />
 
                     <TextView
+                        android:id="@+id/newAcc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
@@ -275,6 +279,7 @@
                         android:text=" تسجيل الدخول " />
                 </LinearLayout>
             </LinearLayout>
+            </ScrollView>
 
         </LinearLayout>
 
