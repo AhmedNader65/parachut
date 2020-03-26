@@ -31,5 +31,4 @@ public class FastOrderModel implements Serializable {
     public void setFast(Fast fast) {
         this.fast = fast;
     }
-
 }

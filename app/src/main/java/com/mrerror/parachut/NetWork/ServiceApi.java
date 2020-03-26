@@ -3,6 +3,7 @@ package com.mrerror.parachut.NetWork;
 
 import com.mrerror.parachut.Models.CategoryModel.CategoryModel;
 import com.mrerror.parachut.Models.FastOrder.FastOrderModel;
+import com.mrerror.parachut.Models.GetUserData;
 import com.mrerror.parachut.Models.LogIn.UserLoginModel;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
 
@@ -28,6 +29,7 @@ public interface ServiceApi {
 //
 //
 
+
     @FormUrlEncoded
     @POST("fast")
     Call<FastOrderModel> onSendFastOrder(
@@ -40,6 +42,24 @@ public interface ServiceApi {
 
     @GET("categories")
     Call<CategoryModel> onGetCategories(@Query("page") long page);
+
+    //MH
+    @FormUrlEncoded
+    @GET("user")
+    Call<GetUserData> onGetUserData(@Header("Authorization") String Authorization );
+
+    @FormUrlEncoded
+    @POST("update")
+    Call<GetUserData> onUpdateUser(
+            @Field("name") String name,
+            @Field("mobile") String mobile,
+            @Field("password") String password,
+            @Field("email") String email,
+            @Field("address") String address,
+            @Field("lat") String lat,
+            @Field("long") String longitude,
+            @Header("Authorization") String Authorization
+    );
 
 
 
