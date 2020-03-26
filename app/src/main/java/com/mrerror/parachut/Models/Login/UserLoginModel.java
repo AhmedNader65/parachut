@@ -1,26 +1,36 @@
 
 package com.mrerror.parachut.Models.LogIn;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 
 public class UserLoginModel implements Serializable
 {
 
-    @SerializedName("status")
-    @Expose
-    private Boolean status;
+    private final static long serialVersionUID = 3286638620931889272L;
     @SerializedName("user")
     @Expose
     private User user;
-    private final static long serialVersionUID = 8385058111618489464L;
+    @SerializedName("status")
+    @Expose
+    private String status;
+    @SerializedName("token")
+    @Expose
+    private String token;
+    @SerializedName("token_type")
+    @Expose
+    private String tokenType;
+    @SerializedName("expires_at")
+    @Expose
+    private String expiresAt;
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -30,6 +40,30 @@ public class UserLoginModel implements Serializable
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getTokenType() {
+        return tokenType;
+    }
+
+    public void setTokenType(String tokenType) {
+        this.tokenType = tokenType;
+    }
+
+    public String getExpiresAt() {
+        return expiresAt;
+    }
+
+    public void setExpiresAt(String expiresAt) {
+        this.expiresAt = expiresAt;
     }
 
 }

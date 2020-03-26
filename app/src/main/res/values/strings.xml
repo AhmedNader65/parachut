@@ -23,4 +23,8 @@
     <string name="name_app">براشوط</string>
     <string name="title_activity_fast_order">FastOrderActivity</string>
 
+    <string name="title_activity_goto_home">GotoHomeActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
 </resources>

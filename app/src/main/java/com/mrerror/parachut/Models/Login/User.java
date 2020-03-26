@@ -1,10 +1,11 @@
 
 package com.mrerror.parachut.Models.LogIn;
 
-import java.io.Serializable;
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+import java.util.List;
 
 public class User implements Serializable
 {
@@ -12,21 +13,10 @@ public class User implements Serializable
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("role_id")
-    @Expose
-    private Integer roleId;
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("email")
-    @Expose
-    private Object email;
-    @SerializedName("avatar")
-    @Expose
-    private String avatar;
-    @SerializedName("mobile")
-    @Expose
-    private String mobile;
+    private final static long serialVersionUID = 8598489767603856371L;
     @SerializedName("address")
     @Expose
     private String address;
@@ -39,9 +29,6 @@ public class User implements Serializable
     @SerializedName("verify_code")
     @Expose
     private Integer verifyCode;
-    @SerializedName("api_token")
-    @Expose
-    private String apiToken;
     @SerializedName("settings")
     @Expose
     private List<Object> settings = null;
@@ -90,10 +77,21 @@ public class User implements Serializable
     @SerializedName("lat")
     @Expose
     private Integer lat;
+    @SerializedName("role_id")
+    @Expose
+    private Integer roleId;
     @SerializedName("lang")
     @Expose
-    private Integer lang;
-    private final static long serialVersionUID = -3110201048515821068L;
+    private Object lang;
+    @SerializedName("email")
+    @Expose
+    private Object email;
+    @SerializedName("mobile")
+    @Expose
+    private String mobile;
+    @SerializedName("avatar")
+    @Expose
+    private String avatar;
 
     public Integer getId() {
         return id;
@@ -101,14 +99,6 @@ public class User implements Serializable
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
     }
 
     public String getName() {
@@ -119,28 +109,12 @@ public class User implements Serializable
         this.name = name;
     }
 
-    public Object getEmail() {
-        return email;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setEmail(Object email) {
-        this.email = email;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
     public String getAddress() {
@@ -173,14 +147,6 @@ public class User implements Serializable
 
     public void setVerifyCode(Integer verifyCode) {
         this.verifyCode = verifyCode;
-    }
-
-    public String getApiToken() {
-        return apiToken;
-    }
-
-    public void setApiToken(String apiToken) {
-        this.apiToken = apiToken;
     }
 
     public List<Object> getSettings() {
@@ -311,12 +277,36 @@ public class User implements Serializable
         this.lat = lat;
     }
 
-    public Integer getLang() {
+    public Object getLang() {
         return lang;
     }
 
-    public void setLang(Integer lang) {
+    public void setLang(Object lang) {
         this.lang = lang;
+    }
+
+    public Object getEmail() {
+        return email;
+    }
+
+    public void setEmail(Object email) {
+        this.email = email;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
 }

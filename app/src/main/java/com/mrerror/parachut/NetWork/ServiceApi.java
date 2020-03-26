@@ -1,12 +1,16 @@
 package com.mrerror.parachut.NetWork;
 
 
+import com.mrerror.parachut.Models.CategoryModel.CategoryModel;
+import com.mrerror.parachut.Models.FastOrder.FastOrderModel;
 import com.mrerror.parachut.Models.LogIn.UserLoginModel;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -26,14 +30,17 @@ public interface ServiceApi {
 
     @FormUrlEncoded
     @POST("fast")
-    Call<UserRegisterModel> postFastOrder(
-            @Field("name") String name,
-            @Field("mobile") String mobile,
+    Call<FastOrderModel> onSendFastOrder(
             @Field("address") String address,
-            @Field("lat") String country_id,
-            @Field("lang") String city_id,
-            @Field("password") String password,
-            @Field("password_confirmation") String repassword);
+            @Field("mobile") String mobile,
+            @Field("lat") String lat,
+            @Field("long") String longetude,
+            @Field("fast_order") String fast_order,
+            @Header("Authorization") String Authorization);
+
+    @GET("categories")
+    Call<CategoryModel> onGetCategories(@Query("page") long page);
+
 
 
     @FormUrlEncoded
