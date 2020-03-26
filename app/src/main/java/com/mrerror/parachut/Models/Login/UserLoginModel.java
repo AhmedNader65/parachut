@@ -34,7 +34,7 @@ public class UserLoginModel implements Serializable
         this.status = status;
     }
 
-    public User getUser() {
+    public com.mrerror.parachut.Models.LogIn.User getUser() {
         return user;
     }
 
