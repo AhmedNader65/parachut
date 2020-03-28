@@ -30,7 +30,7 @@ public class ProfileViewModel extends ViewModel {
         RetroWeb.getClient().create(ServiceApi.class).onGetUserData("Bearer" + globalPrefrencies.getApi_token()).enqueue(new Callback<GetUserData>() {
             @Override
             public void onResponse(Call<GetUserData> call, Response<GetUserData> response) {
-                if (response != null) {
+                if (response.body() != null) {
                     model = response.body();
                     userDataMutableLiveData.setValue(response.body());
                     String name = model.getName();
