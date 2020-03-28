@@ -1,4 +1,4 @@
-package com.mrerror.parachut.ui.home.EditProfileFragment;
+package com.mrerror.parachut.ui.home.profilefragment.editprofile;
 
 import android.content.Context;
 import android.util.Log;

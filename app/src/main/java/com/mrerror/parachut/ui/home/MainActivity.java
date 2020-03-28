@@ -17,6 +17,7 @@ import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.ActivityMainBinding;
 import com.mrerror.parachut.ui.home.fastorder.FastOrderActivity;
 import com.mrerror.parachut.ui.home.homefragment.HomeFragment;
+import com.mrerror.parachut.ui.home.profilefragment.ProfileFragment;
 import com.mrerror.parachut.utils.GlobalPrefrencies;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,19 +46,47 @@ public class MainActivity extends AppCompatActivity {
         Log.e("XSX", globalPrefrencies.getApi_token() + " 00 ");
         setUpNavButtons(0);
         showFragment(new HomeFragment());
-
+        menu.getItem(0).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+                    getSupportFragmentManager().popBackStack();
+                }
+                showFragment(new HomeFragment());
+                return false;
+            }
+        });
         menu.getItem(2).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-
+                if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+                    getSupportFragmentManager().popBackStack();
+                }
                 gotoFastOrderActivity();
                 return false;
             }
         });
 
 
+        menu.getItem(4).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+                    getSupportFragmentManager().popBackStack();
+                }
+                showFragment(new ProfileFragment());
+                return false;
+            }
+        });
     }
-
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            finish();
+        }
+    }
     private void gotoFastOrderActivity() {
         Intent intent = new Intent(this, FastOrderActivity.class);
         startActivity(intent);

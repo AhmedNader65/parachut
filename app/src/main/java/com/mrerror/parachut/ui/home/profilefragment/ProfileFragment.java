@@ -14,8 +14,9 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.ProfileFragmentBinding;
-import com.mrerror.parachut.ui.home.EditProfileFragment.EditProfileFragment;
+import com.mrerror.parachut.ui.home.profilefragment.editprofile.EditProfileFragment;
 import com.mrerror.parachut.utils.GlobalPrefrencies;
+import com.mrerror.parachut.utils.Utils;
 
 public class ProfileFragment extends Fragment {
 
@@ -30,6 +31,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         profileFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.profile_fragment, container, false);
+        Utils.setLocale(getContext());
         return profileFragmentBinding.getRoot();
     }
     GlobalPrefrencies globalPrefrencies;
@@ -52,7 +54,7 @@ public class ProfileFragment extends Fragment {
     }
     private void showFragment(Fragment fragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.container, fragment);
+        ft.replace(R.id.containerprofile, fragment);
         ft.addToBackStack(null);
         ft.commit();
     }
