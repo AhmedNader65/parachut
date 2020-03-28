@@ -68,6 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:textStyle="bold"
             android:text="البيانات الشخصيه"
             android:layout_marginRight="10dp"
             android:textColor="@color/black"
@@ -77,6 +78,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
+            android:id="@+id/modify"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -124,13 +126,13 @@
                     android:layout_margin="12dp"
                     android:layout_height="32dp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/nameId"
                     android:background="@color/graywhite"
+                    android:textColor="@color/black"
                     android:layout_marginStart="16dp"
                     android:layout_gravity="center"
                     android:layout_marginEnd="16dp"
-                    android:text="محمد علي ابو الحسن الحلو"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:textSize="12sp"
@@ -161,16 +163,15 @@
                     android:layout_margin="12dp"
                     android:layout_height="32dp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/phoneId"
                     android:background="@color/graywhite"
                     android:layout_marginStart="16dp"
                     android:layout_gravity="center"
-
+                    android:textColor="@color/black"
                     android:layout_marginEnd="16dp"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:text="0216302568"
                     android:textDirection="rtl"
                     android:textSize="12sp"
                     android:layout_height="match_parent" />
@@ -199,16 +200,15 @@
                     android:layout_margin="12dp"
                     android:layout_height="32dp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/address_Id"
                     android:background="@color/graywhite"
                     android:layout_marginStart="16dp"
                     android:layout_gravity="center"
-
+                    android:textColor="@color/black"
                     android:layout_marginEnd="16dp"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:text="مطروح الدور التاني-عمارة 22 بعد اول كشك"
                     android:textDirection="rtl"
                     android:textSize="12dp"
                     android:layout_height="match_parent" />
@@ -237,13 +237,13 @@
                     android:layout_margin="12dp"
                     android:layout_height="32dp" />
 
-                <EditText
+                <TextView
                     android:background="@color/graywhite"
                     android:layout_marginRight="16dp"
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
-                    android:text="02515120"
                     android:inputType="textPassword"
+                    android:textColor="@color/black"
                     android:textDirection="rtl"
                     android:id="@+id/passId"
                     android:layout_weight="1"

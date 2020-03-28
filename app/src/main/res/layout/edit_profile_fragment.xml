@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="profileVmodel"
+            type="com.mrerror.parachut.ui.home.EditProfileFragment.EditProfileViewModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/lll"
+            android:layout_height="?actionBarSize"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+
+                android:gravity="center_vertical"
+                android:text="الحساب"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_magnifying_glass" />
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_parachute" />
+        </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_below="@+id/lll"
+            android:id="@+id/fLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="البيانات الشخصيه"
+                android:layout_marginRight="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/btnclickcolor"
+                android:text="حفظ"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/fLayout"
+            >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="الاسم كامل"
+                    android:layout_marginRight="16dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/grayblack"
+                    android:layout_gravity="end"
+                    />
+                <LinearLayout
+                    android:layout_margin="16dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/etcolor"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:src="@drawable/ic_user_"
+                        android:layout_margin="12dp"
+                        android:layout_height="32dp" />
+
+                    <EditText
+                        android:textColor="@color/black"
+                        android:id="@+id/nameId"
+                        android:background="@color/graywhite"
+                        android:layout_marginStart="16dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:text="محمد علي ابو الحسن الحلو"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:textSize="12sp"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="رقم الهاتف"
+                    android:textColor="@color/grayblack"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="16dp"
+                    android:textSize="12sp"
+                    />
+
+                <LinearLayout
+                    android:layout_margin="16dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/etcolor"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:src="@drawable/ic_phone_1"
+                        android:layout_margin="12dp"
+                        android:layout_height="32dp" />
+
+                    <EditText
+                        android:id="@+id/phoneId"
+                        android:background="@color/graywhite"
+                        android:layout_marginStart="16dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:text="0216302568"
+                        android:textDirection="rtl"
+                        android:textSize="12sp"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="العنوان"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="16dp"
+                    android:textSize="12sp"
+                    />
+
+                <LinearLayout
+                    android:layout_margin="16dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/etcolor"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:src="@drawable/ic_union_9"
+                        android:layout_margin="12dp"
+                        android:layout_height="32dp" />
+
+                    <EditText
+                        android:id="@+id/address_Id"
+                        android:background="@color/graywhite"
+                        android:layout_marginStart="16dp"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:text="مطروح الدور التاني-عمارة 22 بعد اول كشك"
+                        android:textDirection="rtl"
+                        android:textSize="12dp"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="كلمة السر"
+                    android:textSize="12sp"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="16dp"
+                    />
+
+                <LinearLayout
+                    android:layout_margin="16dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/etcolor"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:src="@drawable/ic_privacy_1"
+                        android:layout_margin="12dp"
+                        android:layout_height="32dp" />
+
+                    <EditText
+                        android:textColor="@color/black"
+                        android:background="@color/graywhite"
+                        android:layout_marginRight="16dp"
+                        android:layout_gravity="center"
+                        android:gravity="center_vertical"
+                        android:text="02515120"
+                        android:inputType="textPassword"
+                        android:textDirection="rtl"
+                        android:id="@+id/passId"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:textSize="16dp"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/show_pass_btn"
+                        android:padding="4dp"
+                        android:layout_margin="8dp"
+                        android:background="#d1d1d1"
+                        android:layout_width="50dp"
+                        android:textColor="@color/black"
+                        android:text="اظهار"
+                        android:textSize="10sp"
+                        android:gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+</layout>
