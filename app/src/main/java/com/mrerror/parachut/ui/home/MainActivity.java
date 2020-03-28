@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.ActivityMainBinding;
@@ -26,7 +27,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         activityMainBinding= DataBindingUtil.setContentView(this,R.layout.activity_main);
+        mainViewModel=ViewModelProviders.of(this).get(MainViewModel.class);
+
         activityMainBinding.setMainVmodel(mainViewModel);
         activityMainBinding.setLifecycleOwner(this);
 

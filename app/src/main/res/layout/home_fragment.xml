@@ -12,9 +12,12 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/containerhome"
         tools:context=".ui.home.homefragment.HomeFragment">
 
         <ScrollView
+
+            android:nestedScrollingEnabled="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -26,7 +29,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_margin="8dp"
+                    android:padding="8dp"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -49,6 +53,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/moreOffers"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -95,6 +100,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/moreCategories"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -141,6 +147,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/moreStores"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"

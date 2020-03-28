@@ -7,9 +7,8 @@
     android:gravity="center"
     android:layout_margin="4dp"
     android:layout_height="wrap_content">
-
     <androidx.cardview.widget.CardView
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="200dp"
         android:id="@+id/cardCat"
         android:backgroundTint="#4cb879"
         android:layout_width="85dp"

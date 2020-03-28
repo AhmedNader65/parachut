@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="itemVmodel"
+            type="com.mrerror.parachut.ui.home.allitem.AllitemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.home.allitem.AllItemActivity">
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimary"
+            android:layout_height="?actionBarSize">
+
+            <ImageView
+
+                android:layout_gravity="center"
+
+                android:layout_margin="8dp"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_arrow_pointing_to_right"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+
+                android:text="براشوت"
+                android:layout_marginStart="16dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_height="match_parent" />
+
+            <ImageView
+
+                android:layout_gravity="center"
+
+                android:layout_margin="8dp"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_magnifying_glass"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+
+                android:layout_gravity="center"
+
+                android:layout_margin="8dp"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_parachute"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+
+                    android:text="الكل"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/ic_filter"
+                    android:gravity="center"
+
+                    />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

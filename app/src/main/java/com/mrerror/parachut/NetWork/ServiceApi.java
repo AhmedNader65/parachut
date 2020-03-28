@@ -1,11 +1,14 @@
 package com.mrerror.parachut.NetWork;
 
 
+import com.mrerror.parachut.Models.AllOffers.AllOffersModel;
 import com.mrerror.parachut.Models.CategoryModel.CategoryModel;
 import com.mrerror.parachut.Models.FastOrder.FastOrderModel;
 import com.mrerror.parachut.Models.GetUserData;
 import com.mrerror.parachut.Models.LogIn.UserLoginModel;
+import com.mrerror.parachut.Models.OffersModel.OffersModel;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
+import com.mrerror.parachut.Models.SuperMarket.SuperMarketModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -40,8 +43,27 @@ public interface ServiceApi {
             @Field("fast_order") String fast_order,
             @Header("Authorization") String Authorization);
 
-    @GET("categories")
+    @GET("categories/mostcommon")
     Call<CategoryModel> onGetCategories(@Query("page") long page);
+
+
+    @GET("categories")
+    Call<com.mrerror.parachut.Models.AllCattegoryModel.CategoryModel> onGetAllCategories(@Query("page") long page);
+
+
+    @GET("supermarket")
+    Call<SuperMarketModel> onGetSuperMarkets(@Query("page") long page);
+
+    @GET("allsupermarket")
+    Call<com.mrerror.parachut.Models.AllSuperMarket.SuperMarketModel> onGetAllSuperMarkets(@Query("page") long page);
+
+
+    @GET("products-offers/mostcommen")
+    Call<OffersModel> onGetOffersModel(@Query("page") long page);
+
+    @GET("products-offers")
+    Call<AllOffersModel> onGetAllOffersModel(@Query("page") long page);
+
 
     //MH
     @FormUrlEncoded
