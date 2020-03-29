@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.mrerror.parachut.Models.GetUserData;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.ProfileFragmentBinding;
 import com.mrerror.parachut.ui.home.profilefragment.editprofile.EditProfileFragment;
@@ -35,11 +36,17 @@ public class ProfileFragment extends Fragment {
         return profileFragmentBinding.getRoot();
     }
     GlobalPrefrencies globalPrefrencies;
+    GetUserData model;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+
+        profileFragmentBinding.nameId.setText(model.getName() + "");
+        profileFragmentBinding.phoneId.setText(model.getMobile() + "");
+        profileFragmentBinding.addressId.setText(model.getAddress() + "");
+
 
         profileFragmentBinding.setProfileVmodel(mViewModel);
         profileFragmentBinding.setLifecycleOwner(this);

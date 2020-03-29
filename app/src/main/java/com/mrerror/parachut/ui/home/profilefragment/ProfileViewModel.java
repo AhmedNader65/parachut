@@ -27,7 +27,7 @@ public class ProfileViewModel extends ViewModel {
         model = null;
 
         Log.e("ERROR", globalPrefrencies.getApi_token() + " ");
-        RetroWeb.getClient().create(ServiceApi.class).onGetUserData("Bearer" + globalPrefrencies.getApi_token()).enqueue(new Callback<GetUserData>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetUserData("Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<GetUserData>() {
             @Override
             public void onResponse(Call<GetUserData> call, Response<GetUserData> response) {
                 if (response.body() != null) {
