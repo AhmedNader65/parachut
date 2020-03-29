@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.mrerror.parachut.Models.GetUserData;
@@ -33,20 +34,17 @@ public class ProfileFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         profileFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.profile_fragment, container, false);
         Utils.setLocale(getContext());
+
+
+
         return profileFragmentBinding.getRoot();
     }
     GlobalPrefrencies globalPrefrencies;
-    GetUserData model;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
-
-        profileFragmentBinding.nameId.setText(model.getName() + "");
-        profileFragmentBinding.phoneId.setText(model.getMobile() + "");
-        profileFragmentBinding.addressId.setText(model.getAddress() + "");
-
 
         profileFragmentBinding.setProfileVmodel(mViewModel);
         profileFragmentBinding.setLifecycleOwner(this);
@@ -56,6 +54,18 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showFragment(new EditProfileFragment());
+
+            }
+        });
+
+        mViewModel.onGetUserData(getContext());
+
+        mViewModel.userDataMutableLiveData.observe(getViewLifecycleOwner(), new Observer<GetUserData>() {
+            @Override
+            public void onChanged(GetUserData getUserData) {
+                profileFragmentBinding.nameId.setText(getUserData.getName() + "");
+                profileFragmentBinding.phoneId.setText(getUserData.getMobile() + "");
+                profileFragmentBinding.addressId.setText(getUserData.getAddress() + "");
             }
         });
     }

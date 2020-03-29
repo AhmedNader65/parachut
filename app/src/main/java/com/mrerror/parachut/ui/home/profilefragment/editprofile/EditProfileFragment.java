@@ -34,6 +34,7 @@ public class EditProfileFragment extends Fragment {
         return editProfileFragmentBinding.getRoot();
     }
     GlobalPrefrencies globalPrefrencies;
+    GetUserData model;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

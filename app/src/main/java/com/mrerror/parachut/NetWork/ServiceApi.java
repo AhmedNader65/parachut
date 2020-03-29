@@ -66,7 +66,6 @@ public interface ServiceApi {
 
 
     //MH
-    @FormUrlEncoded
     @GET("user")
     Call<GetUserData> onGetUserData(@Header("Authorization") String Authorization );
 
