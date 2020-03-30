@@ -1,12 +1,13 @@
-package com.mrerror.parachut.Models;
+
+package com.mrerror.parachut.Models.UserData;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class GetUserData implements Serializable
-{
+public class Data implements Serializable {
+
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -31,24 +32,25 @@ public class GetUserData implements Serializable
     @SerializedName("lat")
     @Expose
     private Integer lat;
+    private final static long serialVersionUID = 5392649026173621499L;
     @SerializedName("long")
     @Expose
-    private Object lang;
+    private Integer _long;
     @SerializedName("delivery_time")
     @Expose
-    private String delivery_time;
+    private Object deliveryTime;
     @SerializedName("minimum")
     @Expose
-    private String minimum;
+    private Object minimum;
     @SerializedName("location")
     @Expose
-    private String location;
-    @SerializedName("is_open")
-    @Expose
-    private Object isOpen;
+    private Object location;
     @SerializedName("delivery_cost")
     @Expose
     private Object deliveryCost;
+    @SerializedName("is_open")
+    @Expose
+    private Boolean isOpen;
 
     public Integer getId() {
         return id;
@@ -114,43 +116,43 @@ public class GetUserData implements Serializable
         this.lat = lat;
     }
 
-    public Object getLang() {
-        return lang;
+    public Integer getLong() {
+        return _long;
     }
 
-    public void setLang(Object lang) {
-        this.lang = lang;
+    public void setLong(Integer _long) {
+        this._long = _long;
     }
 
-    public String getDelivery_time() {
-        return delivery_time;
+    public Object getDeliveryTime() {
+        return deliveryTime;
     }
 
-    public void setDelivery_time(String delivery_time) {
-        this.delivery_time = delivery_time;
+    public void setDeliveryTime(Object deliveryTime) {
+        this.deliveryTime = deliveryTime;
     }
 
-    public String getMinimum() {
+    public Object getMinimum() {
         return minimum;
     }
 
-    public void setMinimum(String minimum) {
+    public void setMinimum(Object minimum) {
         this.minimum = minimum;
     }
 
-    public String getLocation() {
+    public Object getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Object location) {
         this.location = location;
     }
 
-    public Object getIsOpen() {
+    public Boolean getIsOpen() {
         return isOpen;
     }
 
-    public void setIsOpen(Object isOpen) {
+    public void setIsOpen(Boolean isOpen) {
         this.isOpen = isOpen;
     }
 
@@ -161,4 +163,5 @@ public class GetUserData implements Serializable
     public void setDeliveryCost(Object deliveryCost) {
         this.deliveryCost = deliveryCost;
     }
+
 }

@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -17,6 +18,7 @@ import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.ActivityMainBinding;
 import com.mrerror.parachut.ui.home.fastorder.FastOrderActivity;
 import com.mrerror.parachut.ui.home.homefragment.HomeFragment;
+import com.mrerror.parachut.ui.home.humbmenu.HamburgActivity;
 import com.mrerror.parachut.ui.home.profilefragment.ProfileFragment;
 import com.mrerror.parachut.utils.GlobalPrefrencies;
 
@@ -68,6 +70,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        activityMainBinding.humborgmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activityMainBinding.drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
         menu.getItem(4).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -78,6 +86,37 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        activityMainBinding.layoutAboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenActivityHamburg("1");
+            }
+        });
+        activityMainBinding.layoutContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                OpenActivityHamburg("2");
+            }
+        });
+        activityMainBinding.layoutPricing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenActivityHamburg("3");
+            }
+        });
+    }
+
+    private void OpenActivityHamburg(String i) {
+
+        Intent intent = new Intent(this, HamburgActivity.class);
+        intent.putExtra("key", i);
+        startActivity(intent);
+    }
+
+    private void gotoFastOrderActivity() {
+        Intent intent = new Intent(this, FastOrderActivity.class);
+        startActivity(intent);
     }
     @Override
     public void onBackPressed() {
@@ -87,12 +126,12 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
-    private void gotoFastOrderActivity() {
-        Intent intent = new Intent(this, FastOrderActivity.class);
-        startActivity(intent);
-    }
+
 
     public void showFragment(Fragment fragment) {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            getSupportFragmentManager().popBackStack();
+        }
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.containermain, fragment);
         ft.addToBackStack(null);

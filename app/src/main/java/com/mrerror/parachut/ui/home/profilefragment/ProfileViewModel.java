@@ -6,7 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.mrerror.parachut.Models.GetUserData;
+import com.mrerror.parachut.Models.UserData.GetUserData;
 import com.mrerror.parachut.NetWork.RetroWeb;
 import com.mrerror.parachut.NetWork.ServiceApi;
 import com.mrerror.parachut.utils.GlobalPrefrencies;
@@ -26,16 +26,16 @@ public class ProfileViewModel extends ViewModel {
         globalPrefrencies = new GlobalPrefrencies(context);
         model = null;
 
-        Log.e("ERROR", globalPrefrencies.getApi_token() + " ");
+        Log.e("MRxx", globalPrefrencies.getApi_token() + " ");
         RetroWeb.getClient().create(ServiceApi.class).onGetUserData("Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<GetUserData>() {
             @Override
             public void onResponse(Call<GetUserData> call, Response<GetUserData> response) {
                 if (response.body() != null) {
                     model = response.body();
                     userDataMutableLiveData.setValue(response.body());
-                    String name = model.getName();
-                    String phone = model.getMobile();
-                    String address = model.getAddress();
+                    String name = model.getData().getName();
+                    String phone = model.getData().getMobile();
+                    String address = model.getData().getAddress();
                     //Password !!!
 
                     globalPrefrencies.storeName(name);

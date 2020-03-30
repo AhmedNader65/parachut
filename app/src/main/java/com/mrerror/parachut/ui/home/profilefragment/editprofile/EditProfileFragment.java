@@ -1,6 +1,7 @@
 package com.mrerror.parachut.ui.home.profilefragment.editprofile;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.mrerror.parachut.Models.GetUserData;
+import com.google.gson.Gson;
+import com.mrerror.parachut.Models.UserData.GetUserData;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.EditProfileFragmentBinding;
 import com.mrerror.parachut.ui.home.profilefragment.ProfileFragment;
@@ -47,6 +49,19 @@ public class EditProfileFragment extends Fragment {
         editProfileFragmentBinding.setLifecycleOwner(this);
         globalPrefrencies = new GlobalPrefrencies(getContext());
 
+
+        mViewModel.onGetUserData(getContext());
+        mViewModel.muserDataMutableLiveData.observe(getViewLifecycleOwner(), new Observer<GetUserData>() {
+            @Override
+            public void onChanged(GetUserData getUserData) {
+
+                Log.e("XSX", new Gson().toJson(getUserData));
+                editProfileFragmentBinding.nameId.setText(getUserData.getData().getName() + "");
+                editProfileFragmentBinding.phoneId.setText(getUserData.getData().getMobile() + "");
+                editProfileFragmentBinding.addressId.setText(getUserData.getData().getAddress() + "");
+
+            }
+        });
         editProfileFragmentBinding.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,19 +82,6 @@ public class EditProfileFragment extends Fragment {
                 "30.000","33.000",
                 getContext()
         );
-
-        mViewModel.userDataMutableLiveData.observe(getViewLifecycleOwner(), new Observer<GetUserData>() {
-            @Override
-            public void onChanged(GetUserData getUserData) {
-
-                editProfileFragmentBinding.nameId.setText(getUserData.getName()+"");
-                editProfileFragmentBinding.phoneId.setText(getUserData.getMobile() + "");
-                editProfileFragmentBinding.addressId.setText(getUserData.getAddress() + "");
-
-            }
-        });
-
-
     }
     private void showFragment(Fragment fragment) {
         FragmentTransaction ft = getChildFragmentManager().beginTransaction();

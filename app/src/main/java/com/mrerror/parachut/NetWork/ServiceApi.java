@@ -4,11 +4,11 @@ package com.mrerror.parachut.NetWork;
 import com.mrerror.parachut.Models.AllOffers.AllOffersModel;
 import com.mrerror.parachut.Models.CategoryModel.CategoryModel;
 import com.mrerror.parachut.Models.FastOrder.FastOrderModel;
-import com.mrerror.parachut.Models.GetUserData;
 import com.mrerror.parachut.Models.LogIn.UserLoginModel;
 import com.mrerror.parachut.Models.OffersModel.OffersModel;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
 import com.mrerror.parachut.Models.SuperMarket.SuperMarketModel;
+import com.mrerror.parachut.Models.UserData.GetUserData;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

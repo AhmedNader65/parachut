@@ -14,10 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ui.home.humbmenu.HamburgActivity"
+            android:theme="@style/FullscreenTheme">
+
+        </activity>
+        <activity
             android:name=".ui.home.fastorder.GotoHomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_goto_home"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".ui.home.fastorder.FastOrderActivity"
             android:label="@string/title_activity_fast_order"

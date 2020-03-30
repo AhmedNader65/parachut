@@ -1,6 +1,7 @@
 package com.mrerror.parachut.ui.home.profilefragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.mrerror.parachut.Models.GetUserData;
+import com.google.gson.Gson;
+import com.mrerror.parachut.Models.UserData.GetUserData;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.ProfileFragmentBinding;
 import com.mrerror.parachut.ui.home.profilefragment.editprofile.EditProfileFragment;
@@ -63,9 +65,11 @@ public class ProfileFragment extends Fragment {
         mViewModel.userDataMutableLiveData.observe(getViewLifecycleOwner(), new Observer<GetUserData>() {
             @Override
             public void onChanged(GetUserData getUserData) {
-                profileFragmentBinding.nameId.setText(getUserData.getName() + "");
-                profileFragmentBinding.phoneId.setText(getUserData.getMobile() + "");
-                profileFragmentBinding.addressId.setText(getUserData.getAddress() + "");
+                Log.e("XSX", new Gson().toJson(getUserData));
+
+                profileFragmentBinding.nameId.setText(getUserData.getData().getName() + "");
+                profileFragmentBinding.phoneId.setText(getUserData.getData().getMobile() + "");
+                profileFragmentBinding.addressId.setText(getUserData.getData().getAddress() + "");
             }
         });
     }

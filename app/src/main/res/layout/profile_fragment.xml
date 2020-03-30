@@ -44,7 +44,7 @@
         <Button
             android:id="@+id/modify"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/btn_edit_profile"
@@ -217,7 +217,7 @@
                     android:id="@+id/show_pass_btn"
                     android:padding="4dp"
                     android:layout_margin="8dp"
-                    android:background="#d1d1d1"
+                    android:background="@drawable/etcolorgray"
                     android:layout_width="50dp"
                     android:textColor="@color/black"
                     android:text="اظهار"
