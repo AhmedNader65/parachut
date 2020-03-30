@@ -6,6 +6,7 @@ import com.mrerror.parachut.Models.CategoryModel.CategoryModel;
 import com.mrerror.parachut.Models.FastOrder.FastOrderModel;
 import com.mrerror.parachut.Models.LogIn.UserLoginModel;
 import com.mrerror.parachut.Models.OffersModel.OffersModel;
+import com.mrerror.parachut.Models.Pricing.PriceModel;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
 import com.mrerror.parachut.Models.SuperMarket.SuperMarketModel;
 import com.mrerror.parachut.Models.UserData.GetUserData;
@@ -64,6 +65,8 @@ public interface ServiceApi {
     @GET("products-offers")
     Call<AllOffersModel> onGetAllOffersModel(@Query("page") long page);
 
+    @GET("delivery/price")
+    Call<PriceModel> onGetPriceModel();
 
     //MH
     @GET("user")

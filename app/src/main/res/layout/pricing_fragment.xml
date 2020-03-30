@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    tools:context=".ui.home.humbmenu.pricing.PricingFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+
+    <variable
+        name="homeVmodel"
+        type="com.mrerror.parachut.ui.home.humbmenu.pricing.PricingViewModel" />
+    </data>
+
+    <FrameLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        tools:context=".ui.home.humbmenu.pricing.PricingFragment">
 
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/ic_cancel_1"
+            android:layout_gravity="start"
+            android:layout_margin="16dp"
+            />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <ImageView
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_money_5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"  />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="أسعار التوصيل"
+            android:layout_gravity="center"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            />
+
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rv_pricing"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+    </LinearLayout>
 </FrameLayout>
+</layout>
