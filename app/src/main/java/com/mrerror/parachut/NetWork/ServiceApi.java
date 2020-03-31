@@ -4,6 +4,7 @@ package com.mrerror.parachut.NetWork;
 import com.mrerror.parachut.Models.AboutUs.AboutUsModel;
 import com.mrerror.parachut.Models.AllOffers.AllOffersModel;
 import com.mrerror.parachut.Models.CategoryModel.CategoryModel;
+import com.mrerror.parachut.Models.ContactUs.ContactUsModel;
 import com.mrerror.parachut.Models.FastOrder.FastOrderModel;
 import com.mrerror.parachut.Models.LogIn.UserLoginModel;
 import com.mrerror.parachut.Models.OffersModel.OffersModel;
@@ -71,6 +72,9 @@ public interface ServiceApi {
 
     @GET("about_us")
     Call<AboutUsModel> OnGetAboutUs();
+
+    @POST("messages")
+    Call<ContactUsModel> onGetMessage(@Header("Authorization") String Authorization );
 
     //MH
     @GET("user")

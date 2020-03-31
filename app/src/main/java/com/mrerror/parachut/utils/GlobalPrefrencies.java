@@ -49,6 +49,7 @@ public class GlobalPrefrencies {
         PrefsEditor = prefs.edit();
     }
 
+
     //for hide keyboard
     public static void setupUI(View view, final Activity activity) {
 
@@ -89,6 +90,14 @@ public class GlobalPrefrencies {
         editor.putString("wieght", wieght);
         editor.commit();
 
+    }
+
+    public void storeMessages(String message) {
+        SharedPreferences settings = context.getSharedPreferences(PREFS_NAME,
+                0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("messages", message);
+        editor.commit();
     }
 
     public String getWieght() {
