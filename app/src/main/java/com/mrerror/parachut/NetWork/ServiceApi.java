@@ -1,6 +1,7 @@
 package com.mrerror.parachut.NetWork;
 
 
+import com.mrerror.parachut.Models.AboutUs.AboutUsModel;
 import com.mrerror.parachut.Models.AllOffers.AllOffersModel;
 import com.mrerror.parachut.Models.CategoryModel.CategoryModel;
 import com.mrerror.parachut.Models.FastOrder.FastOrderModel;
@@ -67,6 +68,9 @@ public interface ServiceApi {
 
     @GET("delivery/price")
     Call<PriceModel> onGetPriceModel();
+
+    @GET("about_us")
+    Call<AboutUsModel> OnGetAboutUs();
 
     //MH
     @GET("user")

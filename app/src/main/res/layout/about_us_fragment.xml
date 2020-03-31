@@ -1,13 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.humbmenu.aboutus.AboutUsFragment">
+    >
 
-    <TextView
+    <data>
+
+        <variable
+            name="aboutUsVmodel"
+            type="com.mrerror.parachut.ui.home.humbmenu.aboutus.AboutUsViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <FrameLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        tools:context=".ui.home.humbmenu.aboutus.AboutUsFragment">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/ic_cancel_1"
+            android:layout_gravity="start"
+            android:layout_margin="16dp"
+            />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/startup"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="براشوط"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="من نحن ؟"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tv_who"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="كلام كبير أوي أوي أوي عن التطبيق حتي يشعر المستخدم بالثقة بينه وبين التطبيق ولكن يكون كلام حقيقي مش أي كلام في كيس وخلاص وهكذا كلام كبير أوي أوي أوي عن التطبيق حتي يشعر المستخدم بالثقة بينه وبين التطبيق ولكن يكون كلام حقيقي مش أي كلام في كيس وخلاص وهكذا كلام كبير أوي أوي أوي عن التطبيق حتي يشعر المستخدم بالثقة بينه وبين التطبيق ولكن يكون كلام حقيقي مش أي كلام في كيس وخلاص "
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="ما يميزنا"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tv_feature"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:text="كلام كبير أوي أوي أوي عن التطبيق حتي يشعر المستخدم بالثقة بينه وبين التطبيق ولكن يكون كلام حقيقي مش أي كلام في كيس وخلاص وهكذا كلام كبير أوي أوي أوي عن التطبيق حتي يشعر المستخدم بالثقة بينه وبين التطبيق ولكن يكون كلام حقيقي مش أي كلام في كيس وخلاص وهكذا كلام كبير أوي أوي أوي عن التطبيق حتي يشعر المستخدم بالثقة بينه وبين التطبيق ولكن يكون كلام حقيقي مش أي كلام في كيس وخلاص "
+            android:layout_marginTop="16dp"
+            />
+
+
+
+    </LinearLayout>
 
 </FrameLayout>
+    </ScrollView>
+</layout>
