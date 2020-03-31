@@ -58,15 +58,6 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_marginRight="5dp"
-                    android:textSize="18sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="♥"
-                    android:textColor="@color/endGradient"
-                    />
-
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="نحن في خدمتك"
@@ -75,6 +66,14 @@
                     android:textStyle="bold"
                     />
 
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" ♥ "
+                    android:textColor="@color/endGradient"
+                    />
 
             </LinearLayout>
 
@@ -101,12 +100,12 @@
                 android:textSize="14sp" />
 
             <Button
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="40dp"
                 android:id="@+id/btnSend"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginStart="64dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="64dp"
                 android:background="@drawable/btnclickcolor"
                 android:text="ارسال "
                 android:textColor="@color/white"
@@ -131,16 +130,19 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:layout_marginRight="16dp"
+                    android:id="@+id/iv_facebook"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/ic_facebook"
+                    android:layout_marginEnd="16dp" />
+
+                <ImageView
                     android:id="@+id/iv_whats"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_whatsapp_9" />
 
-                <ImageView
-                    android:id="@+id/iv_facebook"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/no_path_copy_7" />
 
             </LinearLayout>
 
@@ -174,6 +176,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginBottom="20dp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -184,6 +187,14 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="40dp"
                 >
+
+                <ImageView
+                    android:layout_marginRight="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_page_1"
+                    android:layout_marginEnd="8dp" />
                 <TextView
                     android:id="@+id/tv_callwhats"
                     android:layout_width="wrap_content"
@@ -191,18 +202,12 @@
                     android:textAlignment="center"
                     android:layout_gravity="center"
                     android:background="@drawable/btn_greenwhite"
-                    android:text="الاتصال"
+                    android:text=" الاتصال "
                     android:textColor="#ffffff"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_marginLeft="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/ic_page_1"
-                    />
+
 
             </LinearLayout>
 
