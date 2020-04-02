@@ -1,6 +1,7 @@
 package com.mrerror.parachut.ui.home.humbmenu.contact;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -18,18 +19,16 @@ public class ContactUsViewModel extends ViewModel {
     // TODO: Implement the ViewModel
     MutableLiveData<ContactUsModel> contactUsModelMutableLiveData = new MutableLiveData<>();
     GlobalPrefrencies globalPrefrencies;
-    ContactUsModel model;
 
-    public void onClickSend(Context context) {
+
+    public void onClickSend(Context context, String s) {
         globalPrefrencies = new GlobalPrefrencies(context);
-        model = null;
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetMessage("Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<ContactUsModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetMessage(s, "Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<ContactUsModel>() {
             @Override
             public void onResponse(Call<ContactUsModel> call, Response<ContactUsModel> response) {
                 if (response.body() != null && response.body().getStatus()) {
                     contactUsModelMutableLiveData.setValue(response.body());
-                    model = response.body();
                 }
 
             }
@@ -37,6 +36,7 @@ public class ContactUsViewModel extends ViewModel {
             @Override
             public void onFailure(Call<ContactUsModel> call, Throwable t) {
 
+                Log.e("ERRORS", t.getMessage());
             }
         });
     }

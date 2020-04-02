@@ -26,5 +26,6 @@
     <string name="title_activity_goto_home">GotoHomeActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_details_order">DetailsOrderActivity</string>
 
 </resources>

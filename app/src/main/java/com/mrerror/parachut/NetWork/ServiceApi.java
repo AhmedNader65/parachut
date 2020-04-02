@@ -73,8 +73,10 @@ public interface ServiceApi {
     @GET("about_us")
     Call<AboutUsModel> OnGetAboutUs();
 
+    @FormUrlEncoded
     @POST("messages")
-    Call<ContactUsModel> onGetMessage(@Header("Authorization") String Authorization );
+    Call<ContactUsModel> onGetMessage(@Field("messages") String messages,
+                                      @Header("Authorization") String Authorization);
 
     //MH
     @GET("user")

@@ -19,6 +19,7 @@ import com.mrerror.parachut.databinding.ActivityMainBinding;
 import com.mrerror.parachut.ui.home.fastorder.FastOrderActivity;
 import com.mrerror.parachut.ui.home.homefragment.HomeFragment;
 import com.mrerror.parachut.ui.home.humbmenu.HamburgActivity;
+import com.mrerror.parachut.ui.home.orders.OrdersFragment;
 import com.mrerror.parachut.ui.home.profilefragment.ProfileFragment;
 import com.mrerror.parachut.utils.GlobalPrefrencies;
 
@@ -69,7 +70,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        menu.getItem(1).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+                    getSupportFragmentManager().popBackStack();
+                }
+                showFragment(new OrdersFragment());
+                return false;
+            }
+        });
         activityMainBinding.humborgmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

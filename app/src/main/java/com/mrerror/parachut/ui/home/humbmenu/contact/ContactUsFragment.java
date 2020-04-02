@@ -1,6 +1,7 @@
 package com.mrerror.parachut.ui.home.humbmenu.contact;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.gson.Gson;
 import com.mrerror.parachut.Models.ContactUs.ContactUsModel;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.ContactUsFragmentBinding;
@@ -57,7 +59,6 @@ public class ContactUsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 setUpMessages();
-                Toast.makeText(getContext(), "لقد تم ارسال رساللتك بنجاح ", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -65,15 +66,21 @@ public class ContactUsFragment extends Fragment {
     }
     private void setUpMessages() {
 
-        mViewModel.onClickSend(getContext());
-        contactUsFragmentBinding.etMessage.getText().toString().trim();
+        mViewModel.onClickSend(getContext(), contactUsFragmentBinding.etMessage.toString().trim());
+        // contactUsFragmentBinding.etMessage.getText().toString().trim();
 
         mViewModel.contactUsModelMutableLiveData.observe(getViewLifecycleOwner(), new Observer<ContactUsModel>() {
             @Override
             public void onChanged(ContactUsModel contactUsModel) {
-                String messages  = contactUsModel.getMessages() + "" ;
-                globalPrefrencies.storeMessages(messages);
 
+                if (contactUsModel.getStatus()) {
+                    Toast.makeText(getContext(), "لقد تم ارسال رساللتك بنجاح ", Toast.LENGTH_SHORT).show();
+                    getActivity().finish();
+                } else {
+                    Toast.makeText(getContext(), "فشل في الارسال من فضلك حاول مره اخري", Toast.LENGTH_SHORT).show();
+
+                }
+                Log.e("XCX", new Gson().toJson(contactUsModel));
             }
         });
 
