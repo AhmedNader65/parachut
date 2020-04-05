@@ -387,6 +387,7 @@
                             android:background="@color/graywhite"
                             android:gravity="center_vertical"
                             android:hint="@string/phone_number"
+                            android:textColor="@color/black"
                             android:text="1111111"
                             android:textSize="16dp" />
 

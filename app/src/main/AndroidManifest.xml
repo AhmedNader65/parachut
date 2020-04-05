@@ -25,6 +25,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_goto_home"
             android:theme="@style/FullscreenTheme" />
+
         <activity
             android:name=".ui.home.fastorder.FastOrderActivity"
             android:label="@string/title_activity_fast_order"
@@ -43,6 +44,7 @@
             android:name=".ui.intro.SplashActivity"
             android:label="@string/title_activity_splash"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.home.allitem.AllItemActivity" />
         <activity android:name=".ui.home.MainActivity" />
     </application>
 
