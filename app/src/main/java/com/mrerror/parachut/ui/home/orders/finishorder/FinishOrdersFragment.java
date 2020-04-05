@@ -1,6 +1,7 @@
 package com.mrerror.parachut.ui.home.orders.finishorder;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,14 +57,11 @@ public class FinishOrdersFragment extends Fragment {
             @Override
             public void onChanged(PagedList<Datum> data) {
                 adapter.submitList(data);
+                Log.e("XXXCXC", data.size() + "");
             }
         });
 
         finishOrdersFragmentBinding.rvFinishedOrders.setAdapter(adapter);
-
-
-
-
     }
 
 

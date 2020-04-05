@@ -5,6 +5,7 @@ import com.mrerror.parachut.Models.AboutUs.AboutUsModel;
 import com.mrerror.parachut.Models.AllOffers.AllOffersModel;
 import com.mrerror.parachut.Models.CategoryModel.CategoryModel;
 import com.mrerror.parachut.Models.ContactUs.ContactUsModel;
+import com.mrerror.parachut.Models.DetailsOrder.DetailsOrderModel;
 import com.mrerror.parachut.Models.FastOrder.FastOrderModel;
 import com.mrerror.parachut.Models.FinishedOrders.FinishedOrdersModel;
 import com.mrerror.parachut.Models.LogIn.UserLoginModel;
@@ -21,6 +22,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ServiceApi {
@@ -50,6 +52,11 @@ public interface ServiceApi {
 
     @GET("categories/mostcommon")
     Call<CategoryModel> onGetCategories(@Query("page") long page);
+
+
+    @GET("orders/{id}")
+    Call<DetailsOrderModel> onGetDetailsOrder(@Path(value = "id", encoded = true) String id_, @Header("Authorization") String Authorization);
+
 
 
     @GET("categories")

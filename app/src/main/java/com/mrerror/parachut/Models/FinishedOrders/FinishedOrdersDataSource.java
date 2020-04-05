@@ -1,6 +1,7 @@
 package com.mrerror.parachut.Models.FinishedOrders;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.paging.PageKeyedDataSource;
@@ -41,18 +42,13 @@ public class FinishedOrdersDataSource extends PageKeyedDataSource<Long , Datum> 
 
             @Override
             public void onFailure(Call<FinishedOrdersModel> call, Throwable t) {
-                t.getLocalizedMessage();
+                Log.e("CC", t.getMessage());
             }
         });
     }
 
     @Override
-    public void loadBefore(@NonNull LoadParams<Long> params, @NonNull LoadCallback<Long, Datum> callback) {
-
-    }
-
-    @Override
-    public void loadAfter(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
+    public void loadBefore(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
         RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders("Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
             @Override
             public void onResponse(Call<FinishedOrdersModel> call, Response<FinishedOrdersModel> response) {
@@ -72,8 +68,30 @@ public class FinishedOrdersDataSource extends PageKeyedDataSource<Long , Datum> 
 
             @Override
             public void onFailure(Call<FinishedOrdersModel> call, Throwable t) {
-
+                Log.e("CC2", t.getMessage());
             }
         });
+
+    }
+
+    @Override
+    public void loadAfter(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
+
+        RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders("Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
+            @Override
+            public void onResponse(Call<FinishedOrdersModel> call, Response<FinishedOrdersModel> response) {
+                FinishedOrdersModel model = response.body();
+                if (model != null) {
+                    List<Datum> data = model.getData();
+                    callback.onResult(data, params.key + 1);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FinishedOrdersModel> call, Throwable t) {
+                Log.e("CC3", t.getMessage());
+            }
+        });
+
     }
 }

@@ -63,11 +63,11 @@ public class OrdersAdapter extends PagedListAdapter<Datum , OrdersAdapter.Orders
         String strDate = sdf.format(date);
 
 
-        holder.btn_details.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context, DetailsOrderActivity.class);
-                intent.putExtra("myid" , item.getId());
+                intent.putExtra("myid", item.getId() + "");
                 context.startActivity(intent);
             }
         });

@@ -48,7 +48,7 @@ public class OrdersFragment extends Fragment {
 
     private void initWidget() {
 
-        adaptar = new PagerAdaptar(getFragmentManager());
+        adaptar = new PagerAdaptar(getChildFragmentManager());
         adaptar.addNewFragment(new FinishOrdersFragment());
         adaptar.addNewFragment(new AllorderFragment());
         ordersFragmentBinding.tabLayout.setupWithViewPager(ordersFragmentBinding.viewpager);

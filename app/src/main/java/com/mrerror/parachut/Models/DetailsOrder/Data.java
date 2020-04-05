@@ -1,5 +1,5 @@
 
-package com.mrerror.parachut.Models.FinishedOrders;
+package com.mrerror.parachut.Models.DetailsOrder;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,15 +7,15 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class Datum implements Serializable
-{
+public class Data implements Serializable {
 
+    private final static long serialVersionUID = 6893529792822182799L;
     @SerializedName("id")
     @Expose
     private Integer id;
     @SerializedName("user")
     @Expose
-    private Object user;
+    private User user;
     @SerializedName("order_price")
     @Expose
     private Integer orderPrice;
@@ -36,20 +36,19 @@ public class Datum implements Serializable
     private Integer minimum;
     @SerializedName("code")
     @Expose
-    private Object code;
+    private String code;
     @SerializedName("status")
     @Expose
     private String status;
     @SerializedName("delivery")
     @Expose
-    private Object delivery;
+    private Delivery delivery;
     @SerializedName("orderProducts")
     @Expose
     private List<OrderProduct> orderProducts = null;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
-    private final static long serialVersionUID = -3448869865464621599L;
 
     public Integer getId() {
         return id;
@@ -59,11 +58,11 @@ public class Datum implements Serializable
         this.id = id;
     }
 
-    public Object getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Object user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -115,11 +114,11 @@ public class Datum implements Serializable
         this.minimum = minimum;
     }
 
-    public Object getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Object code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -131,11 +130,11 @@ public class Datum implements Serializable
         this.status = status;
     }
 
-    public Object getDelivery() {
+    public Delivery getDelivery() {
         return delivery;
     }
 
-    public void setDelivery(Object delivery) {
+    public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
     }
 
