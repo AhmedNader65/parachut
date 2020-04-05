@@ -7,14 +7,21 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.Observer;
+import androidx.paging.PagedList;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.mrerror.parachut.Adabters.PendingOrdersAdapter;
+import com.mrerror.parachut.Models.PendingOrders.Datum;
 import com.mrerror.parachut.R;
+import com.mrerror.parachut.databinding.AllorderFragmentBinding;
 
 public class AllorderFragment extends Fragment {
 
     private AllorderViewModel mViewModel;
+    AllorderFragmentBinding allorderFragmentBinding;
 
     public static AllorderFragment newInstance() {
         return new AllorderFragment();
@@ -23,14 +30,33 @@ public class AllorderFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.allorder_fragment, container, false);
+       allorderFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.allorder_fragment , container,false);
+       return allorderFragmentBinding.getRoot();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(AllorderViewModel.class);
         // TODO: Use the ViewModel
+        mViewModel = new AllorderViewModel(getContext());
+        allorderFragmentBinding.setLifecycleOwner(this);
+        allorderFragmentBinding.setAllorderVmodel(mViewModel);
+
+        setupPendingOrders();
+
+    }
+
+    private void setupPendingOrders()
+    {
+        final PendingOrdersAdapter adapter = new PendingOrdersAdapter(getContext());
+        allorderFragmentBinding.rvPendingOrders.setLayoutManager(new LinearLayoutManager(getContext()));
+        mViewModel.mutableLiveDataAllOrdersPageList.observe(getViewLifecycleOwner(), new Observer<PagedList<Datum>>() {
+            @Override
+            public void onChanged(PagedList<Datum> data) {
+                adapter.submitList(data);
+            }
+        });
+        allorderFragmentBinding.rvPendingOrders.setAdapter(adapter);
     }
 
 }

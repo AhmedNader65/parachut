@@ -6,8 +6,10 @@ import com.mrerror.parachut.Models.AllOffers.AllOffersModel;
 import com.mrerror.parachut.Models.CategoryModel.CategoryModel;
 import com.mrerror.parachut.Models.ContactUs.ContactUsModel;
 import com.mrerror.parachut.Models.FastOrder.FastOrderModel;
+import com.mrerror.parachut.Models.FinishedOrders.FinishedOrdersModel;
 import com.mrerror.parachut.Models.LogIn.UserLoginModel;
 import com.mrerror.parachut.Models.OffersModel.OffersModel;
+import com.mrerror.parachut.Models.PendingOrders.PendingOrdersModel;
 import com.mrerror.parachut.Models.Pricing.PriceModel;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
 import com.mrerror.parachut.Models.SuperMarket.SuperMarketModel;
@@ -77,6 +79,12 @@ public interface ServiceApi {
     @POST("messages")
     Call<ContactUsModel> onGetMessage(@Field("messages") String messages,
                                       @Header("Authorization") String Authorization);
+
+    @GET("restaurant/orders/finished")
+    Call<FinishedOrdersModel> onGetFinishedOrders(@Header("Authorization") String Authorization );
+
+    @GET("restaurant/orders/pending")
+    Call<PendingOrdersModel> onGetPendingOrders(@Header("Authorization") String Authorization);
 
     //MH
     @GET("user")
