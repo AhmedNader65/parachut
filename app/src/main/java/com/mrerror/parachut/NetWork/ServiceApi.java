@@ -76,6 +76,15 @@ public interface ServiceApi {
     @GET("products-offers")
     Call<AllOffersModel> onGetAllOffersModel(@Query("page") long page);
 
+    @GET("products-offers/max/price")
+    Call<AllOffersModel> onGetMAXAllOffersModel(@Query("page") long page);
+
+    @GET("products-offers/min/price")
+    Call<AllOffersModel> onGetMINAllOffersModel(@Query("page") long page );
+
+    @GET("products-offers/mostcommen")
+    Call<AllOffersModel> onGetMostCOMMONOffersModel(@Query("page") long page);
+
     @GET("delivery/price")
     Call<PriceModel> onGetPriceModel();
 

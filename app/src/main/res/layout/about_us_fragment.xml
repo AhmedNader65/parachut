@@ -15,6 +15,7 @@
         android:layout_height="match_parent">
 
     <FrameLayout
+        android:paddingBottom="85dp"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -65,6 +66,7 @@
             />
 
         <TextView
+            android:padding="16dp"
             android:id="@+id/tv_who"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,6 +90,7 @@
             />
 
         <TextView
+            android:padding="16dp"
             android:id="@+id/tv_feature"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
@@ -96,7 +99,6 @@
             android:textAlignment="center"
             android:textSize="14sp"
             android:text="كلام كبير أوي أوي أوي عن التطبيق حتي يشعر المستخدم بالثقة بينه وبين التطبيق ولكن يكون كلام حقيقي مش أي كلام في كيس وخلاص وهكذا كلام كبير أوي أوي أوي عن التطبيق حتي يشعر المستخدم بالثقة بينه وبين التطبيق ولكن يكون كلام حقيقي مش أي كلام في كيس وخلاص وهكذا كلام كبير أوي أوي أوي عن التطبيق حتي يشعر المستخدم بالثقة بينه وبين التطبيق ولكن يكون كلام حقيقي مش أي كلام في كيس وخلاص "
-            android:layout_marginTop="16dp"
             />
 
 

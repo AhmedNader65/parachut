@@ -3,6 +3,7 @@ package com.mrerror.parachut.Adabters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import com.mrerror.parachut.Models.FinishedOrders.Datum;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.ui.home.orders.detailsorder.DetailsOrderActivity;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -56,11 +59,19 @@ public class OrdersAdapter extends PagedListAdapter<Datum , OrdersAdapter.Orders
         holder.status.setText(item.getStatus() + "");
         holder.productNum.setText("عدد المنتجات : " + "(" + item.getOrderProducts().get(0).getQuantity() + ")" + " منتج");
         holder.cost.setText("اجمالي التكلفه :" + item.getFinalPrice() + " جنيه ");
-        holder.date.setText(item.getCreatedAt() + "");
 
-        Date date = new Date();
-        SimpleDateFormat sdf= new SimpleDateFormat("MM/dd/yyyy");
-        String strDate = sdf.format(date);
+        String time = item.getCreatedAt();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = sdf.parse(time);
+        } catch (ParseException e) {
+            Log.e("XXX", e.getMessage());
+        }
+        DateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+        String formatedTime = sdf2.format(date);
+
+        holder.date.setText(formatedTime + "");
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

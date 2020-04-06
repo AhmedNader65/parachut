@@ -48,7 +48,6 @@
                 android:layout_height="match_parent" />
 
             <ImageView
-
                 android:layout_gravity="center"
 
                 android:layout_margin="8dp"
