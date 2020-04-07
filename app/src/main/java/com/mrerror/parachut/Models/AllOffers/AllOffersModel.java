@@ -15,7 +15,7 @@ public class AllOffersModel implements Serializable
     private Integer currentPage;
     @SerializedName("data")
     @Expose
-    private List<Datum> data = null;
+    private List<com.mrerror.parachut.Models.Datum> data = null;
     @SerializedName("first_page_url")
     @Expose
     private String firstPageUrl;
@@ -56,11 +56,11 @@ public class AllOffersModel implements Serializable
         this.currentPage = currentPage;
     }
 
-    public List<Datum> getData() {
+    public List<com.mrerror.parachut.Models.Datum> getData() {
         return data;
     }
 
-    public void setData(List<Datum> data) {
+    public void setData(List<com.mrerror.parachut.Models.Datum> data) {
         this.data = data;
     }
 

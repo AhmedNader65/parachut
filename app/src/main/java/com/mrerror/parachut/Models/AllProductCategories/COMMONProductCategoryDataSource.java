@@ -1,4 +1,4 @@
-package com.mrerror.parachut.Models.OffersModel;
+package com.mrerror.parachut.Models.AllProductCategories;
 
 import android.util.Log;
 
@@ -8,6 +8,7 @@ import androidx.paging.PageKeyedDataSource;
 import com.mrerror.parachut.Models.Datum;
 import com.mrerror.parachut.NetWork.RetroWeb;
 import com.mrerror.parachut.NetWork.ServiceApi;
+import com.mrerror.parachut.ui.home.allitem.AllItemActivity;
 
 import java.util.List;
 
@@ -15,18 +16,24 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OffersDataSource extends PageKeyedDataSource<Long, Datum> {
+public class COMMONProductCategoryDataSource extends PageKeyedDataSource<Long, Datum> {
     public static int PAGE_SIZE = 8;
     public static long FIRST_PAGE = 1;
+
+    String id_;
+    public COMMONProductCategoryDataSource(String id_) {
+
+        this.id_=id_;
+    }
 
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Long> params, @NonNull final LoadInitialCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetOffersModel(FIRST_PAGE).enqueue(new Callback<OffersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONProductCategory(id_,FIRST_PAGE).enqueue(new Callback<AllProductCategories>() {
             @Override
-            public void onResponse(Call<OffersModel> call, Response<OffersModel> response) {
-                OffersModel body = response.body();
+            public void onResponse(Call<AllProductCategories> call, Response<AllProductCategories> response) {
+                AllProductCategories body = response.body();
                 if (body != null) {
                     List<Datum> data = body.getData();
                     callback.onResult(data, null, FIRST_PAGE + 1);
@@ -34,7 +41,7 @@ public class OffersDataSource extends PageKeyedDataSource<Long, Datum> {
             }
 
             @Override
-            public void onFailure(Call<OffersModel> call, Throwable t) {
+            public void onFailure(Call<AllProductCategories> call, Throwable t) {
 
                 Log.e("xxx",t.getMessage());
             }
@@ -45,10 +52,10 @@ public class OffersDataSource extends PageKeyedDataSource<Long, Datum> {
     @Override
     public void loadBefore(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetOffersModel(params.key).enqueue(new Callback<OffersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONProductCategory(id_,params.key).enqueue(new Callback<AllProductCategories>() {
             @Override
-            public void onResponse(Call<OffersModel> call, Response<OffersModel> response) {
-                OffersModel body = response.body();
+            public void onResponse(Call<AllProductCategories> call, Response<AllProductCategories> response) {
+                AllProductCategories body = response.body();
                 if (body != null) {
                     List<Datum> data = body.getData();
                     long key;
@@ -63,7 +70,7 @@ public class OffersDataSource extends PageKeyedDataSource<Long, Datum> {
             }
 
             @Override
-            public void onFailure(Call<OffersModel> call, Throwable t) {
+            public void onFailure(Call<AllProductCategories> call, Throwable t) {
                 Log.e("yyy",t.getMessage());
             }
         });
@@ -72,10 +79,10 @@ public class OffersDataSource extends PageKeyedDataSource<Long, Datum> {
     @Override
     public void loadAfter(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetOffersModel(params.key).enqueue(new Callback<OffersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONProductCategory(id_,params.key).enqueue(new Callback<AllProductCategories>() {
             @Override
-            public void onResponse(Call<OffersModel> call, Response<OffersModel> response) {
-                OffersModel body = response.body();
+            public void onResponse(Call<AllProductCategories> call, Response<AllProductCategories> response) {
+                AllProductCategories body = response.body();
                 if (body != null) {
                     List<Datum> data = body.getData();
                     callback.onResult(data, params.key + 1);
@@ -84,7 +91,7 @@ public class OffersDataSource extends PageKeyedDataSource<Long, Datum> {
             }
 
             @Override
-            public void onFailure(Call<OffersModel> call, Throwable t) {
+            public void onFailure(Call<AllProductCategories> call, Throwable t) {
                 Log.e("zzz",t.getMessage());
             }
         });

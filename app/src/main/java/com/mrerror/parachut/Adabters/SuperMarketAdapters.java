@@ -1,6 +1,7 @@
 package com.mrerror.parachut.Adabters;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.mrerror.parachut.Models.SuperMarket.Datum;
 import com.mrerror.parachut.R;
+import com.mrerror.parachut.ui.home.allitem.AllItemActivity;
 
 public class SuperMarketAdapters  extends PagedListAdapter<Datum, SuperMarketAdapters.SuperMarketVholder> {
 
@@ -44,14 +46,24 @@ public class SuperMarketAdapters  extends PagedListAdapter<Datum, SuperMarketAda
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SuperMarketVholder holder, int position) {
+    public void onBindViewHolder(@NonNull final SuperMarketVholder holder, int position) {
 
-        Log.e("0000kk",position+"");
-        Datum item = getItem(position);
+        //Log.e("0000kk",position+"");
+        final Datum item = getItem(position);
         holder.textViewcount.setText(item.getMinimam()+" ");
         holder.textView.setText(item.getName()+" ");
         Glide.with(holder.itemView.getContext()).load(item.getImage()).into(holder.imageView);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(holder.itemView.getContext(), AllItemActivity.class);
+                intent.putExtra("key","ProductStores");
+                intent.putExtra("_id",item.getId()+"");
+                Log.e("ZZ2",item.getId()+"");
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     class SuperMarketVholder extends RecyclerView.ViewHolder {

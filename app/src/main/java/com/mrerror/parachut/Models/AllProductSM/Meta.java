@@ -1,52 +1,35 @@
 
-package com.mrerror.parachut.Models.OffersModel;
+package com.mrerror.parachut.Models.AllProductSM;
 
 import java.io.Serializable;
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.mrerror.parachut.Models.Datum;
 
-public class OffersModel implements Serializable
+public class Meta implements Serializable
 {
 
     @SerializedName("current_page")
     @Expose
     private Integer currentPage;
-    @SerializedName("data")
-    @Expose
-    private List<Datum> data = null;
-    @SerializedName("first_page_url")
-    @Expose
-    private String firstPageUrl;
     @SerializedName("from")
     @Expose
     private Integer from;
     @SerializedName("last_page")
     @Expose
     private Integer lastPage;
-    @SerializedName("last_page_url")
-    @Expose
-    private String lastPageUrl;
-    @SerializedName("next_page_url")
-    @Expose
-    private Object nextPageUrl;
     @SerializedName("path")
     @Expose
     private String path;
     @SerializedName("per_page")
     @Expose
     private Integer perPage;
-    @SerializedName("prev_page_url")
-    @Expose
-    private Object prevPageUrl;
     @SerializedName("to")
     @Expose
     private Integer to;
     @SerializedName("total")
     @Expose
     private Integer total;
-    private final static long serialVersionUID = -3726932222855451219L;
+    private final static long serialVersionUID = -4980047712331592599L;
 
     public Integer getCurrentPage() {
         return currentPage;
@@ -54,22 +37,6 @@ public class OffersModel implements Serializable
 
     public void setCurrentPage(Integer currentPage) {
         this.currentPage = currentPage;
-    }
-
-    public List<Datum> getData() {
-        return data;
-    }
-
-    public void setData(List<Datum> data) {
-        this.data = data;
-    }
-
-    public String getFirstPageUrl() {
-        return firstPageUrl;
-    }
-
-    public void setFirstPageUrl(String firstPageUrl) {
-        this.firstPageUrl = firstPageUrl;
     }
 
     public Integer getFrom() {
@@ -88,22 +55,6 @@ public class OffersModel implements Serializable
         this.lastPage = lastPage;
     }
 
-    public String getLastPageUrl() {
-        return lastPageUrl;
-    }
-
-    public void setLastPageUrl(String lastPageUrl) {
-        this.lastPageUrl = lastPageUrl;
-    }
-
-    public Object getNextPageUrl() {
-        return nextPageUrl;
-    }
-
-    public void setNextPageUrl(Object nextPageUrl) {
-        this.nextPageUrl = nextPageUrl;
-    }
-
     public String getPath() {
         return path;
     }
@@ -118,14 +69,6 @@ public class OffersModel implements Serializable
 
     public void setPerPage(Integer perPage) {
         this.perPage = perPage;
-    }
-
-    public Object getPrevPageUrl() {
-        return prevPageUrl;
-    }
-
-    public void setPrevPageUrl(Object prevPageUrl) {
-        this.prevPageUrl = prevPageUrl;
     }
 
     public Integer getTo() {

@@ -120,9 +120,9 @@ public class HomeFragment extends Fragment {
 
         final OffersAdapters adapter = new OffersAdapters();
         homeFragmentBinding.offers.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
-        mViewModel.mutableLiveDataOffersPageList.observe(getViewLifecycleOwner(), new Observer<PagedList<com.mrerror.parachut.Models.OffersModel.Datum>>() {
+        mViewModel.mutableLiveDataOffersPageList.observe(getViewLifecycleOwner(), new Observer<PagedList<com.mrerror.parachut.Models.Datum>>() {
             @Override
-            public void onChanged(PagedList<com.mrerror.parachut.Models.OffersModel.Datum> data) {
+            public void onChanged(PagedList<com.mrerror.parachut.Models.Datum> data) {
                 adapter.submitList(data);
             }
         });

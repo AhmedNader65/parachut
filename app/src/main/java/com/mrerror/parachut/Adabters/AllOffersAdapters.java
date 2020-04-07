@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.mrerror.parachut.Models.AllOffers.Datum;
+import com.mrerror.parachut.Models.Datum;
 import com.mrerror.parachut.R;
 
 public class AllOffersAdapters extends PagedListAdapter<Datum, AllOffersAdapters.OffersVholder> {

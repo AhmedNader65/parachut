@@ -3,6 +3,8 @@ package com.mrerror.parachut.Models.AllOffers;
 import androidx.lifecycle.MutableLiveData;
 import androidx.paging.DataSource;
 
+import com.mrerror.parachut.Models.Datum;
+
 
 public class COMMONOffersDataSourceFactory extends DataSource.Factory<Long, Datum> {
 

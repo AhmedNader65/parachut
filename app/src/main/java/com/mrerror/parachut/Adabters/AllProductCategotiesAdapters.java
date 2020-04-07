@@ -13,11 +13,10 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-
 import com.mrerror.parachut.Models.Datum;
 import com.mrerror.parachut.R;
 
-public class OffersAdapters extends PagedListAdapter<Datum, OffersAdapters.OffersVholder> {
+public class AllProductCategotiesAdapters extends PagedListAdapter<Datum, AllProductCategotiesAdapters.CategoriesProductVholder> {
 
     private static final DiffUtil.ItemCallback<Datum> item_COMPARATOR = new DiffUtil.ItemCallback<Datum>() {
         @Override
@@ -32,21 +31,21 @@ public class OffersAdapters extends PagedListAdapter<Datum, OffersAdapters.Offer
         }
     };
 
-    public OffersAdapters() {
+    public AllProductCategotiesAdapters() {
         super(item_COMPARATOR);
     }
 
     @NonNull
     @Override
-    public OffersVholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CategoriesProductVholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_offers,parent,false);
-        return new OffersVholder(view);
+        return new CategoriesProductVholder(view);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OffersVholder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoriesProductVholder holder, int position) {
 
         Datum item = getItem(position);
         holder.textViewnamstore.setText(item.getDescription()+"");
@@ -58,12 +57,12 @@ public class OffersAdapters extends PagedListAdapter<Datum, OffersAdapters.Offer
 
     }
 
-    class OffersVholder extends RecyclerView.ViewHolder {
+    class CategoriesProductVholder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
         TextView textViewName,textViewPrice,textViewOffer,textViewRatio,textViewnamstore;
 
-        public OffersVholder(@NonNull View itemView) {
+        public CategoriesProductVholder(@NonNull View itemView) {
             super(itemView);
             textViewName = itemView.findViewById(R.id.nameitem);
             imageView = itemView.findViewById(R.id.imgitem);

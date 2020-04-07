@@ -54,7 +54,7 @@ public class HomeViewModel extends ViewModel {
     }
 
 
-    public LiveData<PagedList<com.mrerror.parachut.Models.OffersModel.Datum>> mutableLiveDataOffersPageList;
+    public LiveData<PagedList<com.mrerror.parachut.Models.Datum>> mutableLiveDataOffersPageList;
     MutableLiveData<OffersDataSource> ofeersDataSourceMutableLiveData;
     private void init_offers() {
 

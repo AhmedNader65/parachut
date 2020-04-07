@@ -3,6 +3,7 @@ package com.mrerror.parachut.NetWork;
 
 import com.mrerror.parachut.Models.AboutUs.AboutUsModel;
 import com.mrerror.parachut.Models.AllOffers.AllOffersModel;
+import com.mrerror.parachut.Models.AllProductCategories.AllProductCategories;
 import com.mrerror.parachut.Models.CategoryModel.CategoryModel;
 import com.mrerror.parachut.Models.ContactUs.ContactUsModel;
 import com.mrerror.parachut.Models.DetailsOrder.DetailsOrderModel;
@@ -84,6 +85,43 @@ public interface ServiceApi {
 
     @GET("products-offers/mostcommen")
     Call<AllOffersModel> onGetMostCOMMONOffersModel(@Query("page") long page);
+
+
+    @GET("categories/{id}/products")
+    Call<AllProductCategories> onGetAllProductCategory(@Path(value = "id", encoded = true) String id_,@Query("page") long page);
+
+    @GET("categories/{id}/products/max/price")
+    Call<AllProductCategories> onGetMAXAllProductCategory(@Path(value = "id", encoded = true) String id_,@Query("page") long page);
+
+    @GET("categories/{id}/products/min/price")
+    Call<AllProductCategories> onGetMINAllProductCategory(@Path(value = "id", encoded = true) String id_,@Query("page") long page );
+
+    @GET("categories/{id}/products/mostcommon")
+    Call<AllProductCategories> onGetMostCOMMONProductCategory(@Path(value = "id", encoded = true) String id_,@Query("page") long page);
+
+
+
+
+
+
+
+
+    @GET("supermarket/{id}/products")
+    Call<AllProductCategories> onGetAllProductStores(@Path(value = "id", encoded = true) String id_,@Query("page") long page);
+
+    @GET("supermarket/{id}/products/max/price")
+    Call<AllProductCategories> onGetMAXAllProductStores(@Path(value = "id", encoded = true) String id_,@Query("page") long page);
+
+    @GET("supermarket/{id}/products/min/price")
+    Call<AllProductCategories> onGetMINAllProductStores(@Path(value = "id", encoded = true) String id_,@Query("page") long page );
+
+    @GET("supermarket/{id}/products/mostcommon")
+    Call<AllProductCategories> onGetMostCOMMONProductStores(@Path(value = "id", encoded = true) String id_,@Query("page") long page);
+
+
+
+
+
 
     @GET("delivery/price")
     Call<PriceModel> onGetPriceModel();

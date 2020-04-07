@@ -41,7 +41,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
 
-                android:text="براشوت"
+                android:text="All item"
                 android:layout_marginStart="16dp"
                 android:gravity="center_vertical"
                 android:layout_gravity="center_vertical"
