@@ -14,6 +14,7 @@ import com.mrerror.parachut.Models.OffersModel.OffersModel;
 import com.mrerror.parachut.Models.PendingOrders.PendingOrdersModel;
 import com.mrerror.parachut.Models.Pricing.PriceModel;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
+import com.mrerror.parachut.Models.SimilarProducts.SimilarProductsModel;
 import com.mrerror.parachut.Models.SuperMarket.SuperMarketModel;
 import com.mrerror.parachut.Models.UserData.GetUserData;
 
@@ -85,6 +86,9 @@ public interface ServiceApi {
 
     @GET("products-offers/mostcommen")
     Call<AllOffersModel> onGetMostCOMMONOffersModel(@Query("page") long page);
+
+    @GET("products/similar/6")
+    Call<SimilarProductsModel> onGetSimilarProductsModel(@Header("Authorization") String Authorization);
 
 
     @GET("categories/{id}/products")

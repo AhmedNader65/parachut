@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="SimilarVmodel"
+            type="com.mrerror.parachut.ui.product.SingleProductViewModel" />
+    </data>
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -51,7 +60,8 @@
                 android:text="طلب سريع"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="16dp" />
 
             <ImageView
 
@@ -113,7 +123,8 @@
             android:text="طلب الاوردر"
             android:textColor="@color/colorGreen"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginRight="48dp" />
 
         <LinearLayout
 
@@ -291,7 +302,7 @@ android:layout_marginStart="16dp"
             android:textSize="16sp"
             android:textStyle="bold" />
         <androidx.recyclerview.widget.RecyclerView
-
+            android:id="@+id/rv_similar"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:layout_width="match_parent"
@@ -300,3 +311,4 @@ android:layout_marginStart="16dp"
 </ScrollView>
 
 </LinearLayout>
+</layout>
