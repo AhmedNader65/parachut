@@ -76,7 +76,7 @@ public class User implements Serializable
     private Integer payment;
     @SerializedName("lat")
     @Expose
-    private Integer lat;
+    private Double lat;
     @SerializedName("role_id")
     @Expose
     private Integer roleId;
@@ -269,11 +269,11 @@ public class User implements Serializable
         this.payment = payment;
     }
 
-    public Integer getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(Integer lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 

@@ -50,7 +50,7 @@ public class SuperMarketAdapters  extends PagedListAdapter<Datum, SuperMarketAda
 
         //Log.e("0000kk",position+"");
         final Datum item = getItem(position);
-        holder.textViewcount.setText(item.getMinimam()+" ");
+        holder.textViewcount.setText(item.getDescription()+" ");
         holder.textView.setText(item.getName()+" ");
         Glide.with(holder.itemView.getContext()).load(item.getImage()).into(holder.imageView);
 

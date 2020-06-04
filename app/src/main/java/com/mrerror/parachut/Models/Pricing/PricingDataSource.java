@@ -38,13 +38,7 @@ public class PricingDataSource extends PageKeyedDataSource<Long , Datum> {
     }
 
     @Override
-    public void loadBefore(@NonNull LoadParams<Long> params, @NonNull LoadCallback<Long, Datum> callback) {
-
-    }
-
-    @Override
-    public void loadAfter(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
-
+    public void loadBefore(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
         RetroWeb.getClient().create(ServiceApi.class).onGetPriceModel().enqueue(new Callback<PriceModel>() {
             @Override
             public void onResponse(Call<PriceModel> call, Response<PriceModel> response) {
@@ -60,6 +54,28 @@ public class PricingDataSource extends PageKeyedDataSource<Long , Datum> {
                     callback.onResult(data, key);
                 }
 
+            }
+
+            @Override
+            public void onFailure(Call<PriceModel> call, Throwable t) {
+                t.getLocalizedMessage();
+            }
+        });
+
+    }
+
+    @Override
+    public void loadAfter(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
+
+        RetroWeb.getClient().create(ServiceApi.class).onGetPriceModel().enqueue(new Callback<PriceModel>() {
+            @Override
+            public void onResponse(Call<PriceModel> call, Response<PriceModel> response) {
+
+                PriceModel body = response.body();
+                if (body!= null) {
+                    List<com.mrerror.parachut.Models.Pricing.Datum> data = body.getData();
+                    callback.onResult(data,  params.key + 1);
+                }
             }
 
             @Override

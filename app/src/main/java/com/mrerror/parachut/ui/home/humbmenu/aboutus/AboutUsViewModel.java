@@ -24,7 +24,7 @@ public class AboutUsViewModel extends ViewModel {
         globalPrefrencies = new GlobalPrefrencies(context);
         model = null;
 
-        RetroWeb.getClient().create(ServiceApi.class).OnGetAboutUs().enqueue(new Callback<AboutUsModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).OnGetAboutUs(globalPrefrencies.getLanguage()).enqueue(new Callback<AboutUsModel>() {
             @Override
             public void onResponse(Call<AboutUsModel> call, Response<AboutUsModel> response) {
                 if (response.body() != null) {

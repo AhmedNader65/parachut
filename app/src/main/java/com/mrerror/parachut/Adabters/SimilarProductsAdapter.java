@@ -9,31 +9,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.paging.PagedListAdapter;
-import androidx.recyclerview.widget.DiffUtil;
+
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.mrerror.parachut.Models.SimilarProducts.Datum;
+import com.mrerror.parachut.Models.Datum;
+
+import com.mrerror.parachut.Models.SimilarProducts.SimilarProductsModel;
 import com.mrerror.parachut.R;
 
-public class SimilarProductsAdapter extends PagedListAdapter<Datum , SimilarProductsAdapter.SimilarVmodel> {
-    private Context context;
-    private static final DiffUtil.ItemCallback<Datum> item_COMPARATOR = new DiffUtil.ItemCallback<Datum>() {
-        @Override
-        public boolean areItemsTheSame(@NonNull Datum oldItem, @NonNull Datum newItem) {
-            return oldItem.getId() == newItem.getId();
-        }
+import java.util.ArrayList;
+import java.util.List;
 
-        @SuppressLint("DiffUtilEquals")
-        @Override
-        public boolean areContentsTheSame(@NonNull Datum oldItem, @NonNull Datum newItem) {
-            return oldItem == newItem;
-        }
-    };
-    public SimilarProductsAdapter(Context context) {
-        super(item_COMPARATOR);
-        this.context = context;
+public class SimilarProductsAdapter extends RecyclerView.Adapter<SimilarProductsAdapter.SimilarVmodel> {
+
+    ArrayList<Datum> similarProductsModels = new ArrayList<>();
+
+    public void setProducts(ArrayList<Datum> similarProductsModels) {
+        this.similarProductsModels = similarProductsModels;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -45,12 +40,17 @@ public class SimilarProductsAdapter extends PagedListAdapter<Datum , SimilarProd
 
     @Override
     public void onBindViewHolder(@NonNull SimilarProductsAdapter.SimilarVmodel holder, int position) {
-        Datum item = getItem(position);
-        holder.textViewName.setText(item.getName() + "");
-        holder.textViewnamstore.setText(item.getDescription() + "");
-        holder.textViewPrice.setText(item.getPrice() + " جنيه ");
-        Glide.with(holder.itemView.getContext()).load(item.getImage()).into(holder.imageView);
+        Datum datum = similarProductsModels.get(position);
+        holder.textViewName.setText(datum.getName() + "");
+        holder.textViewnamstore.setText(datum.getDescription() + "");
+        holder.textViewPrice.setText(datum.getPrice() + " جنيه ");
+        Glide.with(holder.itemView.getContext()).load(datum.getImage()).into(holder.imageView);
 
+    }
+
+    @Override
+    public int getItemCount() {
+        return similarProductsModels.size();
     }
 
     public class SimilarVmodel extends RecyclerView.ViewHolder {

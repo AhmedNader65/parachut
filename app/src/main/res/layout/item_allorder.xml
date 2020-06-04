@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -14,7 +14,7 @@
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="الاثنين"
+            android:text=""
             android:textSize="12sp"
             android:textColor="@color/black"
             android:lineSpacingExtra="11sp"
@@ -28,7 +28,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="vertical">
 
@@ -55,7 +55,7 @@
                 android:layout_marginLeft="16dp"
                 android:background="@drawable/btn_green"
                 android:lineSpacingExtra="9sp"
-                android:text="تمت"
+
                 android:textColor="@color/white"
                 android:textSize="10sp"
                 android:textStyle="bold"
@@ -76,7 +76,7 @@
                     android:layout_marginLeft="16dp"
                     android:gravity="end"
                     android:lineSpacingExtra="11sp"
-                    android:text="الكود : 1819#"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -89,7 +89,7 @@
                     android:layout_marginLeft="16dp"
                     android:gravity="end"
                     android:lineSpacingExtra="11sp"
-                    android:text="عدد المنتجات :( 15) منتج"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -102,7 +102,7 @@
                     android:layout_marginLeft="16dp"
                     android:gravity="end"
                     android:lineSpacingExtra="11sp"
-                    android:text="اجمالي التكلفة :100جنيه"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold" />

@@ -10,7 +10,6 @@
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="200dp"
         android:id="@+id/cardCat"
-        android:backgroundTint="#4cb879"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:layout_marginTop="4dp"
@@ -23,7 +22,6 @@
             android:id="@+id/imgitem_cat"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@drawable/fruit"
             android:layout_gravity="center" />
 
     </androidx.cardview.widget.CardView>
@@ -31,7 +29,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="خضراوات وفاكهه"
         android:textSize="12sp"
         android:id="@+id/txtCat"
         android:gravity="center"

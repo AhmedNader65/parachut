@@ -29,6 +29,7 @@
 
                 android:layout_gravity="center"
 
+                android:id="@+id/backbtn"
                 android:layout_margin="8dp"
                 android:layout_width="wrap_content"
                 android:src="@drawable/ic_arrow_pointing_to_right"
@@ -41,7 +42,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
 
-                android:text="All item"
+                android:text="@string/all_item"
                 android:layout_marginStart="16dp"
                 android:gravity="center_vertical"
                 android:layout_gravity="center_vertical"
@@ -55,14 +56,40 @@
                 android:src="@drawable/ic_magnifying_glass"
                 android:layout_height="wrap_content" />
 
-            <ImageView
+            <RelativeLayout
 
+                android:layout_width="34dp"
+
+
+                android:layout_marginStart="16dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-
                 android:layout_margin="8dp"
-                android:layout_width="wrap_content"
-                android:src="@drawable/ic_parachute"
-                android:layout_height="wrap_content" />
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/cart"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_parachute"
+                    />
+
+                <TextView
+                    android:textColor="@color/white"
+                    android:id="@+id/cartText"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    android:background="@drawable/btn_greenwhite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    />
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -86,7 +113,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
 
-                    android:text="الكل"
+                    android:text="@string/all"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />

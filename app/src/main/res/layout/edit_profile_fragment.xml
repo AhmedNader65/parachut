@@ -27,7 +27,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="البيانات الشخصيه"
+                android:text=" تعديل البيانات الشخصيه"
                 android:layout_marginRight="10dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -144,6 +144,7 @@
                     android:layout_margin="16dp"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:id="@+id/laymap"
                     android:background="@drawable/etcolor"
                     android:layout_width="match_parent"
                     android:layout_height="45dp">
@@ -154,7 +155,8 @@
                         android:layout_margin="12dp"
                         android:layout_height="32dp" />
 
-                    <EditText
+                    <TextView
+                        android:lines="1"
                         android:id="@+id/address_Id"
                         android:background="@color/graywhite"
                         android:layout_marginStart="16dp"

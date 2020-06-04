@@ -22,7 +22,7 @@ public class DetailsOrderViewModel extends ViewModel {
 
     public void getOrderDetailss(final Context context, String id_) {
         globalPrefrencies = new GlobalPrefrencies(context);
-        RetroWeb.getClient().create(ServiceApi.class).onGetDetailsOrder(id_, "Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<DetailsOrderModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetDetailsOrder(id_, globalPrefrencies.getLanguage(),"Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<DetailsOrderModel>() {
             @Override
             public void onResponse(Call<DetailsOrderModel> call, Response<DetailsOrderModel> response) {
                 detailsOrderModelMutableLiveData.setValue(response.body());

@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.notifications.NotificationsFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+        name="notificationVmodel"
+        type="com.mrerror.parachut.ui.home.notifications.NotificationsViewModel" />
+  </data>
+
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:context=".ui.home.notifications.NotificationsFragment">
 
     <TextView
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:id="@+id/txtnofound"
+        android:text="لا يوجد اشعارات"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:id="@+id/rv_notification"
+        android:layout_height="match_parent" />
 
-</FrameLayout>
+  </FrameLayout>
+</layout>

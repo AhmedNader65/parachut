@@ -1,6 +1,7 @@
 package com.mrerror.parachut.Adabters;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.mrerror.parachut.Models.Datum;
 import com.mrerror.parachut.R;
+import com.mrerror.parachut.ui.product.SingleProductActivity;
 
 public class AllProductStoresAdapters extends PagedListAdapter<Datum, AllProductStoresAdapters.ProductStoresVholder> {
 
@@ -45,16 +47,24 @@ public class AllProductStoresAdapters extends PagedListAdapter<Datum, AllProduct
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductStoresVholder holder, int position) {
+    public void onBindViewHolder(@NonNull final ProductStoresVholder holder, int position) {
 
-        Datum item = getItem(position);
+        final Datum item = getItem(position);
         holder.textViewnamstore.setText(item.getDescription()+"");
         holder.textViewName.setText(item.getName()+"");
         holder.textViewRatio.setText(item.getOfferText()+"");
         holder.textViewOffer.setText(item.getOffer()+" بدلا من ");
         holder.textViewPrice.setText(item.getPrice()+" ج ");
         Glide.with(holder.itemView.getContext()).load(item.getImage()).into(holder.imageView);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(holder.itemView.getContext(), SingleProductActivity.class);
 
+                intent.putExtra("product_id",item.getId()+"");
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     class ProductStoresVholder extends RecyclerView.ViewHolder {

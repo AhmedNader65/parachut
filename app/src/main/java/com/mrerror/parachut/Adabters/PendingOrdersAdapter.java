@@ -57,23 +57,23 @@ public class PendingOrdersAdapter extends PagedListAdapter<Datum , PendingOrders
         final Datum item = getItem(position);
         holder.code.setText("#الكود : " + item.getCode());
         holder.status.setText(item.getStatus() + "");
-        holder.productNum.setText("عدد المنتجات : " + "(" + item.getOrderProducts().get(0).getQuantity() + ")" + " منتج");
+        holder.productNum.setText("عدد المنتجات : " + "(" + item.getOrderProducts().size() + ")" + " منتج");
         holder.cost.setText("اجمالي التكلفه :" + item.getFinalPrice() + " جنيه ");
 
 
-        String time = item.getCreatedAt();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = null;
-        try {
-            date = sdf.parse(time);
-        } catch (ParseException e) {
-            Log.e("22222", e.getMessage());
-        }
-        DateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
-        String formatedTime = sdf2.format(date);
+//        String time = item.getCreatedAt();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        Date date = null;
+//        try {
+//            date = sdf.parse(time);
+//        } catch (ParseException e) {
+//            Log.e("22222", e.getMessage());
+//        }
+//        DateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+//        String formatedTime = sdf2.format(date);
+//
 
-
-        holder.date.setText(formatedTime + "");
+   //     holder.date.setText(formatedTime + "");
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

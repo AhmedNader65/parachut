@@ -35,7 +35,8 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         profileFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.profile_fragment, container, false);
-        Utils.setLocale(getContext());
+        globalPrefrencies = new GlobalPrefrencies(getContext());
+        Utils.setLocale(getContext(),globalPrefrencies.getLanguage());
 
 
 
@@ -50,7 +51,6 @@ public class ProfileFragment extends Fragment {
 
         profileFragmentBinding.setProfileVmodel(mViewModel);
         profileFragmentBinding.setLifecycleOwner(this);
-        globalPrefrencies = new GlobalPrefrencies(getContext());
 
         profileFragmentBinding.modify.setOnClickListener(new View.OnClickListener() {
             @Override

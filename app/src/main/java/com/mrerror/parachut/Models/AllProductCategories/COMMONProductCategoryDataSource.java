@@ -1,5 +1,6 @@
 package com.mrerror.parachut.Models.AllProductCategories;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import com.mrerror.parachut.Models.Datum;
 import com.mrerror.parachut.NetWork.RetroWeb;
 import com.mrerror.parachut.NetWork.ServiceApi;
 import com.mrerror.parachut.ui.home.allitem.AllItemActivity;
+import com.mrerror.parachut.utils.GlobalPrefrencies;
 
 import java.util.List;
 
@@ -20,9 +22,11 @@ public class COMMONProductCategoryDataSource extends PageKeyedDataSource<Long, D
     public static int PAGE_SIZE = 8;
     public static long FIRST_PAGE = 1;
 
+    GlobalPrefrencies globalPrefrencies;
     String id_;
-    public COMMONProductCategoryDataSource(String id_) {
+    public COMMONProductCategoryDataSource(String id_, Context context) {
 
+        globalPrefrencies =new GlobalPrefrencies(context);
         this.id_=id_;
     }
 
@@ -30,7 +34,7 @@ public class COMMONProductCategoryDataSource extends PageKeyedDataSource<Long, D
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Long> params, @NonNull final LoadInitialCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONProductCategory(id_,FIRST_PAGE).enqueue(new Callback<AllProductCategories>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONProductCategory(id_,globalPrefrencies.getLanguage(),FIRST_PAGE).enqueue(new Callback<AllProductCategories>() {
             @Override
             public void onResponse(Call<AllProductCategories> call, Response<AllProductCategories> response) {
                 AllProductCategories body = response.body();
@@ -52,7 +56,7 @@ public class COMMONProductCategoryDataSource extends PageKeyedDataSource<Long, D
     @Override
     public void loadBefore(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONProductCategory(id_,params.key).enqueue(new Callback<AllProductCategories>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONProductCategory(id_,globalPrefrencies.getLanguage(),params.key).enqueue(new Callback<AllProductCategories>() {
             @Override
             public void onResponse(Call<AllProductCategories> call, Response<AllProductCategories> response) {
                 AllProductCategories body = response.body();
@@ -79,7 +83,7 @@ public class COMMONProductCategoryDataSource extends PageKeyedDataSource<Long, D
     @Override
     public void loadAfter(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONProductCategory(id_,params.key).enqueue(new Callback<AllProductCategories>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONProductCategory(id_,globalPrefrencies.getLanguage(),params.key).enqueue(new Callback<AllProductCategories>() {
             @Override
             public void onResponse(Call<AllProductCategories> call, Response<AllProductCategories> response) {
                 AllProductCategories body = response.body();

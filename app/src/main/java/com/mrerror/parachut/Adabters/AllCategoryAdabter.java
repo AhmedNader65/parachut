@@ -2,6 +2,7 @@ package com.mrerror.parachut.Adabters;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +17,10 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.mrerror.parachut.Models.CategoryModel.Datum;
+import com.mrerror.parachut.Models.AllCattegoryModel.Datum;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.ui.home.allitem.AllItemActivity;
+import com.mrerror.parachut.utils.Utils;
 
 
 public class AllCategoryAdabter extends PagedListAdapter<Datum, AllCategoryAdabter.CategoryVholder> {
@@ -53,6 +55,11 @@ public class AllCategoryAdabter extends PagedListAdapter<Datum, AllCategoryAdabt
 
         final Datum item = getItem(position);
         holder.textView.setText(item.getName() + "");
+
+
+        String randColor= Utils.randomColor();
+        int parseColor = Color.parseColor("" + randColor);
+        holder.cardView.setCardBackgroundColor(parseColor);
 
         Glide.with(holder.itemView.getContext()).load(item.getImage()).into(holder.imageView);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

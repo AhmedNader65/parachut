@@ -4,19 +4,24 @@ package com.mrerror.parachut.NetWork;
 import com.mrerror.parachut.Models.AboutUs.AboutUsModel;
 import com.mrerror.parachut.Models.AllOffers.AllOffersModel;
 import com.mrerror.parachut.Models.AllProductCategories.AllProductCategories;
+import com.mrerror.parachut.Models.BaseModel;
 import com.mrerror.parachut.Models.CategoryModel.CategoryModel;
 import com.mrerror.parachut.Models.ContactUs.ContactUsModel;
 import com.mrerror.parachut.Models.DetailsOrder.DetailsOrderModel;
 import com.mrerror.parachut.Models.FastOrder.FastOrderModel;
 import com.mrerror.parachut.Models.FinishedOrders.FinishedOrdersModel;
 import com.mrerror.parachut.Models.LogIn.UserLoginModel;
+import com.mrerror.parachut.Models.NotificationsModel.GetNotification;
 import com.mrerror.parachut.Models.OffersModel.OffersModel;
 import com.mrerror.parachut.Models.PendingOrders.PendingOrdersModel;
 import com.mrerror.parachut.Models.Pricing.PriceModel;
+import com.mrerror.parachut.Models.ProductModel.DetailsProductModel;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
 import com.mrerror.parachut.Models.SimilarProducts.SimilarProductsModel;
 import com.mrerror.parachut.Models.SuperMarket.SuperMarketModel;
 import com.mrerror.parachut.Models.UserData.GetUserData;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -41,6 +46,15 @@ public interface ServiceApi {
 //
 //
 
+    @FormUrlEncoded
+    @POST("cart/orders")
+    Call<BaseModel>onPay(@Field("nts") String notes,
+                         @Field("time") String time,
+                         @Field("lat") String lat,
+                         @Field("long") String longtude,
+                         @Field("carts") String jsonArray,
+                         @Header("Authorization") String Authorization);
+
 
     @FormUrlEncoded
     @POST("fast")
@@ -53,101 +67,70 @@ public interface ServiceApi {
             @Header("Authorization") String Authorization);
 
     @GET("categories/mostcommon")
-    Call<CategoryModel> onGetCategories(@Query("page") long page);
-
-
+    Call<CategoryModel> onGetCategories(@Query("page") long page,@Query("lang") String lang);
     @GET("orders/{id}")
-    Call<DetailsOrderModel> onGetDetailsOrder(@Path(value = "id", encoded = true) String id_, @Header("Authorization") String Authorization);
-
-
-
+    Call<DetailsOrderModel> onGetDetailsOrder(@Path(value = "id", encoded = true) String id_, @Query("lang") String lang,@Header("Authorization") String Authorization);
+    @GET("auth/notifications")
+    Call<List<GetNotification>> onGetNotifications(@Query("lang") String lang,@Header("Authorization") String Authorization);
     @GET("categories")
-    Call<com.mrerror.parachut.Models.AllCattegoryModel.CategoryModel> onGetAllCategories(@Query("page") long page);
-
-
+    Call<com.mrerror.parachut.Models.AllCattegoryModel.CategoryModel> onGetAllCategories(@Query("lang") String lang,@Query("page") long page);
     @GET("supermarket")
-    Call<SuperMarketModel> onGetSuperMarkets(@Query("page") long page);
-
+    Call<SuperMarketModel> onGetSuperMarkets(@Query("lang") String lang,@Query("page") long page);
     @GET("allsupermarket")
-    Call<com.mrerror.parachut.Models.AllSuperMarket.SuperMarketModel> onGetAllSuperMarkets(@Query("page") long page);
-
-
+    Call<com.mrerror.parachut.Models.AllSuperMarket.SuperMarketModel> onGetAllSuperMarkets(@Query("lang") String lang,@Query("page") long page);
     @GET("products-offers/mostcommen")
-    Call<OffersModel> onGetOffersModel(@Query("page") long page);
-
+    Call<OffersModel> onGetOffersModel(@Query("lang") String lang,@Query("page") long page);
     @GET("products-offers")
-    Call<AllOffersModel> onGetAllOffersModel(@Query("page") long page);
-
+    Call<AllOffersModel> onGetAllOffersModel(@Query("lang") String lang,@Query("page") long page);
     @GET("products-offers/max/price")
-    Call<AllOffersModel> onGetMAXAllOffersModel(@Query("page") long page);
-
+    Call<AllOffersModel> onGetMAXAllOffersModel(@Query("lang") String lang,@Query("page") long page);
     @GET("products-offers/min/price")
-    Call<AllOffersModel> onGetMINAllOffersModel(@Query("page") long page );
-
+    Call<AllOffersModel> onGetMINAllOffersModel(@Query("lang") String lang,@Query("page") long page );
     @GET("products-offers/mostcommen")
-    Call<AllOffersModel> onGetMostCOMMONOffersModel(@Query("page") long page);
-
-    @GET("products/similar/6")
-    Call<SimilarProductsModel> onGetSimilarProductsModel(@Header("Authorization") String Authorization);
-
-
+    Call<AllOffersModel> onGetMostCOMMONOffersModel(@Query("lang") String lang,@Query("page") long page);
+    @GET("products/{id}")
+    Call<DetailsProductModel> onGetProductsModel(@Path(value = "id", encoded = true) String id_,@Query("lang") String lang);
+    @GET("products/similar/{id}")
+    Call<SimilarProductsModel> onGetSimilarProductsModel(@Path(value = "id", encoded = true) String id_,@Query("lang") String lang);
     @GET("categories/{id}/products")
-    Call<AllProductCategories> onGetAllProductCategory(@Path(value = "id", encoded = true) String id_,@Query("page") long page);
-
+    Call<AllProductCategories> onGetAllProductCategory(@Path(value = "id", encoded = true) String id_,@Query("lang") String lang,@Query("page") long page);
     @GET("categories/{id}/products/max/price")
-    Call<AllProductCategories> onGetMAXAllProductCategory(@Path(value = "id", encoded = true) String id_,@Query("page") long page);
-
+    Call<AllProductCategories> onGetMAXAllProductCategory(@Path(value = "id", encoded = true) String id_,@Query("lang") String lang,@Query("page") long page);
     @GET("categories/{id}/products/min/price")
-    Call<AllProductCategories> onGetMINAllProductCategory(@Path(value = "id", encoded = true) String id_,@Query("page") long page );
-
+    Call<AllProductCategories> onGetMINAllProductCategory(@Path(value = "id", encoded = true) String id_,@Query("lang") String lang,@Query("page") long page );
     @GET("categories/{id}/products/mostcommon")
-    Call<AllProductCategories> onGetMostCOMMONProductCategory(@Path(value = "id", encoded = true) String id_,@Query("page") long page);
+    Call<AllProductCategories> onGetMostCOMMONProductCategory(@Path(value = "id", encoded = true) String id_,@Query("lang") String lang,@Query("page") long page);
 
 
-
-
-
-
+/////////////
+//******
+//////////////
+//////////
 
 
     @GET("supermarket/{id}/products")
-    Call<AllProductCategories> onGetAllProductStores(@Path(value = "id", encoded = true) String id_,@Query("page") long page);
-
+    Call<AllProductCategories> onGetAllProductStores(@Path(value = "id", encoded = true) String id_,@Query("lang") String lang,@Query("page") long page);
     @GET("supermarket/{id}/products/max/price")
-    Call<AllProductCategories> onGetMAXAllProductStores(@Path(value = "id", encoded = true) String id_,@Query("page") long page);
-
+    Call<AllProductCategories> onGetMAXAllProductStores(@Path(value = "id", encoded = true) String id_,@Query("lang") String lang,@Query("page") long page);
     @GET("supermarket/{id}/products/min/price")
-    Call<AllProductCategories> onGetMINAllProductStores(@Path(value = "id", encoded = true) String id_,@Query("page") long page );
-
+    Call<AllProductCategories> onGetMINAllProductStores(@Path(value = "id", encoded = true) String id_,@Query("lang") String lang,@Query("page") long page );
     @GET("supermarket/{id}/products/mostcommon")
-    Call<AllProductCategories> onGetMostCOMMONProductStores(@Path(value = "id", encoded = true) String id_,@Query("page") long page);
-
-
-
-
-
-
+    Call<AllProductCategories> onGetMostCOMMONProductStores(@Path(value = "id", encoded = true) String id_,@Query("lang") String lang,@Query("page") long page);
     @GET("delivery/price")
     Call<PriceModel> onGetPriceModel();
-
     @GET("about_us")
-    Call<AboutUsModel> OnGetAboutUs();
-
+    Call<AboutUsModel> OnGetAboutUs(@Query("lang") String lang);
     @FormUrlEncoded
     @POST("messages")
     Call<ContactUsModel> onGetMessage(@Field("messages") String messages,
                                       @Header("Authorization") String Authorization);
-
     @GET("restaurant/orders/finished")
-    Call<FinishedOrdersModel> onGetFinishedOrders(@Header("Authorization") String Authorization );
-
+    Call<FinishedOrdersModel> onGetFinishedOrders(@Query("lang") String lang,@Header("Authorization") String Authorization );
     @GET("restaurant/orders/pending")
-    Call<PendingOrdersModel> onGetPendingOrders(@Header("Authorization") String Authorization);
-
+    Call<PendingOrdersModel> onGetPendingOrders(@Query("lang") String lang,@Header("Authorization") String Authorization);
     //MH
     @GET("user")
     Call<GetUserData> onGetUserData(@Header("Authorization") String Authorization );
-
     @FormUrlEncoded
     @POST("update")
     Call<GetUserData> onUpdateUser(
@@ -160,9 +143,6 @@ public interface ServiceApi {
             @Field("long") String longitude,
             @Header("Authorization") String Authorization
     );
-
-
-
     @FormUrlEncoded
     @POST("auth/register")
     Call<UserRegisterModel> onRegester(
@@ -173,7 +153,6 @@ public interface ServiceApi {
             @Field("lang") String city_id,
             @Field("password") String password,
             @Field("password_confirmation") String repassword);
-
     @FormUrlEncoded
     @POST("auth/login")
     Call<UserLoginModel> onLogin(

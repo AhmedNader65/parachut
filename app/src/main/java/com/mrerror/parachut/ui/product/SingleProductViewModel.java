@@ -1,51 +1,64 @@
 package com.mrerror.parachut.ui.product;
 
 import android.content.Context;
-
-import androidx.lifecycle.LiveData;
+import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.paging.LivePagedListBuilder;
-import androidx.paging.PagedList;
 
-import com.mrerror.parachut.Models.SimilarProducts.Datum;
-import com.mrerror.parachut.Models.SimilarProducts.SimilarProductsDataSource;
-import com.mrerror.parachut.Models.SimilarProducts.SimilarProductsDataSourceFactory;
+import com.mrerror.parachut.Models.ProductModel.DetailsProductModel;
+import com.mrerror.parachut.Models.SimilarProducts.SimilarProductsModel;
+import com.mrerror.parachut.NetWork.RetroWeb;
+import com.mrerror.parachut.NetWork.ServiceApi;
+import com.mrerror.parachut.utils.GlobalPrefrencies;
+
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SingleProductViewModel extends ViewModel {
-    public LiveData<PagedList<com.mrerror.parachut.Models.SimilarProducts.Datum>> mutableLiveDataOrdersPageList;
-    MutableLiveData<SimilarProductsDataSource> similarProductsDataSourceMutableLiveData;
 
+    GlobalPrefrencies globalPrefrencies;
 
-    public SingleProductViewModel(Context context) {
-        init(context);
-        initAll(context);
+    MutableLiveData<SimilarProductsModel> allsimilarProductsDataSourceMutableLiveData=new MutableLiveData<>();
+    public void setUpSimilarProducts(String id_, Context  context){
+        globalPrefrencies=new GlobalPrefrencies(context);
+        RetroWeb.getClient().create(ServiceApi.class).onGetSimilarProductsModel(id_,globalPrefrencies.getLanguage()).enqueue(new Callback<SimilarProductsModel>() {
+            @Override
+            public void onResponse(Call<SimilarProductsModel> call, Response<SimilarProductsModel> response) {
+                SimilarProductsModel model = response.body();
+                if (model != null) {
+                    allsimilarProductsDataSourceMutableLiveData.setValue(model);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SimilarProductsModel> call, Throwable t) {
+                Log.e("CC", t.getMessage());
+            }
+        });
     }
 
-    private void init(Context context) {
-        SimilarProductsDataSourceFactory similarProductsDataSourceFactory = new SimilarProductsDataSourceFactory(context);
-        similarProductsDataSourceMutableLiveData = similarProductsDataSourceFactory.userLiveDataSource;
-        PagedList.Config config = new PagedList.Config.Builder()
-                .setEnablePlaceholders(false)
-                .setPageSize(SimilarProductsDataSource.PAGE_SIZE)
-                .build();
-        mutableLiveDataOrdersPageList = new LivePagedListBuilder<>(similarProductsDataSourceFactory, config).build();
 
+
+    MutableLiveData<DetailsProductModel> ProductsMutableLiveData=new MutableLiveData<>();
+    public void setUpProduct(String id_, Context context){
+        globalPrefrencies=new GlobalPrefrencies(context);
+        RetroWeb.getClient().create(ServiceApi.class).onGetProductsModel(id_,globalPrefrencies.getLanguage()).enqueue(new Callback<DetailsProductModel>() {
+            @Override
+            public void onResponse(Call<DetailsProductModel> call, Response<DetailsProductModel> response) {
+                DetailsProductModel model = response.body();
+                if (model != null) {
+                    ProductsMutableLiveData.setValue(model);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DetailsProductModel> call, Throwable t) {
+                Log.e("CC", t.getMessage());
+            }
+        });
     }
 
-    public LiveData<PagedList<Datum>> getMutableLiveDataOrdersPageList;
-    MutableLiveData<SimilarProductsDataSource> allsimilarProductsDataSourceMutableLiveData;
-
-
-    private void initAll(Context context) {
-        SimilarProductsDataSourceFactory itemOrdersSourceFactory = new SimilarProductsDataSourceFactory(context);
-        allsimilarProductsDataSourceMutableLiveData = itemOrdersSourceFactory.userLiveDataSource;
-        PagedList.Config config = new PagedList.Config.Builder()
-                .setEnablePlaceholders(false)
-                .setPageSize(SimilarProductsDataSource.PAGE_SIZE)
-                .build();
-        getMutableLiveDataOrdersPageList = new LivePagedListBuilder<>(itemOrdersSourceFactory, config).build();
-
-    }
 
 }

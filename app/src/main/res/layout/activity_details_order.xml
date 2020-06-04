@@ -42,7 +42,7 @@
                 android:layout_weight="1"
 
                 android:gravity="center_vertical"
-                android:text="طلب سريع"
+                android:text="@string/speedOrder"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -60,6 +60,7 @@
 
                 android:layout_width="wrap_content"
 
+                android:id="@+id/cart"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
@@ -86,13 +87,22 @@
 
                     <TextView
 
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="4dp"
+                        android:text="@string/code"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                    <TextView
+
                         android:id="@+id/txtCode"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_margin="4dp"
                         android:layout_weight="1"
-                        android:text="كود : ١٥٤٢٣  "
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -105,7 +115,7 @@
                         android:background="@drawable/btn_green"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:text="الحاله"
+                        android:text="@string/status"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -151,7 +161,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_margin="4dp"
                             android:layout_weight="1"
-                            android:text="اسم المنتج"
+                            android:text="@string/nameProduct"
                             android:textColor="@color/grayblack"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -162,7 +172,7 @@
                             android:layout_gravity="center_vertical"
                             android:paddingStart="16dp"
                             android:paddingEnd="16dp"
-                            android:text="السعر"
+                            android:text="@string/price"
                             android:textColor="@color/grayblack" />
                     </LinearLayout>
 
@@ -177,42 +187,6 @@
                         android:layout_margin="4dp"
                         android:background="@color/grayblack" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:paddingStart="16dp"
-                            android:paddingEnd="16dp"
-                            android:text="#"
-                            android:textColor="@color/black" />
-
-                        <TextView
-
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_margin="4dp"
-                            android:layout_weight="1"
-                            android:text="سعر التوصيل"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/delev_price"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:paddingStart="16dp"
-                            android:paddingEnd="16dp"
-                            android:text="السعر"
-                            android:textColor="@color/black" />
-                    </LinearLayout>
 
                     <LinearLayout
 
@@ -248,7 +222,43 @@
                             android:layout_gravity="center_vertical"
                             android:paddingStart="16dp"
                             android:paddingEnd="16dp"
-                            android:text="السعر"
+                            android:text="@string/price"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:text="#"
+                            android:textColor="@color/black" />
+
+                        <TextView
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:text="@string/sale"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/delev_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:text="@string/price"
                             android:textColor="@color/black" />
                     </LinearLayout>
 
@@ -281,7 +291,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_margin="4dp"
                             android:layout_weight="1"
-                            android:text="اجمالى التكلفة"
+                            android:text="@string/Cost"
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -293,7 +303,7 @@
                             android:layout_gravity="center_vertical"
                             android:paddingStart="16dp"
                             android:paddingEnd="16dp"
-                            android:text="السعر"
+                            android:text="@string/price"
                             android:textColor="@color/colorGreen" />
                     </LinearLayout>
 
@@ -305,7 +315,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="السائق"
+                    android:text="@string/delivery"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -334,7 +344,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
-                        android:text="اسم السائق  "
+                        android:text="@string/nameDelivry"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -399,7 +409,7 @@
                             android:background="@drawable/etcolorgray"
                             android:gravity="center"
                             android:padding="4dp"
-                            android:text="تعديل"
+                            android:text="@string/edit"
                             android:textColor="@color/black"
                             android:textSize="10sp" />
                     </LinearLayout>
@@ -440,7 +450,7 @@
                             android:background="@drawable/etcolorgray"
                             android:gravity="center"
                             android:padding="4dp"
-                            android:text="تعديل"
+                            android:text="@string/edit"
                             android:textColor="@color/black"
                             android:textSize="10sp" />
                     </LinearLayout>
@@ -454,7 +464,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="*يمكنك اعادة الطلب مره اخري بضغطه واحده*"
+                    android:text="@string/requestbyClick"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -466,7 +476,7 @@
                     android:layout_margin="16dp"
                     android:background="@drawable/gradientblue"
                     android:backgroundTint="@color/colorPrimary"
-                    android:text="اعادة الطلب مره اخري"
+                    android:text="@string/reRequest"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />

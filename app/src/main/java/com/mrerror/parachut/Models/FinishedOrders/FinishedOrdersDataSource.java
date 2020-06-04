@@ -30,7 +30,7 @@ public class FinishedOrdersDataSource extends PageKeyedDataSource<Long , Datum> 
     public void loadInitial(@NonNull LoadInitialParams<Long> params, @NonNull final LoadInitialCallback<Long, Datum> callback) {
 
         globalPrefrencies = new GlobalPrefrencies(context);
-        RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders("Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders(globalPrefrencies.getLanguage(),"Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
             @Override
             public void onResponse(Call<FinishedOrdersModel> call, Response<FinishedOrdersModel> response) {
                 FinishedOrdersModel model = response.body();
@@ -49,7 +49,7 @@ public class FinishedOrdersDataSource extends PageKeyedDataSource<Long , Datum> 
 
     @Override
     public void loadBefore(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
-        RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders("Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders(globalPrefrencies.getLanguage(),"Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
             @Override
             public void onResponse(Call<FinishedOrdersModel> call, Response<FinishedOrdersModel> response) {
                 FinishedOrdersModel model = response.body();
@@ -77,7 +77,7 @@ public class FinishedOrdersDataSource extends PageKeyedDataSource<Long , Datum> 
     @Override
     public void loadAfter(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders("Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders(globalPrefrencies.getLanguage(),"Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
             @Override
             public void onResponse(Call<FinishedOrdersModel> call, Response<FinishedOrdersModel> response) {
                 FinishedOrdersModel model = response.body();

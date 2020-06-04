@@ -45,7 +45,7 @@ public class CategoryFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
+        mViewModel=new CategoryViewModel(getContext());
         categoryFragmentBinding.setCategoriedVmodel(mViewModel);
         categoryFragmentBinding.setLifecycleOwner(this);
 
@@ -57,12 +57,13 @@ public class CategoryFragment extends Fragment {
     private void setupCategory() {
         final AllCategoryAdabter adapter = new AllCategoryAdabter();
         categoryFragmentBinding.allcategories.setLayoutManager(new GridLayoutManager(getContext(),4,RecyclerView.VERTICAL,false));
-        mViewModel.mutableLiveDataCategoryPageList.observe(getViewLifecycleOwner(), new Observer<PagedList<Datum>>() {
+        mViewModel.mutableLiveDataAllCategoryPageList.observe(getViewLifecycleOwner(), new Observer<PagedList<com.mrerror.parachut.Models.AllCattegoryModel.Datum>>() {
             @Override
-            public void onChanged(PagedList<Datum> data) {
+            public void onChanged(PagedList<com.mrerror.parachut.Models.AllCattegoryModel.Datum> data) {
                 adapter.submitList(data);
             }
-        });
+
+    });
         categoryFragmentBinding.allcategories.setAdapter(adapter);
     }
 

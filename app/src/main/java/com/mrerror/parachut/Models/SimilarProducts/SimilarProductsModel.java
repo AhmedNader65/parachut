@@ -3,6 +3,7 @@ package com.mrerror.parachut.Models.SimilarProducts;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.mrerror.parachut.Models.Datum;
 
 import java.io.Serializable;
 import java.util.List;

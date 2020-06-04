@@ -1,5 +1,7 @@
 package com.mrerror.parachut.ui.home.homefragment.categoryfragment;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -14,13 +16,15 @@ public class CategoryViewModel extends ViewModel {
     // TODO: Implement the ViewModel
     public LiveData<PagedList<Datum>> mutableLiveDataCategoryPageList;
     MutableLiveData<CategoryDataSource> categoryDataSourceMutableLiveData;
-    public CategoryViewModel() {
+   Context context;
+    public CategoryViewModel(Context context) {
+        this.context=context;
         init();
         initAll();
     }
 
     private void init() {
-        CategoryDataSourceFactory itemDataSourceFactory = new CategoryDataSourceFactory();
+        CategoryDataSourceFactory itemDataSourceFactory = new CategoryDataSourceFactory(context);
         categoryDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -35,7 +39,7 @@ public class CategoryViewModel extends ViewModel {
 
 
     private void initAll() {
-        com.mrerror.parachut.Models.AllCattegoryModel.CategoryDataSourceFactory itemDataSourceFactory = new com.mrerror.parachut.Models.AllCattegoryModel.CategoryDataSourceFactory();
+        com.mrerror.parachut.Models.AllCattegoryModel.CategoryDataSourceFactory itemDataSourceFactory = new com.mrerror.parachut.Models.AllCattegoryModel.CategoryDataSourceFactory(context);
         allcategoryDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)

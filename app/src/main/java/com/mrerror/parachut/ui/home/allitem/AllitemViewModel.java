@@ -1,5 +1,7 @@
 package com.mrerror.parachut.ui.home.allitem;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -50,7 +52,9 @@ public class AllitemViewModel extends ViewModel {
     MutableLiveData<MINOffersDataSource> minofeersDataSourceMutableLiveData;
     MutableLiveData<COMMONOffersDataSource> commonofeersDataSourceMutableLiveData;
 
-    public AllitemViewModel() {
+    Context context;
+    public AllitemViewModel(AllItemActivity allItemActivity) {
+        context=allItemActivity.getBaseContext();
         checkHowToSetFilterType(100);
         init_sm();
     }
@@ -63,15 +67,14 @@ public class AllitemViewModel extends ViewModel {
             COMMON_offers();
         }else if (i==3){
             MIN_offers();
-        }
-        else{
+        }else{
             init_offers();
         }
     }
 
     public void init_offers() {
 
-        OffersDataSourceFactory itemDataSourceFactory = new OffersDataSourceFactory();
+        OffersDataSourceFactory itemDataSourceFactory = new OffersDataSourceFactory(context);
         ofeersDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -81,7 +84,7 @@ public class AllitemViewModel extends ViewModel {
     }
     public void MAX_offers() {
 
-        MAXOffersDataSourceFactory itemDataSourceFactory = new MAXOffersDataSourceFactory();
+        MAXOffersDataSourceFactory itemDataSourceFactory = new MAXOffersDataSourceFactory(context);
         maxofeersDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -91,7 +94,7 @@ public class AllitemViewModel extends ViewModel {
     }
     public void MIN_offers() {
 
-        MINOffersDataSourceFactory itemDataSourceFactory = new MINOffersDataSourceFactory();
+        MINOffersDataSourceFactory itemDataSourceFactory = new MINOffersDataSourceFactory(context);
         minofeersDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -101,7 +104,7 @@ public class AllitemViewModel extends ViewModel {
     }
     public void COMMON_offers() {
 
-        COMMONOffersDataSourceFactory itemDataSourceFactory = new COMMONOffersDataSourceFactory();
+        COMMONOffersDataSourceFactory itemDataSourceFactory = new COMMONOffersDataSourceFactory(context);
         commonofeersDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -115,7 +118,7 @@ public class AllitemViewModel extends ViewModel {
 
     private void init_sm() {
 
-        SuperMarketDataSourceFactory itemDataSourceFactory = new SuperMarketDataSourceFactory();
+        SuperMarketDataSourceFactory itemDataSourceFactory = new SuperMarketDataSourceFactory(context);
         superMarketDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -154,7 +157,7 @@ public class AllitemViewModel extends ViewModel {
     
     public void init_ProductCategory(String ID_) {
 
-        ProductCategoryDataSourceFactory itemDataSourceFactory = new ProductCategoryDataSourceFactory(ID_);
+        ProductCategoryDataSourceFactory itemDataSourceFactory = new ProductCategoryDataSourceFactory(ID_,context);
         ProductCategoryDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -164,7 +167,7 @@ public class AllitemViewModel extends ViewModel {
     }
     public void MAX_ProductCategory(String ID_) {
 
-        MAXProductCategoryDataSourceFactory itemDataSourceFactory = new MAXProductCategoryDataSourceFactory(ID_);
+        MAXProductCategoryDataSourceFactory itemDataSourceFactory = new MAXProductCategoryDataSourceFactory(ID_,context);
         maxProductCategoryDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -174,7 +177,7 @@ public class AllitemViewModel extends ViewModel {
     }
     public void MIN_ProductCategory(String ID_) {
 
-        MINProductCategoryDataSourceFactory itemDataSourceFactory = new MINProductCategoryDataSourceFactory(ID_);
+        MINProductCategoryDataSourceFactory itemDataSourceFactory = new MINProductCategoryDataSourceFactory(ID_,context);
         minProductCategoryDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -184,7 +187,7 @@ public class AllitemViewModel extends ViewModel {
     }
     public void COMMON_ProductCategory(String ID_) {
 
-        COMMONProductCategoryDataSourceFactory itemDataSourceFactory = new COMMONProductCategoryDataSourceFactory(ID_);
+        COMMONProductCategoryDataSourceFactory itemDataSourceFactory = new COMMONProductCategoryDataSourceFactory(ID_,context);
         commonProductCategoryDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -221,7 +224,7 @@ public class AllitemViewModel extends ViewModel {
 
     public void init_ProductStores(String ID_) {
 
-        ProductStoresDataSourceFactory itemDataSourceFactory = new ProductStoresDataSourceFactory(ID_);
+        ProductStoresDataSourceFactory itemDataSourceFactory = new ProductStoresDataSourceFactory(ID_,context);
         ProductStoresDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -231,7 +234,7 @@ public class AllitemViewModel extends ViewModel {
     }
     public void MAX_ProductStores(String ID_) {
 
-        MAXProductStoresDataSourceFactory itemDataSourceFactory = new MAXProductStoresDataSourceFactory(ID_);
+        MAXProductStoresDataSourceFactory itemDataSourceFactory = new MAXProductStoresDataSourceFactory(ID_,context);
         maxProductStoresDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -241,7 +244,7 @@ public class AllitemViewModel extends ViewModel {
     }
     public void MIN_ProductStores(String ID_) {
 
-        MINProductStoresDataSourceFactory itemDataSourceFactory = new MINProductStoresDataSourceFactory(ID_);
+        MINProductStoresDataSourceFactory itemDataSourceFactory = new MINProductStoresDataSourceFactory(ID_,context);
         minProductStoresDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
@@ -251,7 +254,7 @@ public class AllitemViewModel extends ViewModel {
     }
     public void COMMON_ProductStores(String ID_) {
 
-        COMMONProductStoresDataSourceFactory itemDataSourceFactory = new COMMONProductStoresDataSourceFactory(ID_);
+        COMMONProductStoresDataSourceFactory itemDataSourceFactory = new COMMONProductStoresDataSourceFactory(ID_,context);
         commonProductStoresDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)

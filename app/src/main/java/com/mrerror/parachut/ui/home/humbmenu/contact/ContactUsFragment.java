@@ -34,20 +34,20 @@ public class ContactUsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         contactUsFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.contact_us_fragment, container, false);
-        Utils.setLocale(getContext());
+        globalPrefrencies = new GlobalPrefrencies(getContext());
+        Utils.setLocale(getContext(),globalPrefrencies.getLanguage());
         return contactUsFragmentBinding.getRoot();    }
     GlobalPrefrencies globalPrefrencies;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ContactUsViewModel.class);
         // TODO: Use the ViewModel
 
         contactUsFragmentBinding.setLifecycleOwner(this);
         contactUsFragmentBinding.setContactUsVmodel(mViewModel);
-        globalPrefrencies = new GlobalPrefrencies(getContext());
-
         contactUsFragmentBinding.btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -49,8 +49,8 @@ public class OrdersFragment extends Fragment {
     private void initWidget() {
 
         adaptar = new PagerAdaptar(getChildFragmentManager());
-        adaptar.addNewFragment(new FinishOrdersFragment());
         adaptar.addNewFragment(new AllorderFragment());
+        adaptar.addNewFragment(new FinishOrdersFragment());
         ordersFragmentBinding.tabLayout.setupWithViewPager(ordersFragmentBinding.viewpager);
         ordersFragmentBinding.viewpager.setAdapter(adaptar);
         setUpTabsTopPager();
@@ -58,8 +58,8 @@ public class OrdersFragment extends Fragment {
     }
 
     private void setUpTabsTopPager() {
-        ordersFragmentBinding.tabLayout.getTabAt(0).setText("تم التنفيذ");
-        ordersFragmentBinding.tabLayout.getTabAt(1).setText("قيد التنفيذ");
+        ordersFragmentBinding.tabLayout.getTabAt(0).setText("قيد التنفيذ");
+        ordersFragmentBinding.tabLayout.getTabAt(1).setText("تم التنفيذ");
         //tabLayout.setTabTextColors(Color.parseColor("#FFAFAFAF"), Color.parseColor("#000000"));
 
     }

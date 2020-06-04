@@ -53,7 +53,7 @@ public class LoginFragment extends Fragment {
         loginFragmentBinding.setLifecycleOwner(this);
         // TODO: Use the ViewModel
         globalPrefrencies = new GlobalPrefrencies(getContext());
-        Utils.setLocale(Objects.requireNonNull(getContext()));
+        Utils.setLocale(getContext(),globalPrefrencies.getLanguage());
 
         loginFragmentBinding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

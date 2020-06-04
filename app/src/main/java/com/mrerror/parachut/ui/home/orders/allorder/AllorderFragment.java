@@ -1,6 +1,7 @@
 package com.mrerror.parachut.ui.home.orders.allorder;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mrerror.parachut.Adabters.PendingOrdersAdapter;
 import com.mrerror.parachut.Models.PendingOrders.Datum;
@@ -49,11 +51,14 @@ public class AllorderFragment extends Fragment {
     private void setupPendingOrders()
     {
         final PendingOrdersAdapter adapter = new PendingOrdersAdapter(getContext());
-        allorderFragmentBinding.rvPendingOrders.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager manager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
+        allorderFragmentBinding.rvPendingOrders.setLayoutManager(manager);
         mViewModel.mutableLiveDataAllOrdersPageList.observe(getViewLifecycleOwner(), new Observer<PagedList<Datum>>() {
             @Override
             public void onChanged(PagedList<Datum> data) {
                 adapter.submitList(data);
+                Log.e("XCXC", data.size() + "");
+
             }
         });
         allorderFragmentBinding.rvPendingOrders.setAdapter(adapter);

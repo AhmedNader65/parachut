@@ -44,6 +44,7 @@
 
                 android:layout_width="wrap_content"
 
+                android:id="@+id/backbtn"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
@@ -72,14 +73,40 @@
                 android:layout_margin="8dp"
                 android:src="@drawable/ic_magnifying_glass" />
 
-            <ImageView
+            <RelativeLayout
 
-                android:layout_width="wrap_content"
+                android:layout_width="34dp"
 
-                android:layout_height="wrap_content"
+
+                android:layout_marginStart="16dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
-                android:src="@drawable/ic_parachute" />
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/cart"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_parachute"
+                    />
+
+                <TextView
+                    android:textColor="@color/white"
+                    android:id="@+id/cartText"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/btn_greenwhite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:visibility="gone"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    />
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -87,6 +114,22 @@
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal">
+            <TextView
+                android:paddingStart="16dp"
+                android:layout_margin="8dp"
+                android:layout_width="wrap_content"
+                android:id="@+id/txtcatname"
+                android:background="#1EE0E4E0"
+                android:layout_height="wrap_content"/>
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_below="@+id/viewPager"
+                android:layout_centerHorizontal="true"
+                android:foregroundGravity="center"
+                />
+
 
         </LinearLayout>
     </RelativeLayout>
@@ -95,6 +138,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:id="@+id/txtname"
         android:text="كيلو خيار قطع كبيره"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -111,7 +155,7 @@
         >
 
         <TextView
-            android:id="@+id/btnAddtoCard"
+            android:id="@+id/txtprice"
             android:layout_width="0dp"
 
             android:layout_height="45dp"
@@ -182,6 +226,7 @@
         <TextView
             android:layout_width="match_parent"
 android:layout_marginStart="16dp"
+            android:id="@+id/txtoffer"
             android:layout_marginEnd="16dp"
             android:textColor="@color/red"
             android:textSize="14sp"
@@ -269,6 +314,7 @@ android:layout_marginStart="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/btnAddtoCard"
             android:background="@drawable/btn_plus"
             android:layout_width="match_parent"
             android:layout_height="55dp"/>

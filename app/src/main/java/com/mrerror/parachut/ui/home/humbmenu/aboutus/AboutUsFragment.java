@@ -31,7 +31,6 @@ public class AboutUsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         aboutUsFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.about_us_fragment, container, false);
-        Utils.setLocale(getContext());
 
         return aboutUsFragmentBinding.getRoot();
     }
@@ -45,6 +44,7 @@ public class AboutUsFragment extends Fragment {
         aboutUsFragmentBinding.setLifecycleOwner(this);
         aboutUsFragmentBinding.setAboutUsVmodel(mViewModel);
         globalPrefrencies = new GlobalPrefrencies(getContext());
+        Utils.setLocale(getContext(),globalPrefrencies.getLanguage());
 
         mViewModel.getAboutUs(getContext());
 
@@ -59,8 +59,8 @@ public class AboutUsFragment extends Fragment {
             @Override
             public void onChanged(AboutUsModel aboutUsModel) {
 
-                aboutUsFragmentBinding.tvWho.setText(aboutUsModel.getData().get(0).getWhoUs());
-                aboutUsFragmentBinding.tvFeature.setText(aboutUsModel.getData().get(0).getFeature());
+                aboutUsFragmentBinding.tvWho.setText(aboutUsModel.getData().get(0).getWhoUs()+"");
+                aboutUsFragmentBinding.tvFeature.setText(aboutUsModel.getData().get(0).getFeature()+"");
 
             }
         });

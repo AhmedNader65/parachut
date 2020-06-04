@@ -1,5 +1,6 @@
 package com.mrerror.parachut.ui.home.allitem;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -17,8 +18,11 @@ import com.mrerror.parachut.Adabters.AllSuperMarketAdapters;
 import com.mrerror.parachut.Models.Datum;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.ActivityAllItemBinding;
+import com.mrerror.parachut.ui.cart.CartActivity;
+import com.mrerror.parachut.ui.home.MainActivity;
+import com.mrerror.parachut.utils.ChangeCountCartInterface;
 
-public class AllItemActivity extends AppCompatActivity implements OffersBottomSheetDialog.BottomSheetListener {
+public class AllItemActivity extends AppCompatActivity implements OffersBottomSheetDialog.BottomSheetListener , ChangeCountCartInterface {
 
     ActivityAllItemBinding activityAllItemBinding;
     AllitemViewModel allitemViewModel;
@@ -27,8 +31,8 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
         super.onCreate(savedInstanceState);
 
         activityAllItemBinding= DataBindingUtil.setContentView(this, R.layout.activity_all_item);
-        allitemViewModel= ViewModelProviders.of(this).get(AllitemViewModel.class);
 
+        allitemViewModel=new AllitemViewModel(this);
         activityAllItemBinding.setItemVmodel(allitemViewModel);
         activityAllItemBinding.setLifecycleOwner(this);
 
@@ -46,6 +50,14 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
             setUpProductStores(100,_id);
         }
 
+        activityAllItemBinding.cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AllItemActivity.this, CartActivity.class);
+
+                startActivity(intent);
+            }
+        });
         activityAllItemBinding.filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,6 +66,12 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
             }
         });
 
+        activityAllItemBinding.backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
@@ -97,7 +115,6 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
 
 
     }
-
     private void setUpProductsCategory(int i, String _id) {
 
         final AllProductCategotiesAdapters adapter = new AllProductCategotiesAdapters();
@@ -139,7 +156,6 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
 
 
     }
-
     private void setUpAllStores() {
 
         final AllSuperMarketAdapters adapter = new AllSuperMarketAdapters();
@@ -153,7 +169,6 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
         activityAllItemBinding.items.setAdapter(adapter);
 
     }
-
     public void setUpAllOffers(int i) {
         final AllOffersAdapters adapter = new AllOffersAdapters();
         activityAllItemBinding.items.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL,false));
@@ -191,9 +206,28 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
         }
         activityAllItemBinding.items.setAdapter(adapter);
     }
-
     @Override
     public void onButtonClicked(String text) {
 
+    }
+
+    ChangeCountCartInterface changeCountCartInterface;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        changeCountCartInterface=this;
+        onChangeCount();
+    }
+
+    @Override
+    public void onChangeCount() {
+
+        int size = CartActivity.dataArrayListProduct.size();
+        if(size>0){
+            activityAllItemBinding.cartText.setText(size+"");
+            activityAllItemBinding.cartText.setVisibility(View.VISIBLE);
+        }else {
+            activityAllItemBinding.cartText.setVisibility(View.INVISIBLE);
+        }
     }
 }

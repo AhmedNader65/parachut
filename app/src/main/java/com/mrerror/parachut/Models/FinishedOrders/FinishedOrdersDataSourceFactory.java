@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.paging.DataSource;
 
 
-public class FinishedOrdersDataSourceFactory extends DataSource.Factory<Long , com.mrerror.parachut.Models.FinishedOrders.Datum> {
+public class FinishedOrdersDataSourceFactory extends DataSource.Factory<Long ,Datum> {
 
     public MutableLiveData<FinishedOrdersDataSource> userLiveDataSource = new MutableLiveData<>();
 

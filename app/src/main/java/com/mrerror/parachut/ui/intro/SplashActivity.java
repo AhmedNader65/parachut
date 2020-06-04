@@ -7,7 +7,9 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mrerror.parachut.R;
+import com.mrerror.parachut.ui.home.MainActivity;
 import com.mrerror.parachut.ui.usercontrol.UserActivity;
+import com.mrerror.parachut.utils.GlobalPrefrencies;
 
 public class SplashActivity extends AppCompatActivity {
     Intent intent2;
@@ -25,9 +27,15 @@ public class SplashActivity extends AppCompatActivity {
 
 
     }
+    GlobalPrefrencies  globalPrefrencies;
     private void CheckIntoActivity() {
+globalPrefrencies=new GlobalPrefrencies(this);
+        if(globalPrefrencies.getLoginStatus()){
+            intent2 = new Intent(SplashActivity.this, MainActivity.class);
+        }else {
+            intent2 = new Intent(SplashActivity.this, UserActivity.class);
+        }
 
-        intent2 = new Intent(SplashActivity.this, UserActivity.class);
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {

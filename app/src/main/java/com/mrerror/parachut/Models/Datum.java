@@ -3,6 +3,8 @@ package com.mrerror.parachut.Models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.mrerror.parachut.Models.ProductModel.Category;
+import com.mrerror.parachut.Models.ProductModel.Supermarket;
 
 import java.io.Serializable;
 
@@ -209,4 +211,77 @@ public class Datum implements Serializable
         this.lang = lang;
     }
 
+
+
+    @SerializedName("Category")
+    @Expose
+    private Category category;
+    @SerializedName("Supermarket")
+    @Expose
+    private Supermarket supermarket;
+
+    @SerializedName("has_offer")
+    @Expose
+    private Boolean hasOffer;
+    @SerializedName("owner")
+    @Expose
+    private Object owner;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Supermarket getSupermarket() {
+        return supermarket;
+    }
+
+    public void setSupermarket(Supermarket supermarket) {
+        this.supermarket = supermarket;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Boolean getHasOffer() {
+        return hasOffer;
+    }
+
+    public void setHasOffer(Boolean hasOffer) {
+        this.hasOffer = hasOffer;
+    }
+
+    public Object getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Object owner) {
+        this.owner = owner;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+
+    @SerializedName("count")
+    @Expose
+    private Integer count;
 }

@@ -37,11 +37,11 @@ public class AllorderViewModel extends ViewModel {
 
 
     private void initAll(Context context) {
-        com.mrerror.parachut.Models.PendingOrders.PendingOrdersDataSourceFactory itemOrdersSourceFactory = new com.mrerror.parachut.Models.PendingOrders.PendingOrdersDataSourceFactory(context);
+        PendingOrdersDataSourceFactory itemOrdersSourceFactory = new PendingOrdersDataSourceFactory(context);
         allpendingOrdersDataSourceMutableLiveData = itemOrdersSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
-                .setPageSize(com.mrerror.parachut.Models.PendingOrders.PendingOrdersDataSource.PAGE_SIZE)
+                .setPageSize(PendingOrdersDataSource.PAGE_SIZE)
                 .build();
         getMutableLiveDataOrdersPageList = new LivePagedListBuilder<>(itemOrdersSourceFactory, config).build();
 

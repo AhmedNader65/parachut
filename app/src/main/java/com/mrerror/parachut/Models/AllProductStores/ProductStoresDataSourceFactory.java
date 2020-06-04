@@ -1,5 +1,7 @@
 package com.mrerror.parachut.Models.AllProductStores;
 
+import android.content.Context;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.paging.DataSource;
 
@@ -10,16 +12,18 @@ public class ProductStoresDataSourceFactory extends DataSource.Factory<Long, Dat
 
     public MutableLiveData<ProductStoresDataSource> userLiveDataSource = new MutableLiveData<>();
 
+    Context context;
     String id__;
-    public ProductStoresDataSourceFactory(String id_) {
+    public ProductStoresDataSourceFactory(String id_, Context context) {
     id__=id_;
+    this.context=context;
     }
 
 
     @Override
     public DataSource<Long, Datum> create() {
 
-        ProductStoresDataSource offersDataSource = new ProductStoresDataSource(id__);
+        ProductStoresDataSource offersDataSource = new ProductStoresDataSource(id__,context);
         userLiveDataSource.postValue(offersDataSource);
         return offersDataSource;
     }

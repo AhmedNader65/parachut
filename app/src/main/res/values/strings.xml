@@ -11,6 +11,31 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_user">UserActivity</string>
 
+    <string name="title_activity_fast_order">FastOrderActivity</string>
+
+    <string name="title_activity_goto_home">GotoHomeActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_details_order">DetailsOrderActivity</string>
+    <string name="google_maps_key">AIzaSyBkaf80f8PXyiQ_SfbEGh3S7SUuMQZdePY</string>
+    <string name="all_item">All item</string>
+
+
+
+    <string name="aboutus">من نحن ؟</string>
+    <string name="features">ما يميزنا</string>
+    <string name="nameapp">براشوط</string>
+    <string name="all">الكل</string>
+    <string name="cart">سلة الشراء</string>
+    <string name="countProducts">عدد المنتجات :</string>
+    <string name="sum">المجموع :</string>
+    <string name="EGP">جنيه</string>
+    <string name="code">كود :</string>
+    <string name="speedOrder">طلب سريع</string>
+    <string name="status">الحاله</string>
+    <string name="nameProduct">اسم المنتج</string>
+    <string name="price">السعر</string>
+    <string name="Cost">اجمالى التكلفة</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="pass_name">كلمة السر</string>
     <string name="forget_pass">نسيت كلمة السر ؟</string>
@@ -21,11 +46,15 @@
     <string name="new_acc">  حساب جديد</string>
     <string name="phone_number">رقم الهاتف</string>
     <string name="name_app">براشوط</string>
-    <string name="title_activity_fast_order">FastOrderActivity</string>
-
-    <string name="title_activity_goto_home">GotoHomeActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_details_order">DetailsOrderActivity</string>
+    <string name="confirm">تأكيد الطلب</string>
+    <string name="sale">الخصم بالجنيه</string>
+    <string name="delivery">السائق</string>
+    <string name="nameDelivry">اسم السائق</string>
+    <string name="edit">تعديل</string>
+    <string name="reRequest">اعادة الطلب مره اخري</string>
+    <string name="requestbyClick">*يمكنك اعادة الطلب مره اخري بضغطه واحده*</string>
+    <string name="sendReq">ارسال طلب</string>
+    <string name="contactUs">تواصل معنا</string>
+    <string name="whatsReq">ما هو طلبك ؟</string>
 
 </resources>

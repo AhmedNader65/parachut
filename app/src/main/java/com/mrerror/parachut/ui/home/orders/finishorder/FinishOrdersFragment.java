@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mrerror.parachut.Adabters.OrdersAdapter;
 import com.mrerror.parachut.Models.FinishedOrders.Datum;
@@ -44,20 +45,18 @@ public class FinishOrdersFragment extends Fragment {
         finishOrdersFragmentBinding.setFinishOrdersVmodel(mViewModel);
 
         setupFinishedOrders();
-
-
-
     }
 
 
     private void setupFinishedOrders() {
         final OrdersAdapter adapter = new OrdersAdapter(getContext());
-        finishOrdersFragmentBinding.rvFinishedOrders.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager manager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
+        finishOrdersFragmentBinding.rvFinishedOrders.setLayoutManager(manager);
         mViewModel.mutableLiveDataOrdersPageList.observe(getViewLifecycleOwner(), new Observer<PagedList<Datum>>() {
             @Override
             public void onChanged(PagedList<Datum> data) {
                 adapter.submitList(data);
-                Log.e("XXXCXC", data.size() + "");
+                Log.e("finishXXXCXC", adapter.getItemCount() + "");
             }
         });
 

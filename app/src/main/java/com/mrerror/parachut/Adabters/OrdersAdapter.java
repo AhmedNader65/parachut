@@ -59,7 +59,7 @@ public class OrdersAdapter extends PagedListAdapter<Datum , OrdersAdapter.Orders
         holder.status.setText(item.getStatus() + "");
         holder.productNum.setText("عدد المنتجات : " + "(" + item.getOrderProducts().get(0).getQuantity() + ")" + " منتج");
         holder.cost.setText("اجمالي التكلفه :" + item.getFinalPrice() + " جنيه ");
-
+/*
         String time = item.getCreatedAt();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
@@ -72,7 +72,7 @@ public class OrdersAdapter extends PagedListAdapter<Datum , OrdersAdapter.Orders
         String formatedTime = sdf2.format(date);
 
         holder.date.setText(formatedTime + "");
-
+*/
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

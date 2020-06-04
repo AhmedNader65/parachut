@@ -47,9 +47,10 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         // TODO: Use the ViewModel
 
+
+        mViewModel =new HomeViewModel(getContext());
         homeFragmentBinding.setHomeVmodel(mViewModel);
         homeFragmentBinding.setLifecycleOwner(this);
 
@@ -76,6 +77,7 @@ public class HomeFragment extends Fragment {
                 openAllItemActivity("Stores");
             }
         });
+
     }
     public void showFragment(Fragment fragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -127,6 +129,7 @@ public class HomeFragment extends Fragment {
             }
         });
         homeFragmentBinding.offers.setAdapter(adapter);
+
     }
 
 }

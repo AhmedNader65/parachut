@@ -18,8 +18,10 @@ public class InvoisAdapter extends RecyclerView.Adapter<InvoisAdapter.InvoisNHol
 
     ArrayList<OrderProduct> orderProductList = new ArrayList<>();
 
-    public void setOrderProduct(ArrayList<OrderProduct> categories) {
+    sumOffers sumOffers;
+    public void setOrderProduct(ArrayList<OrderProduct> categories,sumOffers sumOffers) {
         this.orderProductList = categories;
+        this.sumOffers=sumOffers;
         notifyDataSetChanged();
     }
 
@@ -35,7 +37,19 @@ public class InvoisAdapter extends RecyclerView.Adapter<InvoisAdapter.InvoisNHol
         OrderProduct orderProduct = orderProductList.get(position);
         holder.textViewName.setText(orderProduct.getProducts().getName() + " (" + orderProduct.getQuantity() + ") ");
         holder.textViewPrice.setText(orderProduct.getProducts().getOffer() + " جنيه ");
-        holder.textViewId.setText(position + "");
+        holder.textViewId.setText((position+1) + "");
+
+            double priceItem = (orderProduct.getProducts().getOffer()) * (orderProduct.getQuantity());
+        double newPrice = addNewPrice(priceItem);
+
+        sumOffers.getAllpriceOffers(newPrice);
+    }
+
+    double allPrice=0;
+    private double addNewPrice(double priceItem) {
+        allPrice=allPrice+priceItem;
+
+        return allPrice;
     }
 
     @Override
@@ -57,5 +71,8 @@ public class InvoisAdapter extends RecyclerView.Adapter<InvoisAdapter.InvoisNHol
 
         }
 
+    }
+    public  interface sumOffers{
+        void  getAllpriceOffers(double newPrice);
     }
 }

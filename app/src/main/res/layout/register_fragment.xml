@@ -37,6 +37,7 @@
                     <ImageView
                         android:layout_margin="16dp"
                         android:layout_width="32dp"
+                        android:id="@+id/backbtn"
                         android:src="@drawable/ic_arrow_pointing_to_right"
                         android:layout_gravity="center_vertical"
                         android:layout_height="32dp" />
@@ -136,6 +137,7 @@
                     android:layout_margin="16dp"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:id="@+id/layaddress"
                     android:background="@drawable/etcolor"
                     android:layout_width="match_parent"
                     android:layout_height="45dp">
@@ -147,13 +149,14 @@
                         android:layout_margin="12dp"
                         android:layout_height="32dp" />
 
-                    <EditText
+                    <TextView
                         android:background="@color/graywhite"
                         android:layout_marginStart="16dp"
                         android:layout_gravity="center"
                         android:gravity="center_vertical"
                         android:hint=" اضغط لاضافة عنوان"
                         android:id="@+id/addressId"
+                        android:lines="1"
                         android:layout_width="match_parent"
                         android:textSize="16dp"
                         android:layout_marginEnd="16dp"

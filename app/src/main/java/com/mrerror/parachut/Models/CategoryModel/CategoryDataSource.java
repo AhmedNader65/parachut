@@ -1,10 +1,13 @@
 package com.mrerror.parachut.Models.CategoryModel;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.paging.PageKeyedDataSource;
 
 import com.mrerror.parachut.NetWork.RetroWeb;
 import com.mrerror.parachut.NetWork.ServiceApi;
+import com.mrerror.parachut.utils.GlobalPrefrencies;
 
 import java.util.List;
 
@@ -16,11 +19,16 @@ public class CategoryDataSource extends PageKeyedDataSource<Long, Datum> {
     public static int PAGE_SIZE = 8;
     public static long FIRST_PAGE = 1;
 
+    GlobalPrefrencies globalPrefrencies;
+    public CategoryDataSource(Context context) {
+        globalPrefrencies=new GlobalPrefrencies(context);
+    }
+
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Long> params, @NonNull final LoadInitialCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetCategories(FIRST_PAGE).enqueue(new Callback<CategoryModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetCategories(FIRST_PAGE,globalPrefrencies.getLanguage()).enqueue(new Callback<CategoryModel>() {
             @Override
             public void onResponse(Call<CategoryModel> call, Response<CategoryModel> response) {
                 CategoryModel body = response.body();
@@ -41,7 +49,7 @@ public class CategoryDataSource extends PageKeyedDataSource<Long, Datum> {
     @Override
     public void loadBefore(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetCategories(params.key).enqueue(new Callback<CategoryModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetCategories(params.key,globalPrefrencies.getLanguage()).enqueue(new Callback<CategoryModel>() {
             @Override
             public void onResponse(Call<CategoryModel> call, Response<CategoryModel> response) {
                 CategoryModel body = response.body();
@@ -68,7 +76,7 @@ public class CategoryDataSource extends PageKeyedDataSource<Long, Datum> {
     @Override
     public void loadAfter(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetCategories(params.key).enqueue(new Callback<CategoryModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetCategories(params.key,globalPrefrencies.getLanguage()).enqueue(new Callback<CategoryModel>() {
             @Override
             public void onResponse(Call<CategoryModel> call, Response<CategoryModel> response) {
                 CategoryModel body = response.body();

@@ -1,5 +1,6 @@
 package com.mrerror.parachut.Models.AllOffers;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.paging.PageKeyedDataSource;
 import com.mrerror.parachut.Models.Datum;
 import com.mrerror.parachut.NetWork.RetroWeb;
 import com.mrerror.parachut.NetWork.ServiceApi;
+import com.mrerror.parachut.utils.GlobalPrefrencies;
 
 import java.util.List;
 
@@ -19,11 +21,17 @@ public class COMMONOffersDataSource extends PageKeyedDataSource<Long, Datum> {
     public static int PAGE_SIZE = 8;
     public static long FIRST_PAGE = 1;
 
+    GlobalPrefrencies globalPrefrencies;
+    public COMMONOffersDataSource(Context context) {
+
+        globalPrefrencies =new GlobalPrefrencies(context);
+    }
+
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Long> params, @NonNull final LoadInitialCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONOffersModel(FIRST_PAGE).enqueue(new Callback<AllOffersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONOffersModel(globalPrefrencies.getLanguage(),FIRST_PAGE).enqueue(new Callback<AllOffersModel>() {
             @Override
             public void onResponse(Call<AllOffersModel> call, Response<AllOffersModel> response) {
                 AllOffersModel body = response.body();
@@ -45,7 +53,7 @@ public class COMMONOffersDataSource extends PageKeyedDataSource<Long, Datum> {
     @Override
     public void loadBefore(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONOffersModel(params.key).enqueue(new Callback<AllOffersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONOffersModel(globalPrefrencies.getLanguage(),params.key).enqueue(new Callback<AllOffersModel>() {
             @Override
             public void onResponse(Call<AllOffersModel> call, Response<AllOffersModel> response) {
                 AllOffersModel body = response.body();
@@ -72,7 +80,7 @@ public class COMMONOffersDataSource extends PageKeyedDataSource<Long, Datum> {
     @Override
     public void loadAfter(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONOffersModel(params.key).enqueue(new Callback<AllOffersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetMostCOMMONOffersModel(globalPrefrencies.getLanguage(),params.key).enqueue(new Callback<AllOffersModel>() {
             @Override
             public void onResponse(Call<AllOffersModel> call, Response<AllOffersModel> response) {
                 AllOffersModel body = response.body();

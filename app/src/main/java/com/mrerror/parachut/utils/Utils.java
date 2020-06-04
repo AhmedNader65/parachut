@@ -21,10 +21,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Utils {
+    public static final String LOCATION_PREFS = "Location_Prefs";
 
-    public static void setLocale(Context context) {
+    public static void setLocale(Context context,String lang) {
 
         Resources res = context.getResources();
         // Change locale settings in the app.
@@ -32,10 +35,17 @@ public class Utils {
         Configuration conf = res.getConfiguration();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            conf.setLocale(new Locale("ar")); // API 17+ only.
+            conf.setLocale(new Locale(lang)); // API 17+ only.
         }
         // Use conf.locale = new Locale(...) if targeting lower versions
         res.updateConfiguration(conf, dm);
+    }
+
+    public  static String randomColor(){
+        Random random = new Random();
+        String myRandomColor = String.format("#%06x", random.nextInt(256 * 256 * 256));
+        Log.e("SS",myRandomColor);
+        return  myRandomColor;
     }
 
     public static void requestFocus(View view, Window window) {
@@ -44,6 +54,44 @@ public class Utils {
         }
     }
 
+        public static String timeAgo(String time) {
+            try
+            {
+                SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss",Locale.ENGLISH);
+                Date past = format.parse(time);
+                Date now = new Date();
+                long seconds=TimeUnit.MILLISECONDS.toSeconds(now.getTime() - past.getTime());
+                long minutes=TimeUnit.MILLISECONDS.toMinutes(now.getTime() - past.getTime());
+                long hours=TimeUnit.MILLISECONDS.toHours(now.getTime() - past.getTime());
+                long days= TimeUnit.MILLISECONDS.toDays(now.getTime() - past.getTime());
+//
+//          System.out.println(TimeUnit.MILLISECONDS.toSeconds(now.getTime() - past.getTime()) + " milliseconds ago");
+//          System.out.println(TimeUnit.MILLISECONDS.toMinutes(now.getTime() - past.getTime()) + " minutes ago");
+//          System.out.println(TimeUnit.MILLISECONDS.toHours(now.getTime() - past.getTime()) + " hours ago");
+//          System.out.println(TimeUnit.MILLISECONDS.toDays(now.getTime() - past.getTime()) + " days ago");
+
+                if(seconds<60)
+                {
+                    return (seconds+" seconds ago");
+                }
+                else if(minutes<60)
+                {
+                    return (minutes+" minutes ago");
+                }
+                else if(hours<24)
+                {
+                    return (hours+" hours ago");
+                }
+                else
+                {
+                    return (days+" days ago");
+                }
+            }
+            catch (Exception j){
+                j.printStackTrace();
+                return "0";
+            }
+        }
     public static void hideSoftKeyboard(Activity activity) {
         InputMethodManager inputMethodManager =
                 (InputMethodManager) activity.getSystemService(

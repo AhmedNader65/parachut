@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModelProviders;
 import com.mrerror.parachut.Models.FastOrder.FastOrderModel;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.ActivityFastOrderBinding;
+import com.mrerror.parachut.ui.cart.CartActivity;
+import com.mrerror.parachut.ui.home.MainActivity;
 import com.mrerror.parachut.utils.Utils;
 
 public class FastOrderActivity extends AppCompatActivity {
@@ -36,6 +38,26 @@ public class FastOrderActivity extends AppCompatActivity {
                     setUporder();
                 }
 
+            }
+        });
+        activityFastOrderBinding.cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(FastOrderActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
+        activityFastOrderBinding.backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        activityFastOrderBinding.cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(FastOrderActivity.this, CartActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -70,7 +92,6 @@ public class FastOrderActivity extends AppCompatActivity {
         }
         if (!ValidatePhone()) {
             return false;
-
         }
         return ValidateOrder();
     }
