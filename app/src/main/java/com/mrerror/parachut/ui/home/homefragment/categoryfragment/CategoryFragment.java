@@ -49,6 +49,9 @@ public class CategoryFragment extends Fragment {
         categoryFragmentBinding.setCategoriedVmodel(mViewModel);
         categoryFragmentBinding.setLifecycleOwner(this);
 
+        categoryFragmentBinding.mostCategoryProgress.setVisibility(View.VISIBLE);
+        categoryFragmentBinding.allCategoryProgress.setVisibility(View.VISIBLE);
+
         setMostCategory();
         setupCategory();
         // TODO: Use the ViewModel
@@ -61,6 +64,8 @@ public class CategoryFragment extends Fragment {
             @Override
             public void onChanged(PagedList<com.mrerror.parachut.Models.AllCattegoryModel.Datum> data) {
                 adapter.submitList(data);
+                categoryFragmentBinding.allCategoryProgress.setVisibility(View.INVISIBLE);
+
             }
 
     });
@@ -74,9 +79,11 @@ public class CategoryFragment extends Fragment {
             @Override
             public void onChanged(PagedList<Datum> data) {
                 adapter.submitList(data);
+                categoryFragmentBinding.mostCategoryProgress.setVisibility(View.INVISIBLE);
             }
         });
         categoryFragmentBinding.categories.setAdapter(adapter);
+
     }
 
 }

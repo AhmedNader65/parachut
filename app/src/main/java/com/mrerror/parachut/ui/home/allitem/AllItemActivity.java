@@ -22,10 +22,14 @@ import com.mrerror.parachut.ui.cart.CartActivity;
 import com.mrerror.parachut.ui.home.MainActivity;
 import com.mrerror.parachut.utils.ChangeCountCartInterface;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AllItemActivity extends AppCompatActivity implements OffersBottomSheetDialog.BottomSheetListener , ChangeCountCartInterface {
 
     ActivityAllItemBinding activityAllItemBinding;
     AllitemViewModel allitemViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +40,12 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
         activityAllItemBinding.setItemVmodel(allitemViewModel);
         activityAllItemBinding.setLifecycleOwner(this);
 
+        activityAllItemBinding.itemsProgress.setVisibility(View.VISIBLE);
+
         String key = getIntent().getExtras().getString("key");
         if(key.equals("Offers")){
             setUpAllOffers(100);
         }else if (key.equals("Stores")){
-            activityAllItemBinding.filter.setVisibility(View.INVISIBLE);
             setUpAllStores();
         }else if (key.equals("category")){
             String _id = getIntent().getExtras().getString("_id");
@@ -85,6 +90,7 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
                 @Override
                 public void onChanged(PagedList<Datum> data) {
                     adapter.submitList(data);
+                //    activityAllItemBinding.itemsProgress.setVisibility(View.GONE);
                 }
             });
         }else if(i ==2){
@@ -92,6 +98,7 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
                 @Override
                 public void onChanged(PagedList<Datum> data) {
                     adapter.submitList(data);
+                //    activityAllItemBinding.itemsProgress.setVisibility(View.GONE);
                 }
             });
         } else if (i ==3) {
@@ -99,6 +106,7 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
                 @Override
                 public void onChanged(PagedList<Datum> data) {
                     adapter.submitList(data);
+               //     activityAllItemBinding.itemsProgress.setVisibility(View.GONE);
                 }
             });
         }
@@ -107,10 +115,12 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
                 @Override
                 public void onChanged(PagedList<Datum> data) {
                     adapter.submitList(data);
+            //        activityAllItemBinding.itemsProgress.setVisibility(View.GONE);
                 }
             });
         }
         activityAllItemBinding.items.setAdapter(adapter);
+
 
 
 
@@ -126,6 +136,7 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
                 @Override
                 public void onChanged(PagedList<Datum> data) {
                     adapter.submitList(data);
+                //    activityAllItemBinding.itemsProgress.setVisibility(View.GONE);
                 }
             });
         }else if(i ==2){
@@ -133,6 +144,7 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
                 @Override
                 public void onChanged(PagedList<Datum> data) {
                     adapter.submitList(data);
+              //      activityAllItemBinding.itemsProgress.setVisibility(View.GONE);
                 }
             });
         } else if (i ==3) {
@@ -140,6 +152,7 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
                 @Override
                 public void onChanged(PagedList<Datum> data) {
                     adapter.submitList(data);
+             //       activityAllItemBinding.itemsProgress.setVisibility(View.GONE);
                 }
             });
         }
@@ -148,6 +161,7 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
                 @Override
                 public void onChanged(PagedList<Datum> data) {
                     adapter.submitList(data);
+               //     activityAllItemBinding.itemsProgress.setVisibility(View.GONE);
                 }
             });
         }
@@ -164,6 +178,7 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
             @Override
             public void onChanged(PagedList<com.mrerror.parachut.Models.AllSuperMarket.Datum> data) {
                 adapter.submitList(data);
+             //   activityAllItemBinding.itemsProgress.setVisibility(View.GONE);
             }
         });
         activityAllItemBinding.items.setAdapter(adapter);
@@ -179,6 +194,7 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
                 @Override
                 public void onChanged(PagedList<Datum> data) {
                     adapter.submitList(data);
+              //      activityAllItemBinding.itemsProgress.setVisibility(View.GONE);
                 }
             });
         }else if(i ==2){
@@ -186,6 +202,7 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
                 @Override
                 public void onChanged(PagedList<Datum> data) {
                     adapter.submitList(data);
+                  //  activityAllItemBinding.itemsProgress.setVisibility(View.GONE);
                 }
             });
         } else if (i ==3) {
@@ -193,6 +210,7 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
                         @Override
                         public void onChanged(PagedList<Datum> data) {
                             adapter.submitList(data);
+                       //     activityAllItemBinding.itemsProgress.setVisibility(View.GONE);
                         }
                     });
         }
@@ -201,6 +219,7 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
                 @Override
                 public void onChanged(PagedList<Datum> data) {
                     adapter.submitList(data);
+                   // activityAllItemBinding.itemsProgress.setVisibility(View.GONE);
                 }
             });
         }
@@ -228,6 +247,7 @@ public class AllItemActivity extends AppCompatActivity implements OffersBottomSh
             activityAllItemBinding.cartText.setVisibility(View.VISIBLE);
         }else {
             activityAllItemBinding.cartText.setVisibility(View.INVISIBLE);
+            activityAllItemBinding.itemsProgress.setVisibility(View.INVISIBLE);
         }
     }
 }

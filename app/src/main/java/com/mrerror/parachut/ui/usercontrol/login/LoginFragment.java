@@ -55,12 +55,15 @@ public class LoginFragment extends Fragment {
         globalPrefrencies = new GlobalPrefrencies(getContext());
         Utils.setLocale(getContext(),globalPrefrencies.getLanguage());
 
+        loginFragmentBinding.loginProgress.setVisibility(View.GONE);
+
         loginFragmentBinding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onCheackValidation()) {
-
                     setUpLogin();
+                    loginFragmentBinding.loginProgress.setVisibility(View.VISIBLE);
+
 
 
                 }else {
@@ -91,6 +94,7 @@ public class LoginFragment extends Fragment {
 
 
                 Toast.makeText(getContext(), "مرحبا بك " + name, Toast.LENGTH_LONG).show();
+
 
                 globalPrefrencies.storeLoginStatus(true);
                 globalPrefrencies.storeUserId(id);

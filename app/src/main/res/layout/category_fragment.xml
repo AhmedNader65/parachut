@@ -66,6 +66,13 @@
                     android:id="@+id/categories"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+                <ProgressBar
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/most_category_progress"
+                    android:layout_gravity="center"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -113,6 +120,14 @@
                     android:id="@+id/allcategories"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+                <ProgressBar
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/all_category_progress"
+                    android:layout_gravity="center"
+                    />
+
             </LinearLayout>
         </LinearLayout>
 

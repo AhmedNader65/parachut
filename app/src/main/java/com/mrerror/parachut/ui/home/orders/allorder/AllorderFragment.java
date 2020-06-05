@@ -20,10 +20,14 @@ import com.mrerror.parachut.Models.PendingOrders.Datum;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.AllorderFragmentBinding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AllorderFragment extends Fragment {
 
     private AllorderViewModel mViewModel;
     AllorderFragmentBinding allorderFragmentBinding;
+    public static List<Datum> dataArrayListProduct = new ArrayList<>();
 
     public static AllorderFragment newInstance() {
         return new AllorderFragment();
@@ -33,7 +37,7 @@ public class AllorderFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
        allorderFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.allorder_fragment , container,false);
-       return allorderFragmentBinding.getRoot();
+        return allorderFragmentBinding.getRoot();
     }
 
     @Override
@@ -43,6 +47,17 @@ public class AllorderFragment extends Fragment {
         mViewModel = new AllorderViewModel(getContext());
         allorderFragmentBinding.setLifecycleOwner(this);
         allorderFragmentBinding.setAllorderVmodel(mViewModel);
+
+        allorderFragmentBinding.tvNoOrder.setVisibility(View.VISIBLE);
+        if (dataArrayListProduct.isEmpty()) {
+
+            allorderFragmentBinding.tvNoOrder.setVisibility(View.VISIBLE);
+
+
+        } else {
+            allorderFragmentBinding.tvNoOrder.setVisibility(View.GONE);
+
+        }
 
         setupPendingOrders();
 

@@ -2,14 +2,20 @@ package com.mrerror.parachut.Models.FinishedOrders;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 import androidx.paging.PageKeyedDataSource;
 
 import com.mrerror.parachut.NetWork.RetroWeb;
 import com.mrerror.parachut.NetWork.ServiceApi;
+import com.mrerror.parachut.databinding.FinishOrdersFragmentBinding;
 import com.mrerror.parachut.utils.GlobalPrefrencies;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -20,6 +26,7 @@ public class FinishedOrdersDataSource extends PageKeyedDataSource<Long , Datum> 
     GlobalPrefrencies globalPrefrencies;
     public static int PAGE_SIZE = 8;
     public static long FIRST_PAGE = 1;
+    private FinishOrdersFragmentBinding finishOrdersFragmentBinding;
 
     Context  context;
     public FinishedOrdersDataSource(Context context) {
@@ -37,6 +44,7 @@ public class FinishedOrdersDataSource extends PageKeyedDataSource<Long , Datum> 
                 if (model!= null) {
                     List<Datum> data = model.getData();
                     callback.onResult(data , null , FIRST_PAGE + 1);
+
                 }
             }
 

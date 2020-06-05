@@ -28,9 +28,13 @@ import com.mrerror.parachut.databinding.HomeFragmentBinding;
 import com.mrerror.parachut.ui.home.allitem.AllItemActivity;
 import com.mrerror.parachut.ui.home.homefragment.categoryfragment.CategoryFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeFragment extends Fragment {
 
     private HomeViewModel mViewModel;
+    public static List<Datum> dataArrayListProduct = new ArrayList<>();
 
     HomeFragmentBinding homeFragmentBinding;
     public static HomeFragment newInstance() {
@@ -54,6 +58,13 @@ public class HomeFragment extends Fragment {
         homeFragmentBinding.setHomeVmodel(mViewModel);
         homeFragmentBinding.setLifecycleOwner(this);
 
+       // activityCartBinding.emptyCartTv.setVisibility(View.VISIBLE);
+
+            homeFragmentBinding.tvNoCategories.setVisibility(View.VISIBLE);
+            homeFragmentBinding.tvNoOffers.setVisibility(View.VISIBLE);
+            homeFragmentBinding.tvNoStores.setVisibility(View.VISIBLE);
+
+
         seupOffers();
         setupCategory();
         setupStores();
@@ -62,6 +73,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showFragment(new CategoryFragment());
+
             }
         });
         homeFragmentBinding.moreOffers.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +103,7 @@ public class HomeFragment extends Fragment {
         Intent intent=new Intent(getContext(), AllItemActivity.class);
         intent.putExtra("key",value);
         startActivity(intent);
+
     }
 
     private void setupStores() {
@@ -101,9 +114,12 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onChanged(PagedList<com.mrerror.parachut.Models.SuperMarket.Datum> data) {
                         adapter.submitList(data);
+                        homeFragmentBinding.categoriesProgress.setVisibility(View.GONE);
                     }
                 });
                 homeFragmentBinding.stores.setAdapter(adapter);
+
+
     }
 
     private void setupCategory() {
@@ -113,9 +129,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(PagedList<Datum> data) {
                 adapter.submitList(data);
+                homeFragmentBinding.categoriesProgress.setVisibility(View.GONE);
             }
         });
         homeFragmentBinding.categories.setAdapter(adapter);
+
     }
 
     private void seupOffers() {
@@ -126,9 +144,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(PagedList<com.mrerror.parachut.Models.Datum> data) {
                 adapter.submitList(data);
+                homeFragmentBinding.offersProgress.setVisibility(View.GONE);
+
             }
         });
         homeFragmentBinding.offers.setAdapter(adapter);
+
 
     }
 

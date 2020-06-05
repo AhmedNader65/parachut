@@ -68,10 +68,30 @@
                             android:textSize="14sp" />
                     </LinearLayout>
 
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/offers_progress"
+                        android:visibility="@{homeVmodel.progress}"
+                        />
+                    <TextView
+                        android:id="@+id/tv_no_offers"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textSize="40sp"
+                        android:text="لا توجد داتا"
+                        />
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/offers"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -114,6 +134,24 @@
                             android:textColor="@color/colorPrimary"
                             android:textSize="14sp" />
                     </LinearLayout>
+                    <ProgressBar
+                        android:visibility="visible"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/categories_progress"
+                        />
+                    <TextView
+                        android:id="@+id/tv_no_categories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textSize="40sp"
+                        android:text="لا توجد داتا"
+                        />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/categories"
@@ -161,7 +199,16 @@
                             android:textColor="@color/colorPrimary"
                             android:textSize="14sp" />
                     </LinearLayout>
-
+                    <TextView
+                        android:id="@+id/tv_no_stores"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textSize="40sp"
+                        android:text="لا توجد داتا"
+                        />
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/stores"
                         android:layout_width="match_parent"

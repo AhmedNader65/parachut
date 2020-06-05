@@ -2,6 +2,7 @@ package com.mrerror.parachut.Models.AllOffers;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.paging.PageKeyedDataSource;
@@ -9,6 +10,7 @@ import androidx.paging.PageKeyedDataSource;
 import com.mrerror.parachut.Models.Datum;
 import com.mrerror.parachut.NetWork.RetroWeb;
 import com.mrerror.parachut.NetWork.ServiceApi;
+import com.mrerror.parachut.databinding.ActivityAllItemBinding;
 import com.mrerror.parachut.utils.GlobalPrefrencies;
 
 import java.util.List;
@@ -35,6 +37,7 @@ public class OffersDataSource extends PageKeyedDataSource<Long, Datum> {
             @Override
             public void onResponse(Call<AllOffersModel> call, Response<AllOffersModel> response) {
                 AllOffersModel body = response.body();
+
                 if (body != null) {
                     List<Datum> data = body.getData();
                     callback.onResult(data, null, FIRST_PAGE + 1);
@@ -47,6 +50,7 @@ public class OffersDataSource extends PageKeyedDataSource<Long, Datum> {
                 Log.e("xxx",t.getMessage());
             }
         });
+
 
     }
 

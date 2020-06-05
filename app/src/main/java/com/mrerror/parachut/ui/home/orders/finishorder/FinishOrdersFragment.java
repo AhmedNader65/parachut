@@ -20,10 +20,14 @@ import com.mrerror.parachut.Models.FinishedOrders.Datum;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.FinishOrdersFragmentBinding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FinishOrdersFragment extends Fragment {
 
     private FinishOrdersViewModel mViewModel;
     FinishOrdersFragmentBinding finishOrdersFragmentBinding;
+    public static List<Datum> dataArrayListProduct = new ArrayList<>();
 
     public static FinishOrdersFragment newInstance() {
         return new FinishOrdersFragment();
@@ -34,6 +38,7 @@ public class FinishOrdersFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         finishOrdersFragmentBinding = DataBindingUtil.inflate(inflater , R.layout.finish_orders_fragment , container , false);
         return finishOrdersFragmentBinding.getRoot();
+
     }
 
     @Override
@@ -43,6 +48,18 @@ public class FinishOrdersFragment extends Fragment {
         // TODO: Use the ViewModel
         finishOrdersFragmentBinding.setLifecycleOwner(this);
         finishOrdersFragmentBinding.setFinishOrdersVmodel(mViewModel);
+
+        //finishOrdersFragmentBinding.finishedOrdersProgress.setVisibility(View.VISIBLE);
+
+       /* if (dataArrayListProduct.isEmpty()) {
+
+            finishOrdersFragmentBinding.tvNoOrder.setVisibility(View.VISIBLE);
+
+
+        } else {
+            finishOrdersFragmentBinding.tvNoOrder.setVisibility(View.GONE);
+
+        } */
 
         setupFinishedOrders();
     }
@@ -56,11 +73,19 @@ public class FinishOrdersFragment extends Fragment {
             @Override
             public void onChanged(PagedList<Datum> data) {
                 adapter.submitList(data);
+                if (data.isEmpty()) {
+                    finishOrdersFragmentBinding.tvNoOrder.setVisibility(View.VISIBLE);
+                }else {
+                    finishOrdersFragmentBinding.tvNoOrder.setVisibility(View.GONE);
+                }
+                finishOrdersFragmentBinding.finishedOrdersProgress.setVisibility(View.GONE);
                 Log.e("finishXXXCXC", adapter.getItemCount() + "");
             }
         });
 
         finishOrdersFragmentBinding.rvFinishedOrders.setAdapter(adapter);
+
+
     }
 
 

@@ -1,6 +1,7 @@
 package com.mrerror.parachut.ui.home.homefragment;
 
 import android.content.Context;
+import android.view.View;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -16,6 +17,9 @@ import com.mrerror.parachut.Models.OffersModel.OffersDataSourceFactory;
 import com.mrerror.parachut.Models.SuperMarket.SuperMarketDataSource;
 import com.mrerror.parachut.Models.SuperMarket.SuperMarketDataSourceFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeViewModel extends ViewModel {
     // TODO: Implement the ViewModel
 
@@ -23,6 +27,10 @@ public class HomeViewModel extends ViewModel {
 
     public LiveData<PagedList<Datum>> mutableLiveDataCategoryPageList;
     MutableLiveData<CategoryDataSource> categoryDataSourceMutableLiveData;
+    public MutableLiveData<Integer> progress = new MutableLiveData<>();
+
+
+
     public HomeViewModel(Context context) {
         this.context=context;
         init();
@@ -38,6 +46,7 @@ public class HomeViewModel extends ViewModel {
                 .setPageSize(CategoryDataSource.PAGE_SIZE)
                 .build();
         mutableLiveDataCategoryPageList = new LivePagedListBuilder<>(itemDataSourceFactory, config).build();
+
 
     }
 
@@ -70,6 +79,8 @@ public class HomeViewModel extends ViewModel {
                 .setPageSize(CategoryDataSource.PAGE_SIZE)
                 .build();
         mutableLiveDataOffersPageList = new LivePagedListBuilder<>(itemDataSourceFactory, config).build();
+        progress.setValue(View.GONE);
+
     }
 
 }
