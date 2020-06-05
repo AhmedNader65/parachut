@@ -51,7 +51,7 @@
                     android:layout_weight="1"
 
                     android:gravity="center_vertical"
-                    android:text="براشوط"
+                    android:text="@string/nameapp"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -197,7 +197,7 @@
                             android:layout_gravity="center"
                             android:layout_margin="4dp"
                             android:gravity="center"
-                            android:text="براشوت"
+                            android:text="@string/nameapp"
                             android:textColor="@color/white"
                             android:textSize="24sp"
                             android:textStyle="bold" />
@@ -207,7 +207,7 @@
 
                             android:layout_height="wrap_content"
                             android:layout_below="@id/logo"
-                            android:text="اطلب حاجتك بسرعه"
+                            android:text="@string/orderspeed"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -248,7 +248,7 @@
                                 android:layout_marginStart="16sp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:text="عن براشوت"
+                                android:text="@string/aboutus"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                         </LinearLayout>
@@ -275,7 +275,7 @@
                                 android:layout_marginStart="16sp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:text="تواصل معنا"
+                                android:text="@string/contactUs"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                         </LinearLayout>
@@ -302,7 +302,7 @@
                                 android:layout_marginStart="16sp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:text="اسعار التوصيل"
+                                android:text="@string/ShippingFee"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                         </LinearLayout>
@@ -328,7 +328,7 @@
                                 android:layout_marginStart="16sp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:text="تغيير اللغة"
+                                android:text="@string/changelang"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                         </LinearLayout>
@@ -354,7 +354,7 @@
                                 android:layout_marginStart="16sp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:text="مشاركة التطبيق"
+                                android:text="@string/sheareapp"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
                         </LinearLayout>
@@ -380,7 +380,7 @@
                                 android:layout_marginStart="16sp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:text="تقييم التطبيق"
+                                android:text="@string/rateapp"
                                 android:textColor="#fe8700"
                                 android:textSize="16sp" />
                         </LinearLayout>
@@ -410,7 +410,7 @@
                         android:layout_marginStart="16sp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="تسجيل الخروج"
+                        android:text="@string/logout"
                         android:textColor="@color/red"
                         android:textSize="16sp" />
                 </LinearLayout>

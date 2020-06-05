@@ -58,7 +58,7 @@
                 android:layout_weight="1"
 
                 android:gravity="center_vertical"
-                android:text="طلب سريع"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -139,7 +139,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:id="@+id/txtname"
-        android:text="كيلو خيار قطع كبيره"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -164,7 +164,7 @@
             android:layout_weight="1"
             android:ems="1"
             android:gravity="center_vertical"
-            android:text="طلب الاوردر"
+            android:text=""
             android:textColor="@color/colorGreen"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -231,7 +231,7 @@ android:layout_marginStart="16dp"
             android:textColor="@color/red"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:text="خصم ٥٠٪ عند شراء ٣ كيلو"
+            android:text=""
             android:layout_height="wrap_content"/>
     <LinearLayout
 
@@ -286,7 +286,7 @@ android:layout_marginStart="16dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:lines="1"
-                                android:text="كرتونة زبادي دانون ...كرتونة زبادي دانون ...كرتونة زبادي دانون ...كرتونة زبادي دانون ...كرتونة زبادي دانون ..."
+                                android:text=""
                                 android:textColor="@color/black"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
@@ -332,7 +332,7 @@ android:layout_marginStart="16dp"
             android:layout_height="30dp"/>
             <TextView
                 android:layout_width="wrap_content"
-                android:text="اضف الي البراشوت"
+                android:text="@string/Addtocart"
                 android:textStyle="bold"
                 android:textSize="14sp"
                 android:textColor="@color/white"
@@ -343,7 +343,7 @@ android:layout_marginStart="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="منتجات مشابهه"
+            android:text="@string/suggestes"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />

@@ -56,5 +56,20 @@
     <string name="sendReq">ارسال طلب</string>
     <string name="contactUs">تواصل معنا</string>
     <string name="whatsReq">ما هو طلبك ؟</string>
+    <string name="clicktoselectlocation">"اضغط لاضافة عنوان "</string>
+    <string name="orderspeed">اطلب حاجتك بسرعه</string>
+    <string name="ShippingFee">اسعار التوصيل</string>
+    <string name="changelang">تغيير اللغة</string>
+    <string name="sheareapp">مشاركة التطبيق</string>
+    <string name="rateapp">تقييم التطبيق</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="Addtocart">اضف الي البراشوت</string>
+    <string name="suggestes">منتجات مشابهه</string>
+    <string name="mostcommen">الشائعة</string>
+    <string name="more">المزيد</string>
+    <string name="weneedService">نحن في خدمتك</string>
+    <string name="calusanytime">راسلنا في أي وقت</string>
+    <string name="whatisyourmsg">ما هي رسالتك ؟</string>
+    <string name="send">ارسال</string>
 
 </resources>
