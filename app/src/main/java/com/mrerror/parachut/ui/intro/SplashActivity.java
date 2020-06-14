@@ -1,5 +1,6 @@
 package com.mrerror.parachut.ui.intro;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +15,10 @@ import com.mrerror.parachut.utils.GlobalPrefrencies;
 public class SplashActivity extends AppCompatActivity {
     Intent intent2;
     int TIME_SPLASH = 3000;
+
+    GlobalPrefrencies globalPrefrencies;
+
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,15 +32,14 @@ public class SplashActivity extends AppCompatActivity {
 
 
     }
-    GlobalPrefrencies  globalPrefrencies;
+
     private void CheckIntoActivity() {
-globalPrefrencies=new GlobalPrefrencies(this);
-        if(globalPrefrencies.getLoginStatus()){
+        globalPrefrencies = new GlobalPrefrencies(this);
+        if (globalPrefrencies.getLoginStatus()) {
             intent2 = new Intent(SplashActivity.this, MainActivity.class);
-        }else {
+        } else {
             intent2 = new Intent(SplashActivity.this, UserActivity.class);
         }
-
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {

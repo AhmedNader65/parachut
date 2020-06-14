@@ -1,57 +1,56 @@
 
 package com.mrerror.parachut.Models.Register;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 
 public class User implements Serializable
 {
 
+    private final static long serialVersionUID = -2546840979455267691L;
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("mobile")
-    @Expose
-    private String mobile;
     @SerializedName("address")
     @Expose
     private String address;
-    @SerializedName("lat")
+    @SerializedName("id")
     @Expose
-    private String lat;
-
-
-    public String getRemember_token() {
-        return remember_token;
-    }
-
-    public void setRemember_token(String remember_token) {
-        this.remember_token = remember_token;
-    }
-
-    @SerializedName("remember_token")
-    @Expose
-    private String remember_token;
-    @SerializedName("lang")
-    @Expose
-    private String lang;
-    @SerializedName("role_id")
-    @Expose
-    private Integer roleId;
+    private Integer id;
     @SerializedName("verify_code")
     @Expose
     private String verifyCode;
+    @SerializedName("status")
+    @Expose
+    private Object status;
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
-    @SerializedName("id")
+    @SerializedName("lat")
     @Expose
-    private Integer id;
-    private final static long serialVersionUID = -4411670924482039398L;
+    private String lat;
+    @SerializedName("long")
+    @Expose
+    private String _long;
+    @SerializedName("mobile")
+    @Expose
+    private String mobile;
+    @SerializedName("remember_token")
+    @Expose
+    private Object rememberToken;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -59,14 +58,6 @@ public class User implements Serializable
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
     }
 
     public String getAddress() {
@@ -77,28 +68,12 @@ public class User implements Serializable
         this.address = address;
     }
 
-    public String getLat() {
-        return lat;
+    public Object getStatus() {
+        return status;
     }
 
-    public void setLat(String lat) {
-        this.lat = lat;
-    }
-
-    public String getLang() {
-        return lang;
-    }
-
-    public void setLang(String lang) {
-        this.lang = lang;
-    }
-
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    public void setStatus(Object status) {
+        this.status = status;
     }
 
     public String getVerifyCode() {
@@ -109,14 +84,6 @@ public class User implements Serializable
         this.verifyCode = verifyCode;
     }
 
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public String getCreatedAt() {
         return createdAt;
     }
@@ -125,12 +92,44 @@ public class User implements Serializable
         this.createdAt = createdAt;
     }
 
-    public Integer getId() {
-        return id;
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLong() {
+        return _long;
+    }
+
+    public void setLong(String _long) {
+        this._long = _long;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public Object getRememberToken() {
+        return rememberToken;
+    }
+
+    public void setRememberToken(Object rememberToken) {
+        this.rememberToken = rememberToken;
     }
 
 }

@@ -2,10 +2,10 @@ package com.mrerror.parachut.ui.home.homefragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,9 +13,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -57,12 +55,6 @@ public class HomeFragment extends Fragment {
         mViewModel =new HomeViewModel(getContext());
         homeFragmentBinding.setHomeVmodel(mViewModel);
         homeFragmentBinding.setLifecycleOwner(this);
-
-       // activityCartBinding.emptyCartTv.setVisibility(View.VISIBLE);
-
-            homeFragmentBinding.tvNoCategories.setVisibility(View.VISIBLE);
-            homeFragmentBinding.tvNoOffers.setVisibility(View.VISIBLE);
-            homeFragmentBinding.tvNoStores.setVisibility(View.VISIBLE);
 
 
         seupOffers();
@@ -113,13 +105,14 @@ public class HomeFragment extends Fragment {
         mViewModel.mutableLiveDataSuperMarketPageList.observe(getViewLifecycleOwner(), new Observer<PagedList<com.mrerror.parachut.Models.SuperMarket.Datum>>() {
                     @Override
                     public void onChanged(PagedList<com.mrerror.parachut.Models.SuperMarket.Datum> data) {
+
+
                         adapter.submitList(data);
-                        homeFragmentBinding.categoriesProgress.setVisibility(View.GONE);
+
                     }
                 });
                 homeFragmentBinding.stores.setAdapter(adapter);
-
-
+        recycle_animation(homeFragmentBinding.stores);
     }
 
     private void setupCategory() {
@@ -129,10 +122,10 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(PagedList<Datum> data) {
                 adapter.submitList(data);
-                homeFragmentBinding.categoriesProgress.setVisibility(View.GONE);
             }
         });
         homeFragmentBinding.categories.setAdapter(adapter);
+        recycle_animation(homeFragmentBinding.categories);
 
     }
 
@@ -144,13 +137,19 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(PagedList<com.mrerror.parachut.Models.Datum> data) {
                 adapter.submitList(data);
-                homeFragmentBinding.offersProgress.setVisibility(View.GONE);
-
+                recycle_animation(homeFragmentBinding.offers);
             }
         });
+
         homeFragmentBinding.offers.setAdapter(adapter);
+        recycle_animation(homeFragmentBinding.offers);
 
+    }
 
+    private void recycle_animation(RecyclerView recyclerView) {
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), R.anim.layout_animation_fall_down));
+        recyclerView.getAdapter().notifyDataSetChanged();
+        recyclerView.scheduleLayoutAnimation();
     }
 
 }

@@ -1,35 +1,36 @@
 
 package com.mrerror.parachut.Models.Register;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 
 public class UserRegisterModel implements Serializable
 {
 
+    private final static long serialVersionUID = 6779005605611107903L;
     @SerializedName("status")
     @Expose
-    private Boolean status;
-    @SerializedName("user")
+    private String status;
+    @SerializedName("data")
     @Expose
-    private User user;
-    private final static long serialVersionUID = -8242791566587626586L;
+    private Data data;
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public User getUser() {
-        return user;
+    public Data getData() {
+        return data;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setData(Data data) {
+        this.data = data;
     }
 
 }

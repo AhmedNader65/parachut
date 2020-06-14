@@ -17,9 +17,6 @@ import com.mrerror.parachut.Models.OffersModel.OffersDataSourceFactory;
 import com.mrerror.parachut.Models.SuperMarket.SuperMarketDataSource;
 import com.mrerror.parachut.Models.SuperMarket.SuperMarketDataSourceFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class HomeViewModel extends ViewModel {
     // TODO: Implement the ViewModel
 
@@ -70,7 +67,8 @@ public class HomeViewModel extends ViewModel {
 
     public LiveData<PagedList<com.mrerror.parachut.Models.Datum>> mutableLiveDataOffersPageList;
     MutableLiveData<OffersDataSource> ofeersDataSourceMutableLiveData;
-    private void init_offers() {
+
+    public void init_offers() {
 
         OffersDataSourceFactory itemDataSourceFactory = new OffersDataSourceFactory(context);
         ofeersDataSourceMutableLiveData = itemDataSourceFactory.userLiveDataSource;

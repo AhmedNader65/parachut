@@ -34,6 +34,7 @@ public class HamburgActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 1) {

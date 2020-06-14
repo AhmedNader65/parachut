@@ -8,9 +8,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
+import com.bumptech.glide.Glide;
 import com.mrerror.parachut.R;
-import com.squareup.picasso.Picasso;
 
 public class FullImage extends AppCompatActivity {
 
@@ -23,7 +22,7 @@ public class FullImage extends AppCompatActivity {
 
             Uri imageUri = callingActivityIntent.getData();
 
-                Picasso.with(this)
+        Glide.with(this)
                         .load(imageUri)
                         .into(fullScreenImageView);
 

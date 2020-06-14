@@ -3,7 +3,6 @@ package com.mrerror.parachut.Adabters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mrerror.parachut.Models.FinishedOrders.Datum;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.ui.home.orders.detailsorder.DetailsOrderActivity;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class OrdersAdapter extends PagedListAdapter<Datum , OrdersAdapter.OrdersVmodel> {
     private Context context;
@@ -42,7 +36,6 @@ public class OrdersAdapter extends PagedListAdapter<Datum , OrdersAdapter.Orders
     public OrdersAdapter(Context context) {
         super(item_COMPARATOR);
         this.context = context;
-
     }
 
     @NonNull
@@ -57,7 +50,7 @@ public class OrdersAdapter extends PagedListAdapter<Datum , OrdersAdapter.Orders
         final Datum item = getItem(position);
         holder.code.setText("#الكود : " + item.getCode());
         holder.status.setText(item.getStatus() + "");
-        holder.productNum.setText("عدد المنتجات : " + "(" + item.getOrderProducts().get(0).getQuantity() + ")" + " منتج");
+//        holder.productNum.setText("عدد المنتجات : " + "(" + item.getOrderProducts().get(0).getQuantity() + ")" + " منتج");
         holder.cost.setText("اجمالي التكلفه :" + item.getFinalPrice() + " جنيه ");
 /*
         String time = item.getCreatedAt();

@@ -7,9 +7,8 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class Data implements Serializable {
+public class Datum implements Serializable {
 
-    private final static long serialVersionUID = 6893529792822182799L;
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -25,30 +24,34 @@ public class Data implements Serializable {
     @SerializedName("delivery_shifts")
     @Expose
     private String deliveryShifts;
-    @SerializedName("products_notes")
-    @Expose
-    private String productsNotes;
+    private final static long serialVersionUID = 5324918742626338162L;
     @SerializedName("order_notes")
     @Expose
     private Object orderNotes;
-    @SerializedName("minimum")
+    @SerializedName("products_notes")
     @Expose
-    private Integer minimum;
+    private Object productsNotes;
     @SerializedName("code")
     @Expose
     private String code;
+    @SerializedName("minimum")
+    @Expose
+    private Object minimum;
     @SerializedName("status")
     @Expose
     private String status;
-    @SerializedName("delivery")
+    @SerializedName("delgate_price")
     @Expose
-    private Delivery delivery;
-    @SerializedName("orderProducts")
-    @Expose
-    private List<OrderProduct> orderProducts = null;
+    private Object delgatePrice;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
+    @SerializedName("orderProducts")
+    @Expose
+    private List<OrderProduct> orderProducts = null;
+    @SerializedName("delivery")
+    @Expose
+    private Object delivery;
 
     public Integer getId() {
         return id;
@@ -90,11 +93,11 @@ public class Data implements Serializable {
         this.deliveryShifts = deliveryShifts;
     }
 
-    public String getProductsNotes() {
+    public Object getProductsNotes() {
         return productsNotes;
     }
 
-    public void setProductsNotes(String productsNotes) {
+    public void setProductsNotes(Object productsNotes) {
         this.productsNotes = productsNotes;
     }
 
@@ -106,11 +109,11 @@ public class Data implements Serializable {
         this.orderNotes = orderNotes;
     }
 
-    public Integer getMinimum() {
+    public Object getMinimum() {
         return minimum;
     }
 
-    public void setMinimum(Integer minimum) {
+    public void setMinimum(Object minimum) {
         this.minimum = minimum;
     }
 
@@ -122,6 +125,14 @@ public class Data implements Serializable {
         this.code = code;
     }
 
+    public Object getDelgatePrice() {
+        return delgatePrice;
+    }
+
+    public void setDelgatePrice(Object delgatePrice) {
+        this.delgatePrice = delgatePrice;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -130,11 +141,19 @@ public class Data implements Serializable {
         this.status = status;
     }
 
-    public Delivery getDelivery() {
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Object getDelivery() {
         return delivery;
     }
 
-    public void setDelivery(Delivery delivery) {
+    public void setDelivery(Object delivery) {
         this.delivery = delivery;
     }
 
@@ -144,14 +163,6 @@ public class Data implements Serializable {
 
     public void setOrderProducts(List<OrderProduct> orderProducts) {
         this.orderProducts = orderProducts;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
     }
 
 }

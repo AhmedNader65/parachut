@@ -8,13 +8,13 @@ import java.io.Serializable;
 
 public class Products implements Serializable {
 
-    private final static long serialVersionUID = -3042811444440758094L;
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("category_id")
+    private final static long serialVersionUID = 5192667261573019312L;
+    @SerializedName("Category")
     @Expose
-    private Integer categoryId;
+    private Category category;
     @SerializedName("name")
     @Expose
     private String name;
@@ -30,18 +30,24 @@ public class Products implements Serializable {
     @SerializedName("offer")
     @Expose
     private Integer offer;
+    @SerializedName("Supermarket")
+    @Expose
+    private Supermarket supermarket;
     @SerializedName("has_offer")
     @Expose
     private Boolean hasOffer;
     @SerializedName("owner")
     @Expose
     private Object owner;
-    @SerializedName("created_at")
+    @SerializedName("offer_text")
     @Expose
-    private Object createdAt;
+    private String offerText;
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
+    @SerializedName("created_at")
+    @Expose
+    private String createdAt;
 
     public Integer getId() {
         return id;
@@ -51,12 +57,20 @@ public class Products implements Serializable {
         this.id = id;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Supermarket getSupermarket() {
+        return supermarket;
+    }
+
+    public void setSupermarket(Supermarket supermarket) {
+        this.supermarket = supermarket;
     }
 
     public String getName() {
@@ -99,6 +113,14 @@ public class Products implements Serializable {
         this.offer = offer;
     }
 
+    public String getOfferText() {
+        return offerText;
+    }
+
+    public void setOfferText(String offerText) {
+        this.offerText = offerText;
+    }
+
     public Boolean getHasOffer() {
         return hasOffer;
     }
@@ -115,11 +137,11 @@ public class Products implements Serializable {
         this.owner = owner;
     }
 
-    public Object getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Object createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 

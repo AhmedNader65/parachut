@@ -17,11 +17,12 @@ public class AllorderViewModel extends ViewModel {
     public LiveData<PagedList<Datum>> mutableLiveDataAllOrdersPageList;
     MutableLiveData<PendingOrdersDataSource> pendingOrdersDataSourceMutableLiveData;
 
-    public AllorderViewModel(Context context) {
-        init(context);
-        initAll(context);
-    }
-    private void init(Context context) {
+
+    public LiveData<PagedList<Datum>> getMutableLiveDataOrdersPageList;
+    MutableLiveData<PendingOrdersDataSource> allpendingOrdersDataSourceMutableLiveData;
+
+
+    public void init(Context context) {
         PendingOrdersDataSourceFactory pendingOrdersDataSourceFactory = new PendingOrdersDataSourceFactory(context);
         pendingOrdersDataSourceMutableLiveData = pendingOrdersDataSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()
@@ -32,11 +33,7 @@ public class AllorderViewModel extends ViewModel {
 
     }
 
-    public LiveData<PagedList<Datum>> getMutableLiveDataOrdersPageList;
-    MutableLiveData<PendingOrdersDataSource> allpendingOrdersDataSourceMutableLiveData;
-
-
-    private void initAll(Context context) {
+    public void initAll(Context context) {
         PendingOrdersDataSourceFactory itemOrdersSourceFactory = new PendingOrdersDataSourceFactory(context);
         allpendingOrdersDataSourceMutableLiveData = itemOrdersSourceFactory.userLiveDataSource;
         PagedList.Config config = new PagedList.Config.Builder()

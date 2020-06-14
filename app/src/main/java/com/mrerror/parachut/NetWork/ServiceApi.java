@@ -5,6 +5,7 @@ import com.mrerror.parachut.Models.AboutUs.AboutUsModel;
 import com.mrerror.parachut.Models.AllOffers.AllOffersModel;
 import com.mrerror.parachut.Models.AllProductCategories.AllProductCategories;
 import com.mrerror.parachut.Models.BaseModel;
+import com.mrerror.parachut.Models.BaseResponce;
 import com.mrerror.parachut.Models.CategoryModel.CategoryModel;
 import com.mrerror.parachut.Models.ContactUs.ContactUsModel;
 import com.mrerror.parachut.Models.DetailsOrder.DetailsOrderModel;
@@ -54,6 +55,12 @@ public interface ServiceApi {
                          @Field("long") String longtude,
                          @Field("carts") String jsonArray,
                          @Header("Authorization") String Authorization);
+
+
+    @FormUrlEncoded
+    @POST("device_token")
+    Call<BaseResponce> getDeviceToken(@Field("device_token") String token, @Query("lang") String lang,
+                                      @Header("Authorization") String header);
 
 
     @FormUrlEncoded
@@ -125,9 +132,9 @@ public interface ServiceApi {
     Call<ContactUsModel> onGetMessage(@Field("messages") String messages,
                                       @Header("Authorization") String Authorization);
     @GET("restaurant/orders/finished")
-    Call<FinishedOrdersModel> onGetFinishedOrders(@Query("lang") String lang,@Header("Authorization") String Authorization );
+    Call<FinishedOrdersModel> onGetFinishedOrders(@Query("lang") String lang, @Query("page") long page, @Header("Authorization") String Authorization);
     @GET("restaurant/orders/pending")
-    Call<PendingOrdersModel> onGetPendingOrders(@Query("lang") String lang,@Header("Authorization") String Authorization);
+    Call<PendingOrdersModel> onGetPendingOrders(@Query("lang") String lang, @Query("page") long page, @Header("Authorization") String Authorization);
     //MH
     @GET("user")
     Call<GetUserData> onGetUserData(@Header("Authorization") String Authorization );
@@ -143,14 +150,16 @@ public interface ServiceApi {
             @Field("long") String longitude,
             @Header("Authorization") String Authorization
     );
+
+
     @FormUrlEncoded
     @POST("auth/register")
     Call<UserRegisterModel> onRegester(
             @Field("name") String name,
             @Field("mobile") String mobile,
             @Field("address") String address,
-            @Field("lat") String country_id,
-            @Field("lang") String city_id,
+            @Field("lat") String lat,
+            @Field("long") String longitude,
             @Field("password") String password,
             @Field("password_confirmation") String repassword);
     @FormUrlEncoded

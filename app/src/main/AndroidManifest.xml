@@ -32,7 +32,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-
+        <activity android:name=".ui.usercontrol.OTP.OTPActivity" />
         <activity android:name=".ui.cart.CartActivity"></activity>
         <activity
             android:name=".ui.product.SingleProductActivity"

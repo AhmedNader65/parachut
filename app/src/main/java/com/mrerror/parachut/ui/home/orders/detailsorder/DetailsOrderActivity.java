@@ -20,7 +20,6 @@ import com.mrerror.parachut.Models.DetailsOrder.OrderProduct;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.ActivityDetailsOrderBinding;
 import com.mrerror.parachut.ui.cart.CartActivity;
-import com.mrerror.parachut.ui.home.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -67,18 +66,18 @@ public class DetailsOrderActivity extends AppCompatActivity  implements InvoisAd
     private void setupDataInfields(DetailsOrderModel detailsOrderModel) {
         orderProductArrayList.clear();
         this.detailsOrderModel=detailsOrderModel;
-        activityDetailsOrderBinding.addressId.setText(detailsOrderModel.getData().getUser().getAddress() + "");
-        activityDetailsOrderBinding.txtCount.setText("عدد المنتجات :" + detailsOrderModel.getData().getOrderProducts().size() + " منتج ");
-        activityDetailsOrderBinding.phoneId.setText(detailsOrderModel.getData().getUser().getMobile() + "");
-        activityDetailsOrderBinding.txtState.setText(detailsOrderModel.getData().getStatus() + "");
-        if(detailsOrderModel.getData().getDelivery()!=null) {
-            activityDetailsOrderBinding.nametyar.setText(detailsOrderModel.getData().getDelivery().getName() + " ");
+        activityDetailsOrderBinding.addressId.setText(detailsOrderModel.getData().get(0).getUser().getAddress() + "");
+        activityDetailsOrderBinding.txtCount.setText("عدد المنتجات :" + detailsOrderModel.getData().get(0).getOrderProducts().size() + " منتج ");
+        activityDetailsOrderBinding.phoneId.setText(detailsOrderModel.getData().get(0).getUser().getMobile() + "");
+        activityDetailsOrderBinding.txtState.setText(detailsOrderModel.getData().get(0).getStatus() + "");
+        if (detailsOrderModel.getData().get(0).getDelivery() != null) {
+            activityDetailsOrderBinding.nametyar.setText(detailsOrderModel.getData().get(0).getDelivery().getClass().getName() + " ");
         }else {
             activityDetailsOrderBinding.nametyar.setText("لم يتم استلام الطلب من الطيارين");
         }
         InvoisAdapter invoisAdapter = new InvoisAdapter();
         RecyclerView.LayoutManager manager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        orderProductArrayList.addAll(detailsOrderModel.getData().getOrderProducts());
+        orderProductArrayList.addAll(detailsOrderModel.getData().get(0).getOrderProducts());
         invoisAdapter.setOrderProduct(orderProductArrayList,this);
         activityDetailsOrderBinding.rvItems.setLayoutManager(manager);
         activityDetailsOrderBinding.rvItems.setAdapter(invoisAdapter);
@@ -91,11 +90,10 @@ public class DetailsOrderActivity extends AppCompatActivity  implements InvoisAd
 
 
         activityDetailsOrderBinding.allprice.setText(newPrice + " جنيه ");
-        activityDetailsOrderBinding.cost.setText(detailsOrderModel.getData().getOrderPrice() + " جنيه ");
-        Log.e("CD",detailsOrderModel.getData().getFinalPrice()+"");
-        Log.e("CD",detailsOrderModel.getData().getOrderPrice()+"");
-
-        activityDetailsOrderBinding.delevPrice.setText(detailsOrderModel.getData().getFinalPrice() - newPrice+ " جنيه ");
+        activityDetailsOrderBinding.cost.setText(detailsOrderModel.getData().get(0).getOrderPrice() + " جنيه ");
+        Log.e("CD", detailsOrderModel.getData().get(0).getFinalPrice() + "");
+        Log.e("CD", detailsOrderModel.getData().get(0).getOrderPrice() + "");
+        activityDetailsOrderBinding.delevPrice.setText(detailsOrderModel.getData().get(0).getFinalPrice() - newPrice + " جنيه ");
 
     }
 }

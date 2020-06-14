@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-    private final static long serialVersionUID = 6587537214942488556L;
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -30,12 +29,10 @@ public class User implements Serializable {
     @SerializedName("address")
     @Expose
     private String address;
+    private final static long serialVersionUID = -5483660362836073350L;
     @SerializedName("lat")
     @Expose
-    private Double lat;
-    @SerializedName("long")
-    @Expose
-    private Double _long;
+    private String lat;
     @SerializedName("delivery_time")
     @Expose
     private Object deliveryTime;
@@ -51,6 +48,9 @@ public class User implements Serializable {
     @SerializedName("delivery_cost")
     @Expose
     private Object deliveryCost;
+    @SerializedName("long")
+    @Expose
+    private String _long;
 
     public Integer getId() {
         return id;
@@ -108,19 +108,19 @@ public class User implements Serializable {
         this.address = address;
     }
 
-    public Double getLat() {
+    public String getLat() {
         return lat;
     }
 
-    public void setLat(Double lat) {
+    public void setLat(String lat) {
         this.lat = lat;
     }
 
-    public Double getLong() {
+    public String getLong() {
         return _long;
     }
 
-    public void setLong(Double _long) {
+    public void setLong(String _long) {
         this._long = _long;
     }
 

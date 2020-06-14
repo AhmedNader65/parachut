@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 public class OrderProduct implements Serializable {
 
-    private final static long serialVersionUID = 7045840597064743578L;
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -24,6 +23,7 @@ public class OrderProduct implements Serializable {
     @SerializedName("quantity")
     @Expose
     private Integer quantity;
+    private final static long serialVersionUID = 7045840597064743578L;
 
     public Integer getId() {
         return id;

@@ -24,7 +24,7 @@ public class OrderProduct implements Serializable
     @SerializedName("quantity")
     @Expose
     private Integer quantity;
-    private final static long serialVersionUID = 3416147647500512441L;
+    private final static long serialVersionUID = 7045840597064743578L;
 
     public Integer getId() {
         return id;

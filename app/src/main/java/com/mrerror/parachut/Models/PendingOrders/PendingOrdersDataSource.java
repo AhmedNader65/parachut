@@ -6,7 +6,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.paging.PageKeyedDataSource;
 
-import com.mrerror.parachut.Models.FinishedOrders.FinishedOrdersModel;
 import com.mrerror.parachut.NetWork.RetroWeb;
 import com.mrerror.parachut.NetWork.ServiceApi;
 import com.mrerror.parachut.utils.GlobalPrefrencies;
@@ -25,20 +24,20 @@ public class PendingOrdersDataSource extends PageKeyedDataSource<Long , Datum> {
 
     public PendingOrdersDataSource(Context context) {
         this.context = context;
-        Log.e("XSC","SCSC");
     }
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Long> params, @NonNull final LoadInitialCallback<Long, Datum> callback) {
         globalPrefrencies = new GlobalPrefrencies(context);
-        RetroWeb.getClient().create(ServiceApi.class).onGetPendingOrders(globalPrefrencies.getLanguage(),"Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<PendingOrdersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetPendingOrders(globalPrefrencies.getLanguage(), FIRST_PAGE, "Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<PendingOrdersModel>() {
             @Override
             public void onResponse(Call<PendingOrdersModel> call, Response<PendingOrdersModel> response) {
                 PendingOrdersModel model = response.body();
                 if (model!= null) {
                     List<Datum> data = model.getData();
-                    callback.onResult(data , null , FIRST_PAGE + 1);
+                    callback.onResult(data, null, FIRST_PAGE + 1);
                 }
+
             }
 
             @Override
@@ -51,7 +50,7 @@ public class PendingOrdersDataSource extends PageKeyedDataSource<Long , Datum> {
     @Override
     public void loadBefore(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
         globalPrefrencies = new GlobalPrefrencies(context);
-        RetroWeb.getClient().create(ServiceApi.class).onGetPendingOrders(globalPrefrencies.getLanguage(),"Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<PendingOrdersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetPendingOrders(globalPrefrencies.getLanguage(), params.key, "Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<PendingOrdersModel>() {
             @Override
             public void onResponse(Call<PendingOrdersModel> call, Response<PendingOrdersModel> response) {
                 PendingOrdersModel model = response.body();
@@ -77,7 +76,7 @@ public class PendingOrdersDataSource extends PageKeyedDataSource<Long , Datum> {
     @Override
     public void loadAfter(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
         globalPrefrencies = new GlobalPrefrencies(context);
-        RetroWeb.getClient().create(ServiceApi.class).onGetPendingOrders(globalPrefrencies.getLanguage(),"Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<PendingOrdersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetPendingOrders(globalPrefrencies.getLanguage(), params.key, "Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<PendingOrdersModel>() {
             @Override
             public void onResponse(Call<PendingOrdersModel> call, Response<PendingOrdersModel> response) {
                 PendingOrdersModel model = response.body();

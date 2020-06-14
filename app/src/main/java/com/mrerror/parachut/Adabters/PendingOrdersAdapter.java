@@ -3,7 +3,6 @@ package com.mrerror.parachut.Adabters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,29 +18,29 @@ import com.mrerror.parachut.Models.PendingOrders.Datum;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.ui.home.orders.detailsorder.DetailsOrderActivity;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class PendingOrdersAdapter extends PagedListAdapter<Datum , PendingOrdersAdapter.PendingOrdersVmodel> {
     private Context context;
-   private static final DiffUtil.ItemCallback<Datum> item_COMPARATOR = new DiffUtil.ItemCallback<Datum>() {
-       @Override
-       public boolean areItemsTheSame(@NonNull Datum oldItem, @NonNull Datum newItem) {
-           return oldItem.getId() == newItem.getId() ;
-       }
 
-       @SuppressLint("DiffUtilEquals")
-       @Override
-       public boolean areContentsTheSame(@NonNull Datum oldItem, @NonNull Datum newItem) {
-           return oldItem == newItem;
-       }
-   };
+    private static final DiffUtil.ItemCallback<Datum> item_COMPARATOR = new DiffUtil.ItemCallback<Datum>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Datum oldItem, @NonNull Datum newItem) {
+            return oldItem.getId() == newItem.getId();
+        }
 
-    public PendingOrdersAdapter( Context context) {
+        @SuppressLint("DiffUtilEquals")
+        @Override
+        public boolean areContentsTheSame(@NonNull Datum oldItem, @NonNull Datum newItem) {
+            return oldItem == newItem;
+        }
+    };
+
+    public PendingOrdersAdapter(Context context) {
         super(item_COMPARATOR);
         this.context = context;
+    }
+
+    public void ClearAdapter() {
+
     }
 
     @NonNull

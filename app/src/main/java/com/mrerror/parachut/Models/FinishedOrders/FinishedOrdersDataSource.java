@@ -2,12 +2,8 @@ package com.mrerror.parachut.Models.FinishedOrders;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.MutableLiveData;
 import androidx.paging.PageKeyedDataSource;
 
 import com.mrerror.parachut.NetWork.RetroWeb;
@@ -15,7 +11,6 @@ import com.mrerror.parachut.NetWork.ServiceApi;
 import com.mrerror.parachut.databinding.FinishOrdersFragmentBinding;
 import com.mrerror.parachut.utils.GlobalPrefrencies;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -37,7 +32,7 @@ public class FinishedOrdersDataSource extends PageKeyedDataSource<Long , Datum> 
     public void loadInitial(@NonNull LoadInitialParams<Long> params, @NonNull final LoadInitialCallback<Long, Datum> callback) {
 
         globalPrefrencies = new GlobalPrefrencies(context);
-        RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders(globalPrefrencies.getLanguage(),"Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders(globalPrefrencies.getLanguage(), FIRST_PAGE, "Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
             @Override
             public void onResponse(Call<FinishedOrdersModel> call, Response<FinishedOrdersModel> response) {
                 FinishedOrdersModel model = response.body();
@@ -57,7 +52,7 @@ public class FinishedOrdersDataSource extends PageKeyedDataSource<Long , Datum> 
 
     @Override
     public void loadBefore(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
-        RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders(globalPrefrencies.getLanguage(),"Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders(globalPrefrencies.getLanguage(), params.key, "Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
             @Override
             public void onResponse(Call<FinishedOrdersModel> call, Response<FinishedOrdersModel> response) {
                 FinishedOrdersModel model = response.body();
@@ -85,7 +80,7 @@ public class FinishedOrdersDataSource extends PageKeyedDataSource<Long , Datum> 
     @Override
     public void loadAfter(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders(globalPrefrencies.getLanguage(),"Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetFinishedOrders(globalPrefrencies.getLanguage(), params.key, "Bearer " + globalPrefrencies.getApi_token()).enqueue(new Callback<FinishedOrdersModel>() {
             @Override
             public void onResponse(Call<FinishedOrdersModel> call, Response<FinishedOrdersModel> response) {
                 FinishedOrdersModel model = response.body();

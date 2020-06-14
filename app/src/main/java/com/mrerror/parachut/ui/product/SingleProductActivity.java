@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -37,13 +34,10 @@ import com.mrerror.parachut.Models.SimilarProducts.SimilarProductsModel;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.ActivitySingleProductBinding;
 import com.mrerror.parachut.ui.cart.CartActivity;
-import com.mrerror.parachut.ui.home.MainActivity;
-import com.mrerror.parachut.ui.home.allitem.AllItemActivity;
 import com.mrerror.parachut.utils.ChangeCountCartInterface;
 import com.mrerror.parachut.utils.GlobalPrefrencies;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -52,6 +46,10 @@ public class SingleProductActivity extends AppCompatActivity implements ChangeCo
 
     ActivitySingleProductBinding activitySingleProductBinding;
     SingleProductViewModel singleProductViewModel;
+    ChangeCountCartInterface changeCountCartInterface;
+
+    GlobalPrefrencies globalPrefrencies;
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +59,7 @@ public class SingleProductActivity extends AppCompatActivity implements ChangeCo
         activitySingleProductBinding.setSimilarVmodel(singleProductViewModel);
         activitySingleProductBinding.setLifecycleOwner(this);
 
-globalPrefrencies=new GlobalPrefrencies(this);
+        globalPrefrencies = new GlobalPrefrencies(this);
         final String id_= Objects.requireNonNull(getIntent().getExtras()).getString("product_id");
         setupData(id_);
         setupSimilarProducts(id_);
@@ -124,7 +122,88 @@ globalPrefrencies=new GlobalPrefrencies(this);
         });
     }
 
-    GlobalPrefrencies globalPrefrencies;
+    int i;
+
+    private boolean contains(ArrayList<Datum> dataArrayListProduct, Integer id) {
+
+
+        for (i = 0; i < dataArrayListProduct.size(); i++) {
+
+            Log.e("*  *" + dataArrayListProduct.get(i).getId() + "*  *", "*" + id + "*   *" + i);
+            if (dataArrayListProduct.get(i).getId().toString().equals(id + "")) {
+
+                Log.e("positionsssss", String.valueOf(i));
+                Log.e("connnnnn", "yes");
+
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+
+    private void backPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 1) {
+            getFragmentManager().popBackStack();
+        } else {
+            finish();
+        }
+    }
+
+
+    private void setupData(String id_) {
+
+        activitySingleProductBinding.rvSimilar.setLayoutManager(new LinearLayoutManager(this));
+        singleProductViewModel.setUpProduct(id_ + "", this);
+        singleProductViewModel.ProductsMutableLiveData.observe(this, new Observer<DetailsProductModel>() {
+            @Override
+            public void onChanged(DetailsProductModel detailsProductModel) {
+                item = detailsProductModel.getData();
+
+                setUpDataItem(detailsProductModel);
+                setUpModel(detailsProductModel);
+
+            }
+        });
+
+
+    }
+
+    private void setUpModel(DetailsProductModel detailsProductModel) {
+
+
+        activitySingleProductBinding.txtcatname.setText(detailsProductModel.getData().getCategory().getName() + "");
+        activitySingleProductBinding.txtprice.setText(detailsProductModel.getData().getPrice() + "جنيه");
+        activitySingleProductBinding.txtoffer.setText(detailsProductModel.getData().getOfferText() + "");
+        activitySingleProductBinding.namesm.setText(detailsProductModel.getData().getSupermarket().getName() + "");
+        activitySingleProductBinding.txtname.setText(detailsProductModel.getData().getName() + "");
+
+    }
+
+    ArrayList<Datum> data;
+
+    private void setupSimilarProducts(String id_) {
+        data = new ArrayList<>();
+        final SimilarProductsAdapter adapter = new SimilarProductsAdapter();
+        activitySingleProductBinding.rvSimilar.setLayoutManager(new LinearLayoutManager(this));
+        singleProductViewModel.setUpSimilarProducts(id_ + "", this);
+        singleProductViewModel.allsimilarProductsDataSourceMutableLiveData.observe(this, new Observer<SimilarProductsModel>() {
+            @Override
+            public void onChanged(SimilarProductsModel similarProductsModel) {
+                data.addAll(similarProductsModel.getData());
+                adapter.setProducts(data);
+            }
+        });
+        activitySingleProductBinding.rvSimilar.setAdapter(adapter);
+    }
+
+
+    Datum item;
+    Timer timer;
+
+    SliderPagerAdapter sliderPagerAdapter;
+
     public void AddToMyCart(int id_, View v) {
 
         Snackbar snackbar;
@@ -198,10 +277,10 @@ globalPrefrencies=new GlobalPrefrencies(this);
         snackView.setBackgroundResource(R.drawable.btnclickcolor);
         snackView.setPadding(4, 4, 4, 4);
         snackView.setBackgroundColor(ContextCompat.getColor(SingleProductActivity.this, R.color.white));
-        TextView snackViewText = (TextView) snackView.findViewById(R.id.snackbar_text);
+        TextView snackViewText = snackView.findViewById(R.id.snackbar_text);
         snackViewText.setTextSize(14);
         snackViewText.setTextColor(ContextCompat.getColor(SingleProductActivity.this, R.color.colorPrimaryDark));
-        Button snackViewButton = (Button) snackView.findViewById(R.id.snackbar_action);
+        Button snackViewButton = snackView.findViewById(R.id.snackbar_action);
         snackViewButton.setTextColor(ContextCompat.getColor(SingleProductActivity.this, R.color.colorPrimary));
         snackViewButton.setTextSize(20);
         snackbar.show();
@@ -209,93 +288,21 @@ globalPrefrencies=new GlobalPrefrencies(this);
 
     }
 
-    int i;
 
-    private boolean contains(ArrayList<Datum> dataArrayListProduct, Integer id) {
-
-
-        for (i = 0; i < dataArrayListProduct.size(); i++) {
-
-            Log.e("*  *"+dataArrayListProduct.get(i).getId()+"*  *","*"+id+"*   *"+i);
-            if (dataArrayListProduct.get(i).getId().toString().equals(id+"")) {
-
-                Log.e("positionsssss", String.valueOf(i));
-                Log.e("connnnnn", "yes");
-
-                return true;
-            }
-        }
-        return false;
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        changeCountCartInterface = this;
+        onChangeCount();
     }
 
+    ArrayList<Image> listSliderUrl = new ArrayList<>();
 
-
-    private void backPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 1) {
-            getFragmentManager().popBackStack();
-        } else {
-            finish();
-        }
-    }
-
-
-
-    private void setupData(String id_) {
-
-        activitySingleProductBinding.rvSimilar.setLayoutManager(new LinearLayoutManager(this));
-        singleProductViewModel.setUpProduct(id_+"",this);
-        singleProductViewModel.ProductsMutableLiveData.observe(this, new Observer<DetailsProductModel>() {
-            @Override
-            public void onChanged(DetailsProductModel detailsProductModel) {
-                item = detailsProductModel.getData();
-
-                setUpDataItem(detailsProductModel);
-                setUpModel(detailsProductModel);
-
-            }
-        });
-
-
-    }
-
-    private void setUpModel(DetailsProductModel detailsProductModel) {
-
-
-        activitySingleProductBinding.txtcatname.setText(detailsProductModel.getData().getCategory().getName()+"");
-        activitySingleProductBinding.txtprice.setText(detailsProductModel.getData().getPrice() + "جنيه");
-        activitySingleProductBinding.txtoffer.setText(detailsProductModel.getData().getOfferText()+"");
-        activitySingleProductBinding.namesm.setText(detailsProductModel.getData().getSupermarket().getName()+"");
-        activitySingleProductBinding.txtname.setText(detailsProductModel.getData().getName()+"");
-
-    }
-
-    ArrayList<Datum> data ;
-    private void setupSimilarProducts(String id_)
-    {
-        data=new ArrayList<>();
-        final SimilarProductsAdapter adapter = new SimilarProductsAdapter();
-        activitySingleProductBinding.rvSimilar.setLayoutManager(new LinearLayoutManager(this));
-        singleProductViewModel.setUpSimilarProducts(id_+"",this);
-        singleProductViewModel.allsimilarProductsDataSourceMutableLiveData.observe(this, new Observer<SimilarProductsModel>() {
-            @Override
-            public void onChanged(SimilarProductsModel similarProductsModel) {
-                data.addAll(similarProductsModel.getData());
-                adapter.setProducts(data);
-            }
-        });
-        activitySingleProductBinding.rvSimilar.setAdapter(adapter);
-    }
-
-
-    Datum item;
-    Timer timer;
-
-    SliderPagerAdapter sliderPagerAdapter;
     private void setUpDataItem(DetailsProductModel detailsProductModel) {
         listSliderUrl.clear();
 
         if (detailsProductModel.getImage() != null) {
+
 
             listSliderUrl.addAll(detailsProductModel.getImage());
 
@@ -333,16 +340,6 @@ globalPrefrencies=new GlobalPrefrencies(this);
 
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        changeCountCartInterface=this;
-        onChangeCount();
-    }
-
-    ArrayList<Image> listSliderUrl=new ArrayList<>();
-ChangeCountCartInterface changeCountCartInterface;
     @Override
     public void onChangeCount() {
 
@@ -358,7 +355,6 @@ ChangeCountCartInterface changeCountCartInterface;
     public class SliderPagerAdapter extends PagerAdapter {
 
         private LayoutInflater layoutInflater;
-
         public SliderPagerAdapter() {
         }
 
@@ -366,10 +362,10 @@ ChangeCountCartInterface changeCountCartInterface;
         public Object instantiateItem(ViewGroup container, int position) {
 
 
-            layoutInflater = (LayoutInflater) getSystemService(SingleProductActivity.this.LAYOUT_INFLATER_SERVICE);
+            layoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
             View view = layoutInflater.inflate(R.layout.image_slider_preview, container, false);
 
-            ImageView imageViewPreview = (ImageView) view.findViewById(R.id.sliderIv);
+            ImageView imageViewPreview = view.findViewById(R.id.sliderIv);
 
 
             String linkImageSlider = listSliderUrl.get(position).getImage();
@@ -402,7 +398,7 @@ ChangeCountCartInterface changeCountCartInterface;
 
         @Override
         public boolean isViewFromObject(View view, Object obj) {
-            return view == ((View) obj);
+            return view == obj;
         }
 
 

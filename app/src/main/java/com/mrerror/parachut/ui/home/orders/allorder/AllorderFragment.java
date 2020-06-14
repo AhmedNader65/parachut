@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,21 +45,13 @@ public class AllorderFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         // TODO: Use the ViewModel
-        mViewModel = new AllorderViewModel(getContext());
+        mViewModel = ViewModelProviders.of(this).get(AllorderViewModel.class);
         allorderFragmentBinding.setLifecycleOwner(this);
         allorderFragmentBinding.setAllorderVmodel(mViewModel);
 
-        allorderFragmentBinding.tvNoOrder.setVisibility(View.VISIBLE);
-        if (dataArrayListProduct.isEmpty()) {
 
-            allorderFragmentBinding.tvNoOrder.setVisibility(View.VISIBLE);
-
-
-        } else {
-            allorderFragmentBinding.tvNoOrder.setVisibility(View.GONE);
-
-        }
-
+        mViewModel.init(getContext());
+        mViewModel.initAll(getContext());
         setupPendingOrders();
 
     }
@@ -71,12 +64,14 @@ public class AllorderFragment extends Fragment {
         mViewModel.mutableLiveDataAllOrdersPageList.observe(getViewLifecycleOwner(), new Observer<PagedList<Datum>>() {
             @Override
             public void onChanged(PagedList<Datum> data) {
-                adapter.submitList(data);
-                Log.e("XCXC", data.size() + "");
 
+                adapter.submitList(data);
+                Log.e("sscsc", "scscsccccc");
             }
         });
         allorderFragmentBinding.rvPendingOrders.setAdapter(adapter);
+
+
     }
 
 }

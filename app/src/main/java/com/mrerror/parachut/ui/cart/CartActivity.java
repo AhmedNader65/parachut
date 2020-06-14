@@ -1,21 +1,21 @@
 package com.mrerror.parachut.ui.cart;
 
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
@@ -28,7 +28,6 @@ import com.mrerror.parachut.Models.Datum;
 import com.mrerror.parachut.Models.ProductModel.DetailsProductModel;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.ActivityCartBinding;
-
 import com.mrerror.parachut.ui.home.MainActivity;
 import com.mrerror.parachut.utils.DeletCartItemInfoInterface;
 import com.mrerror.parachut.utils.GlobalPrefrencies;
@@ -43,6 +42,8 @@ public class CartActivity extends AppCompatActivity implements AdabterCart.onCha
     ActivityCartBinding activityCartBinding;
     CartViewMmodel cartViewMmodel;
     GlobalPrefrencies globalPrefrencies;
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +51,9 @@ public class CartActivity extends AppCompatActivity implements AdabterCart.onCha
 
         activityCartBinding= DataBindingUtil.setContentView(this, R.layout.activity_cart);
         cartViewMmodel= ViewModelProviders.of(this).get(CartViewMmodel.class);
-
+//setupWindowAnimations();
         activityCartBinding.setCartVmodel(cartViewMmodel);
         activityCartBinding.setLifecycleOwner(this);
-
 
 
         activityCartBinding.setCartVmodel(cartViewMmodel);
@@ -153,8 +153,8 @@ public class CartActivity extends AppCompatActivity implements AdabterCart.onCha
                         //intent.putExtra("jsonArrayOfCart", String.valueOf(jsonArray));
                         //startActivity(intent);
 
-                        Log.e("bnbn",new Gson().toJson(element).toString());
-                      sendToBackEnd(String.valueOf(jsonArray));
+                        Log.e("bnbn", new Gson().toJson(element));
+                        sendToBackEnd(String.valueOf(jsonArray));
                     } else {
 
                         if (!globalPrefrencies.getLanguage().equals("ar")) {
@@ -193,7 +193,7 @@ public class CartActivity extends AppCompatActivity implements AdabterCart.onCha
                 dataArrayListProduct.clear();
                 Intent intent=new Intent(CartActivity.this, MainActivity.class);
                 CartActivity.this.startActivity(intent);
-                ((CartActivity)CartActivity.this).finish();
+                CartActivity.this.finish();
             }
             else {
                 Toast.makeText(CartActivity.this, "من فضلك اعد المحاولة", Toast.LENGTH_SHORT).show();
@@ -203,6 +203,7 @@ public class CartActivity extends AppCompatActivity implements AdabterCart.onCha
     }
 
     AdabterCart cartAdapter;
+
     private void cartDetails() {
         cartAdapter = new AdabterCart(dataArrayListProduct, new DeletCartItemInfoInterface() {
             @Override
@@ -224,6 +225,17 @@ public class CartActivity extends AppCompatActivity implements AdabterCart.onCha
         activityCartBinding.totaltext.setText(cartAdapter.getAllPrice()+"");
 
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void setupWindowAnimations() {
+        Fade fade = new Fade();
+        fade.setDuration(1000);
+        getWindow().setEnterTransition(fade);
+
+        Slide slide = new Slide();
+        slide.setDuration(1000);
+        getWindow().setReturnTransition(slide);
+    }
     private void fetchCartInfo() {
         String price;
         int count = 0;
@@ -233,9 +245,9 @@ public class CartActivity extends AppCompatActivity implements AdabterCart.onCha
 
             for (int i = 0; i < dataArrayListProduct.size(); i++) {
 
-                price = String.valueOf(dataArrayListProduct.get(i).getPrice() + ""); //* CartActivity.shopProductsList.get(i).getProductCount();
+                price = dataArrayListProduct.get(i).getPrice() + ""; //* CartActivity.shopProductsList.get(i).getProductCount();
 
-                Log.e("price", String.valueOf(price));
+                Log.e("price", price);
                 activityCartBinding.subPrice.setText(price);
                 count += dataArrayListProduct.get(i).getCount();
             }
@@ -254,7 +266,7 @@ public class CartActivity extends AppCompatActivity implements AdabterCart.onCha
     @Override
     public void onChange() {
         activityCartBinding.subPrice.setText(cartAdapter.getAllQuantity() + " " + cartAdapter.getAllPrice());
-        activityCartBinding.totaltext.setText(" " + (Integer.parseInt(cartAdapter.getAllPrice().toString()))+"");
+        activityCartBinding.totaltext.setText(" " + (Integer.parseInt(cartAdapter.getAllPrice())) + "");
 
 
         if (!globalPrefrencies.getLanguage().equals("ar")) {

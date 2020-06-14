@@ -13,9 +13,7 @@ public class Datum implements Serializable
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("user")
-    @Expose
-    private Object user;
+    private final static long serialVersionUID = 5324918742626338162L;
     @SerializedName("order_price")
     @Expose
     private Integer orderPrice;
@@ -25,21 +23,27 @@ public class Datum implements Serializable
     @SerializedName("delivery_shifts")
     @Expose
     private String deliveryShifts;
-    @SerializedName("products_notes")
+    @SerializedName("user")
     @Expose
-    private String productsNotes;
+    private User user;
     @SerializedName("order_notes")
     @Expose
     private Object orderNotes;
+    @SerializedName("products_notes")
+    @Expose
+    private Object productsNotes;
     @SerializedName("minimum")
     @Expose
-    private Integer minimum;
+    private Object minimum;
     @SerializedName("code")
     @Expose
-    private Object code;
+    private String code;
     @SerializedName("status")
     @Expose
     private String status;
+    @SerializedName("delgate_price")
+    @Expose
+    private Object delgatePrice;
     @SerializedName("delivery")
     @Expose
     private Object delivery;
@@ -49,7 +53,6 @@ public class Datum implements Serializable
     @SerializedName("created_at")
     @Expose
     private String createdAt;
-    private final static long serialVersionUID = -3448869865464621599L;
 
     public Integer getId() {
         return id;
@@ -59,11 +62,11 @@ public class Datum implements Serializable
         this.id = id;
     }
 
-    public Object getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Object user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -91,11 +94,11 @@ public class Datum implements Serializable
         this.deliveryShifts = deliveryShifts;
     }
 
-    public String getProductsNotes() {
+    public Object getProductsNotes() {
         return productsNotes;
     }
 
-    public void setProductsNotes(String productsNotes) {
+    public void setProductsNotes(Object productsNotes) {
         this.productsNotes = productsNotes;
     }
 
@@ -107,20 +110,28 @@ public class Datum implements Serializable
         this.orderNotes = orderNotes;
     }
 
-    public Integer getMinimum() {
+    public Object getMinimum() {
         return minimum;
     }
 
-    public void setMinimum(Integer minimum) {
+    public void setMinimum(Object minimum) {
         this.minimum = minimum;
     }
 
-    public Object getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Object code) {
+    public void setCode(String code) {
         this.code = code;
+    }
+
+    public Object getDelgatePrice() {
+        return delgatePrice;
+    }
+
+    public void setDelgatePrice(Object delgatePrice) {
+        this.delgatePrice = delgatePrice;
     }
 
     public String getStatus() {
@@ -129,6 +140,14 @@ public class Datum implements Serializable
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Object getDelivery() {
@@ -145,14 +164,6 @@ public class Datum implements Serializable
 
     public void setOrderProducts(List<OrderProduct> orderProducts) {
         this.orderProducts = orderProducts;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
     }
 
 }

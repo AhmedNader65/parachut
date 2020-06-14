@@ -21,6 +21,10 @@
     <string name="all_item">All item</string>
 
 
+    <string name="ifukneedhelp">اذا كان لديك استفسار يمكنك التواصل معنا</string>
+    <string name="callcustomerservice">الاتصال بخدمة العملاء</string>
+    <string name="needtona">مثال : لو سمحت محتاج علبة تونه</string>
+    <string name="mobile">رقم الهاتف</string>
 
     <string name="aboutus">من نحن ؟</string>
     <string name="features">ما يميزنا</string>

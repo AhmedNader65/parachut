@@ -1,13 +1,5 @@
 package com.mrerror.parachut.ui.usercontrol.register;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -15,11 +7,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,10 +14,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
-import com.mrerror.parachut.Models.Register.UserRegisterModel;
 import com.mrerror.parachut.R;
 import com.mrerror.parachut.databinding.RegisterFragmentBinding;
 import com.mrerror.parachut.ui.usercontrol.UserActivity;
@@ -94,13 +91,8 @@ GlobalPrefrencies globalPrefrencies;
     }
 
     private boolean isLocationAccessPermitted() {
-        if (ContextCompat.checkSelfPermission(getContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            return false;
-        } else {
-            return true;
-        }
+        return ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
 
     @Override
@@ -121,7 +113,7 @@ GlobalPrefrencies globalPrefrencies;
                 if (onCheackValidation()) {
 
                     if(!TextUtils.isEmpty(address)){
-                        UserRegisterModel userRegisterModel = mViewModel.onClickRegister(
+                        mViewModel.onClickRegister(
                                 registerFragmentBinding.nameId.getText().toString().trim(),
                                 registerFragmentBinding.phoneId.getText().toString(),
                                 registerFragmentBinding.addressId.getText().toString().trim(),
@@ -206,10 +198,7 @@ GlobalPrefrencies globalPrefrencies;
         if (!ValidatePhone()) {
             return false;
         }
-        if (!ValidateEmail()) {
-            return false;
-        }
-        return true;
+        return ValidateEmail();
     }
 
 
