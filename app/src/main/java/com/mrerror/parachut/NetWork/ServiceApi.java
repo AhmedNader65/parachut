@@ -122,9 +122,11 @@ public interface ServiceApi {
     @GET("supermarket/{id}/products/min/price")
     Call<AllProductCategories> onGetMINAllProductStores(@Path(value = "id", encoded = true) String id_,@Query("lang") String lang,@Query("page") long page );
     @GET("supermarket/{id}/products/mostcommon")
-    Call<AllProductCategories> onGetMostCOMMONProductStores(@Path(value = "id", encoded = true) String id_,@Query("lang") String lang,@Query("page") long page);
+    Call<AllProductCategories> onGetMostCOMMONProductStores(@Path(value = "id", encoded = true) String id_, @Query("lang") String lang, @Query("page") long page);
+
     @GET("delivery/price")
-    Call<PriceModel> onGetPriceModel();
+    Call<PriceModel> onGetPriceModel(@Query("page") long page);
+
     @GET("about_us")
     Call<AboutUsModel> OnGetAboutUs(@Query("lang") String lang);
     @FormUrlEncoded

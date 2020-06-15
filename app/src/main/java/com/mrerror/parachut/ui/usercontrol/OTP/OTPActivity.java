@@ -11,7 +11,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.gson.Gson;
 import com.mrerror.parachut.Models.BaseResponce;
 import com.mrerror.parachut.Models.Register.Data;
 import com.mrerror.parachut.Models.Register.UserRegisterModel;
@@ -47,14 +46,12 @@ public class OTPActivity extends AppCompatActivity {
         otpView = findViewById(R.id.otp_view);
 
         final UserRegisterModel code = (UserRegisterModel) getIntent().getExtras().getSerializable("code");
+        Toast.makeText(OTPActivity.this, "onOtpCompleted=> " + code.getData().getUser().getVerifyCode() + "", Toast.LENGTH_LONG).show();
 
-        Log.e("ERROR", new Gson().toJson(code));
         otpView.setOtpCompletionListener(new OnOtpCompletionListener() {
             @Override
             public void onOtpCompleted(String otp) {
-
                 getCodeFromApi(otp, code.getData().getUser().getVerifyCode() + "", code.getData());
-                Log.e("onOtpCompleted=>", otp);
             }
         });
     }

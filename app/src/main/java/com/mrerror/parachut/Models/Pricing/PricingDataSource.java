@@ -19,15 +19,15 @@ public class PricingDataSource extends PageKeyedDataSource<Long , Datum> {
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams<Long> params, @NonNull final LoadInitialCallback<Long, Datum> callback) {
-        RetroWeb.getClient().create(ServiceApi.class).onGetPriceModel().enqueue(new Callback<PriceModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetPriceModel(FIRST_PAGE).enqueue(new Callback<PriceModel>() {
             @Override
             public void onResponse(Call<PriceModel> call, Response<PriceModel> response) {
 
-                    PriceModel body = response.body();
-                    if (body!= null) {
-                        List<com.mrerror.parachut.Models.Pricing.Datum> data = body.getData();
-                        callback.onResult(data, null, FIRST_PAGE + 1);
-                    }
+                PriceModel body = response.body();
+                if (body != null) {
+                    List<com.mrerror.parachut.Models.Pricing.Datum> data = body.getData();
+                    callback.onResult(data, null, FIRST_PAGE + 1);
+                }
             }
 
             @Override
@@ -39,7 +39,7 @@ public class PricingDataSource extends PageKeyedDataSource<Long , Datum> {
 
     @Override
     public void loadBefore(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
-        RetroWeb.getClient().create(ServiceApi.class).onGetPriceModel().enqueue(new Callback<PriceModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetPriceModel(params.key).enqueue(new Callback<PriceModel>() {
             @Override
             public void onResponse(Call<PriceModel> call, Response<PriceModel> response) {
                 PriceModel body = response.body();
@@ -67,14 +67,14 @@ public class PricingDataSource extends PageKeyedDataSource<Long , Datum> {
     @Override
     public void loadAfter(@NonNull final LoadParams<Long> params, @NonNull final LoadCallback<Long, Datum> callback) {
 
-        RetroWeb.getClient().create(ServiceApi.class).onGetPriceModel().enqueue(new Callback<PriceModel>() {
+        RetroWeb.getClient().create(ServiceApi.class).onGetPriceModel(params.key).enqueue(new Callback<PriceModel>() {
             @Override
             public void onResponse(Call<PriceModel> call, Response<PriceModel> response) {
 
                 PriceModel body = response.body();
-                if (body!= null) {
+                if (body != null) {
                     List<com.mrerror.parachut.Models.Pricing.Datum> data = body.getData();
-                    callback.onResult(data,  params.key + 1);
+                    callback.onResult(data, params.key + 1);
                 }
             }
 
